@@ -3,6 +3,105 @@
 
 ---
 
+## Indice
+
+0. [Primeros pasos (Mac nuevo)](#0-primeros-pasos-mac-nuevo)
+1. [Runtimes & Package Managers](#1-runtimes--package-managers)
+2. [Homebrew Formulae](#2-homebrew-formulae)
+3. [Homebrew Casks](#3-homebrew-casks)
+4. [Mac Apps](#4-mac-apps-manual-o-via-cask)
+5. [Shell: Oh My Zsh + Powerlevel10k](#5-shell-oh-my-zsh--powerlevel10k)
+6. [Git Config](#6-git-config)
+7. [Global NPM Packages](#7-global-npm-packages)
+8. [Python Packages](#8-python-packages-pip)
+9. [VS Code / Cursor Extensions](#9-vs-code--cursor-extensions)
+10. [Claude Code - Plugins](#10-claude-code---plugins)
+11. [Claude Code - Skills (gstack)](#11-claude-code---skills-gstack)
+12. [Claude Code - Custom Agents](#12-claude-code---custom-agents-16-agentes)
+13. [Claude Code - Custom Command](#13-claude-code---custom-command)
+14. [Script rapido de setup](#script-rapido-de-setup)
+
+---
+
+## 0. Primeros pasos (Mac nuevo)
+
+Antes de instalar cualquier cosa, sigue estos pasos en orden en una Mac recien formateada:
+
+### 0.1 Actualizaciones del sistema
+
+```bash
+# Actualizar macOS a la ultima version
+softwareupdate --install --all
+```
+
+### 0.2 Xcode Command Line Tools
+
+```bash
+# Necesario para git, compiladores, y Homebrew
+xcode-select --install
+```
+
+### 0.3 Homebrew
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Agregar Homebrew al PATH (Apple Silicon)
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+### 0.4 Clonar este repo
+
+```bash
+# Crear SSH key para GitHub (o copiar la existente)
+ssh-keygen -t ed25519 -C "sebastian.breguel@vambe.ai" -f ~/.ssh/gitVambe
+
+# Copiar la key publica y agregarla a GitHub > Settings > SSH Keys
+cat ~/.ssh/gitVambe.pub
+
+# Configurar SSH
+mkdir -p ~/.ssh && cat > ~/.ssh/config << 'EOF'
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/gitVambe
+EOF
+
+# Clonar dotfiles
+git clone git@github.com:sebastianbreguel/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+```
+
+### 0.5 Copiar archivos de configuracion
+
+```bash
+# Claude Code config (agentes, skills, commands, settings)
+cp -r ~/dotfiles/.claude/ ~/.claude/
+
+# Si tienes backup de estos archivos, copiarlos tambien:
+# ~/.secrets          (variables de entorno privadas)
+# ~/.p10k.zsh         (config de Powerlevel10k)
+# ~/.ssh/gitVambe     (SSH key privada)
+```
+
+### 0.6 Orden de instalacion recomendado
+
+| Paso | Seccion | Que instala | Tiempo aprox |
+|------|---------|-------------|--------------|
+| 1 | [Sec. 1](#1-runtimes--package-managers) | Homebrew, NVM, Node, Python, Bun | 10 min |
+| 2 | [Sec. 2-3](#2-homebrew-formulae) | Formulae + Casks | 15 min |
+| 3 | [Sec. 4](#4-mac-apps-manual-o-via-cask) | Apps de Mac | 20 min |
+| 4 | [Sec. 5](#5-shell-oh-my-zsh--powerlevel10k) | Oh My Zsh + P10k + aliases | 5 min |
+| 5 | [Sec. 6](#6-git-config) | Git + SSH (si no se hizo en paso 0.4) | 2 min |
+| 6 | [Sec. 7-8](#7-global-npm-packages) | NPM global + Python packages | 10 min |
+| 7 | [Sec. 9](#9-vs-code--cursor-extensions) | VS Code / Cursor extensions | 5 min |
+| 8 | [Sec. 10-13](#10-claude-code---plugins) | Claude Code completo | 10 min |
+
+> **Tip**: O simplemente ejecuta el [script de setup](#script-rapido-de-setup) del final para automatizar pasos 1-8.
+
+---
+
 ## 1. Runtimes & Package Managers
 
 ```bash
