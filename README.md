@@ -55,21 +55,21 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ```bash
 # Crear SSH key para GitHub (o copiar la existente)
-ssh-keygen -t ed25519 -C "sebastian.breguel@vambe.ai" -f ~/.ssh/gitVambe
+ssh-keygen -t ed25519 -C "your_email@example.com" -f ~/.ssh/id_ed25519
 
 # Copiar la key publica y agregarla a GitHub > Settings > SSH Keys
-cat ~/.ssh/gitVambe.pub
+cat ~/.ssh/id_ed25519.pub
 
 # Configurar SSH
 mkdir -p ~/.ssh && cat > ~/.ssh/config << 'EOF'
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/gitVambe
+  IdentityFile ~/.ssh/id_ed25519
 EOF
 
 # Clonar dotfiles
-git clone git@github.com:sebastianbreguel/dotfiles.git ~/dotfiles
+git clone git@github.com:<your-user>/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
@@ -202,14 +202,14 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 ## 6. Git Config
 
 ```bash
-git config --global user.name "sebastianbreguel-vambe"
-git config --global user.email "sebastian.breguel@vambe.ai"
+git config --global user.name "your-username"
+git config --global user.email "your_email@example.com"
 ```
 
 ### SSH Key
 
 ```bash
-ssh-keygen -t ed25519 -C "sebastian.breguel@vambe.ai" -f ~/.ssh/gitVambe
+ssh-keygen -t ed25519 -C "your_email@example.com" -f ~/.ssh/id_ed25519
 ```
 
 `~/.ssh/config`:
@@ -217,7 +217,7 @@ ssh-keygen -t ed25519 -C "sebastian.breguel@vambe.ai" -f ~/.ssh/gitVambe
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/gitVambe
+  IdentityFile ~/.ssh/id_ed25519
 ```
 
 ---
@@ -410,11 +410,11 @@ npm install -g pnpm@10.30.3 @google/gemini-cli @openai/codex @qwen-code/qwen-cod
 pip3 install anthropic beautifulsoup4 bertopic fastapi hdbscan httpx numpy pandas plotly pydantic requests rich scikit-learn scipy sentence-transformers torch transformers typer umap-learn uvicorn python-dotenv pyyaml
 
 # 9. Git
-git config --global user.name "sebastianbreguel-vambe"
-git config --global user.email "sebastian.breguel@vambe.ai"
+git config --global user.name "your-username"
+git config --global user.email "your_email@example.com"
 
 echo "Done! Ahora:"
-echo "1. Copiar ~/.ssh/gitVambe y ~/.ssh/config"
+echo "1. Copiar ~/.ssh/ keys y ~/.ssh/config"
 echo "2. Copiar ~/.claude/ (agents, skills, settings, commands)"
 echo "3. Instalar VS Code extensions (ver seccion 9)"
 echo "4. Configurar p10k: p10k configure"
