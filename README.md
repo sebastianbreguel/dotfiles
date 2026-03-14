@@ -119,6 +119,9 @@ nvm use 25
 # Bun
 curl -fsSL https://bun.sh/install | bash
 
+# uv (Python package manager)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # pnpm
 npm install -g pnpm@10.30.3
 ```

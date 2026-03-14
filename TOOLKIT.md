@@ -189,6 +189,7 @@ Herramientas de linea de comando instaladas globalmente via npm.
 | **[@openai/codex](https://github.com/openai/codex)** | CLI de OpenAI Codex. Coding agent en terminal. | Free (requiere API key) |
 | **[vercel](https://vercel.com/docs/cli)** | CLI de Vercel para deploy de apps web. | Free (Pro opcional) |
 | **[pnpm](https://pnpm.io/)** | Package manager rapido y eficiente en disco. | Free |
+| **[uv](https://github.com/astral-sh/uv)** | Package manager y project manager para Python. Ultra rapido (escrito en Rust). Reemplaza pip, venv, pyenv. | Free |
 | **[context-mode](https://github.com/mksglu/context-mode)** | Plugin de Claude Code (instalado via npm link). | Free |
 
 ---
