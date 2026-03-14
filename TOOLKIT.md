@@ -1,23 +1,75 @@
-# Plugins, Tools & Extensions
+# Toolkit
 
-Catalogo completo de plugins, extensiones y herramientas instaladas.
+Catalogo completo de apps, plugins, extensiones y herramientas instaladas.
 
 ---
 
 ## Indice
 
-1. [Claude Code - Plugins](#1-claude-code---plugins)
-2. [Claude Code - Skills](#2-claude-code---skills)
-3. [Claude Code - Custom Agents](#3-claude-code---custom-agents)
-4. [Claude Code - Custom Commands](#4-claude-code---custom-commands)
-5. [VS Code / Cursor - Extensions](#5-vs-code--cursor---extensions)
-6. [CLI Tools (npm global)](#6-cli-tools-npm-global)
-7. [Shell Plugins](#7-shell-plugins)
-8. [Homebrew CLI Tools](#8-homebrew-cli-tools)
+1. [Mac Apps](#1-mac-apps)
+2. [Claude Code - Plugins](#2-claude-code---plugins)
+3. [Claude Code - Skills](#3-claude-code---skills)
+4. [Claude Code - Custom Agents](#4-claude-code---custom-agents)
+5. [Claude Code - Custom Commands](#5-claude-code---custom-commands)
+6. [VS Code / Cursor - Extensions](#6-vs-code--cursor---extensions)
+7. [CLI Tools (npm global)](#7-cli-tools-npm-global)
+8. [Shell Plugins](#8-shell-plugins)
+9. [Homebrew CLI Tools](#9-homebrew-cli-tools)
 
 ---
 
-## 1. Claude Code - Plugins
+## 1. Mac Apps
+
+### Browsers & Comunicacion
+
+| App | Descripcion | Instalacion | Costo |
+|-----|-------------|-------------|-------|
+| **[Brave Browser](https://brave.com/)** | Browser basado en Chromium con bloqueo de ads y trackers integrado. | `brew install --cask brave-browser` | Free |
+| **[Slack](https://slack.com/)** | Mensajeria para equipos. Canales, threads, integraciones. | `brew install --cask slack` | Free (Pro opcional) |
+
+### Desarrollo
+
+| App | Descripcion | Instalacion | Costo |
+|-----|-------------|-------------|-------|
+| **[Cursor](https://cursor.sh/)** | Editor de codigo basado en VS Code con AI integrado (Claude, GPT). | `brew install --cask cursor` | Free (Pro $20/mes) |
+| **[Claude Desktop](https://claude.ai/)** | App de escritorio de Claude. Chat + Claude Code integrado. | `brew install --cask claude` | Free (Pro $20/mes) |
+| **[Docker Desktop](https://www.docker.com/)** | Contenedores. Ejecuta apps aisladas, dev environments, bases de datos. | `brew install --cask docker` | Free (Pro opcional) |
+| **[DataGrip](https://www.jetbrains.com/datagrip/)** | IDE de JetBrains para bases de datos. SQL, PostgreSQL, Redis, etc. | `brew install --cask datagrip` | Paid ($9.90/mes) |
+| **[Postman](https://www.postman.com/)** | Testing y documentacion de APIs. Collections, environments, mock servers. | `brew install --cask postman` | Free (Pro opcional) |
+| **[Neo4j Desktop](https://neo4j.com/)** | Gestion de bases de datos de grafos Neo4j. | Manual | Free |
+| **[Ghostty](https://ghostty.org/)** | Terminal rapida y moderna escrita en Zig. GPU-accelerated. | `brew install --cask ghostty` | Free |
+| **[iTerm2](https://iterm2.com/)** | Terminal avanzada para macOS. Splits, profiles, triggers. | `brew install --cask iterm2` | Free |
+
+### Utilidades del Sistema
+
+| App | Descripcion | Instalacion | Costo |
+|-----|-------------|-------------|-------|
+| **[1Password CLI](https://1password.com/)** | Acceso a passwords desde terminal. Secrets management. | `brew install --cask 1password-cli` | Paid ($2.99/mes) |
+| **[AltTab](https://alt-tab-macos.netlify.app/)** | Window switcher estilo Windows. Preview de ventanas con Alt+Tab. | `brew install --cask alt-tab` | Free |
+| **[BetterDisplay](https://betterdisplay.pro/)** | Control avanzado de monitores. Resoluciones custom, brightness, HDR. | `brew install --cask betterdisplay` | Free (Pro $18) |
+| **[Ice](https://github.com/jordanbaird/Ice)** | Menu bar manager. Oculta iconos para mantener la barra limpia. | `brew install --cask jordanbaird-ice` | Free |
+| **[Rectangle](https://rectangleapp.com/)** | Window management con atajos de teclado. Snapping, splits. | `brew install --cask rectangle` | Free |
+| **[Stats](https://github.com/exelban/stats)** | Monitor del sistema en la menu bar. CPU, RAM, disco, red, bateria. | `brew install --cask stats` | Free |
+| **[Macs Fan Control](https://crystalidea.com/macs-fan-control)** | Control manual de ventiladores y monitoreo de temperatura. | `brew install --cask macs-fan-control` | Free (Pro $14.95) |
+| **[OnyX](https://www.titanium-software.fr/en/onyx.html)** | Mantenimiento y optimizacion de macOS. Limpieza de cache, permisos. | `brew install --cask onyx` | Free |
+| **[cmux](https://github.com/nicholasgasior/cmux)** | Multiplexor de sesiones Claude Code. Multiples sesiones en paralelo. | `brew install --cask cmux` | Free |
+
+### Seguridad & Enterprise
+
+| App | Descripcion | Instalacion | Costo |
+|-----|-------------|-------------|-------|
+| **[Cloudflare WARP](https://1.1.1.1/)** | VPN y DNS seguro de Cloudflare. Encripta trafico de red. | `brew install --cask cloudflare-warp` | Free |
+| **[Drata Agent](https://drata.com/)** | Agente de compliance (SOC2, ISO). Monitorea configuracion de seguridad. | Manual (empresa) | Enterprise |
+
+### Media
+
+| App | Descripcion | Instalacion | Costo |
+|-----|-------------|-------------|-------|
+| **[Spotify](https://spotify.com/)** | Streaming de musica y podcasts. | `brew install --cask spotify` | Free (Premium $10.99/mes) |
+
+---
+
+## 2. Claude Code - Plugins
 
 Plugins del marketplace de Claude Code. Se activan desde `settings.json`.
 
@@ -31,7 +83,7 @@ Plugins del marketplace de Claude Code. Se activan desde `settings.json`.
 
 ---
 
-## 2. Claude Code - Skills
+## 3. Claude Code - Skills
 
 Skills instalados via [gstack](https://github.com/garrytan/gstack) (Garry Tan) y custom. Se invocan con `/skill-name`.
 
@@ -49,7 +101,7 @@ Skills instalados via [gstack](https://github.com/garrytan/gstack) (Garry Tan) y
 
 ---
 
-## 3. Claude Code - Custom Agents
+## 4. Claude Code - Custom Agents
 
 Agentes especializados que se lanzan automaticamente segun el tipo de tarea. Ubicados en `~/.claude/agents/`.
 
@@ -96,7 +148,7 @@ Agentes especializados que se lanzan automaticamente segun el tipo de tarea. Ubi
 
 ---
 
-## 4. Claude Code - Custom Commands
+## 5. Claude Code - Custom Commands
 
 Comandos personalizados invocables con `/command-name`.
 
@@ -106,7 +158,7 @@ Comandos personalizados invocables con `/command-name`.
 
 ---
 
-## 5. VS Code / Cursor - Extensions
+## 6. VS Code / Cursor - Extensions
 
 | Extension | ID | Descripcion | Costo |
 |-----------|----|-------------|-------|
@@ -127,7 +179,7 @@ Comandos personalizados invocables con `/command-name`.
 
 ---
 
-## 6. CLI Tools (npm global)
+## 7. CLI Tools (npm global)
 
 Herramientas de linea de comando instaladas globalmente via npm.
 
@@ -141,7 +193,7 @@ Herramientas de linea de comando instaladas globalmente via npm.
 
 ---
 
-## 7. Shell Plugins
+## 8. Shell Plugins
 
 | Plugin | Descripcion | Costo |
 |--------|-------------|-------|
@@ -152,7 +204,7 @@ Herramientas de linea de comando instaladas globalmente via npm.
 
 ---
 
-## 8. Homebrew CLI Tools
+## 9. Homebrew CLI Tools
 
 Herramientas de terminal instaladas via Homebrew (no librerias/dependencias).
 
