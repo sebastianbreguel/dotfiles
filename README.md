@@ -228,7 +228,6 @@ Host github.com
 npm install -g \
   @google/gemini-cli \
   @openai/codex \
-  @qwen-code/qwen-code \
   vercel
 ```
 
@@ -404,7 +403,7 @@ nvm install 25
 curl -fsSL https://bun.sh/install | bash
 
 # 7. Global npm
-npm install -g pnpm@10.30.3 @google/gemini-cli @openai/codex @qwen-code/qwen-code vercel
+npm install -g pnpm@10.30.3 @google/gemini-cli @openai/codex vercel
 
 # 8. Python packages
 pip3 install anthropic beautifulsoup4 bertopic fastapi hdbscan httpx numpy pandas plotly pydantic requests rich scikit-learn scipy sentence-transformers torch transformers typer umap-learn uvicorn python-dotenv pyyaml

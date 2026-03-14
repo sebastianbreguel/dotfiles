@@ -135,7 +135,6 @@ Herramientas de linea de comando instaladas globalmente via npm.
 |------|-------------|-------|
 | **[@google/gemini-cli](https://github.com/google-gemini/gemini-cli)** | CLI oficial de Google Gemini. Coding agent en terminal. | Free |
 | **[@openai/codex](https://github.com/openai/codex)** | CLI de OpenAI Codex. Coding agent en terminal. | Free (requiere API key) |
-| **[@qwen-code/qwen-code](https://github.com/QwenLM/qwen-code)** | CLI de Alibaba Qwen. Coding agent en terminal. | Free |
 | **[vercel](https://vercel.com/docs/cli)** | CLI de Vercel para deploy de apps web. | Free (Pro opcional) |
 | **[pnpm](https://pnpm.io/)** | Package manager rapido y eficiente en disco. | Free |
 | **[context-mode](https://github.com/mksglu/context-mode)** | Plugin de Claude Code (instalado via npm link). | Free |
