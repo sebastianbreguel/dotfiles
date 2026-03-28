@@ -40,8 +40,6 @@ Catalogo completo de apps, plugins, extensiones y herramientas instaladas.
 | **[Postman](https://www.postman.com/)** | Testing y documentacion de APIs. Collections, environments, mock servers. | `brew install --cask postman` | Free (Pro opcional) |
 | **[Neo4j Desktop](https://neo4j.com/)** | Gestion de bases de datos de grafos Neo4j. | Manual | Free |
 | **[RightFont](https://rightfontapp.com/)** | Gestor de fuentes para macOS. Preview, activacion, organizacion. | Manual | Free (Pro opcional) |
-| **[Ghostty](https://ghostty.org/)** | Terminal rapida y moderna escrita en Zig. GPU-accelerated. | `brew install --cask ghostty` | Free |
-| **[iTerm2](https://iterm2.com/)** | Terminal avanzada para macOS. Splits, profiles, triggers. | `brew install --cask iterm2` | Free |
 | **[Visual Studio Code](https://code.visualstudio.com/)** | Editor de codigo open source de Microsoft. Extensions marketplace. | `brew install --cask visual-studio-code` | Free |
 | **[Xcode](https://developer.apple.com/xcode/)** | IDE de Apple para desarrollo iOS/macOS. | Mac App Store | Free |
 | **[Obsidian](https://obsidian.md/)** | Editor de notas en Markdown. Plugins, graph view, vault local. | `brew install --cask obsidian` | Free |
@@ -270,7 +268,6 @@ Herramientas de terminal instaladas via Homebrew (no librerias/dependencias).
 | **[go](https://go.dev/)** | Lenguaje de programacion Go. Compilado, concurrente, tipado. | Free |
 | **[htop](https://htop.dev/)** | Monitor de procesos interactivo (mejor que `top`). | Free |
 | **[jq](https://jqlang.github.io/jq/)** | Procesador de JSON en linea de comandos. Filtrar, transformar, consultar. | Free |
-| **[lazygit](https://github.com/jesseduffield/lazygit)** | TUI para Git. Commits, branches, stash con interfaz visual. | Free |
 | **[tmux](https://github.com/tmux/tmux)** | Multiplexor de terminal. Sesiones persistentes, splits, tabs. | Free |
 | **[ripgrep](https://github.com/BurntSushi/ripgrep)** | Busqueda de texto ultra rapida (reemplaza grep). | Free |
 | **[ncdu](https://dev.yorhel.nl/ncdu)** | Analizador de uso de disco con interfaz ncurses. | Free |

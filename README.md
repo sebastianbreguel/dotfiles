@@ -132,7 +132,7 @@ npm install -g pnpm@10.30.3
 
 ```bash
 brew install \
-  ca-certificates ffmpeg fzf htop lame lazygit \
+  ca-certificates ffmpeg fzf htop lame \
   mole ncdu nvm nvtop openssl@3 postgresql@15 \
   redis ripgrep sdl2 tmux zsh zsh-autosuggestions
 ```
@@ -155,8 +155,6 @@ brew install --cask \
 | Claude Desktop | `brew install --cask claude` |
 | Cursor | `brew install --cask cursor` |
 | Docker Desktop | `brew install --cask docker` |
-| Ghostty | `brew install --cask ghostty` |
-| iTerm2 | `brew install --cask iterm2` |
 | Postman | `brew install --cask postman` |
 | Rectangle | `brew install --cask rectangle` |
 | Slack | `brew install --cask slack` |
@@ -386,10 +384,10 @@ Los agentes custom estan en `~/.claude/agents/`:
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # 2. Formulae
-brew install ca-certificates ffmpeg fzf htop lame lazygit mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep sdl2 tmux zsh zsh-autosuggestions
+brew install ca-certificates ffmpeg fzf htop lame mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep sdl2 tmux zsh zsh-autosuggestions
 
 # 3. Casks
-brew install --cask 1password-cli alt-tab betterdisplay cmux font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker ghostty iterm2 postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp onyx
+brew install --cask 1password-cli alt-tab betterdisplay cmux font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp onyx
 
 # 4. Oh My Zsh + P10k
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
