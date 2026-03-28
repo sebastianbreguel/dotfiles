@@ -1,0 +1,189 @@
+================================================================================
+DEFAULT PROMPT FORMAT - VAMBE DATA SCIENCE
+================================================================================
+
+Este archivo define el formato estándar para crear prompts en el proyecto.
+Usar como referencia para mantener consistencia en prompts nuevos y existentes.
+
+================================================================================
+TIPO 1: PROMPT COMPLEJO (Multi-contexto con múltiples fuentes)
+================================================================================
+
+Usar cuando: El prompt recibe múltiples fuentes de datos y tiene contexto
+externo que necesita ser diferenciado.
+
+---
+
+SYS_PROMPT_[NOMBRE_CORTO] = """Eres un experto en [DOMINIO].
+
+TAREA: [Descripción clara en 1-2 líneas de lo que debe hacer el modelo]
+
+Se te proporcionan las siguientes fuentes:
+- <[variable_principal]>: [Descripción]. [Regla de uso específica]
+- <[variable_secundaria]>: [Descripción]. [Regla de uso específica]
+- <[variable_contexto]>: [Descripción]. [Regla de uso específica]
+
+REGLA CRÍTICA: [Restricción importante sobre qué fuente usar, cómo proceder, o qué evitar]
+
+Instrucciones:
+1. [Paso inicial - típicamente lectura/análisis de contexto]
+2. [Paso intermedio - extracción de información específica]
+3. [Paso final - generación de salida]
+   - [Sub-punto a: qué extraer]
+   - [Sub-punto b: qué validar]
+   - [Sub-punto c: qué formatear]
+
+Formato de entrada:
+<entrada>
+<[variable_principal]>{variable_principal}</[variable_principal]>
+<[variable_secundaria]>{variable_secundaria}</[variable_secundaria]>
+<[variable_contexto]>{variable_contexto}</[variable_contexto]>
+</entrada>
+
+Formato de salida (JSON estricto, sin markdown, sin preámbulos):
+{{
+    "campo_1": "descripción o valor",
+    "campo_2": ["item1", "item2", "item3"],
+    "campo_3": "opción1 | opción2 | opción3",
+    "campo_4": {{"sub_campo": "valor"}}
+}}
+
+Notas:
+- [Nota sobre comportamiento esperado]
+- [Nota sobre edge cases o qué hacer si no hay información]
+- [Nota sobre idioma, formato de texto, o restricciones de longitud]
+"""
+
+---
+
+================================================================================
+TIPO 2: PROMPT SIMPLE (Una tarea clara sin múltiples contextos)
+================================================================================
+
+Usar cuando: El prompt es directo, tiene una sola fuente de datos y no necesita
+contexto externo diferenciado.
+
+---
+
+SYS_PROMPT_[NOMBRE_CORTO] = """Eres un experto en [DOMINIO].
+
+TAREA: [Descripción clara de qué hacer]
+
+Formato de salida (JSON estricto):
+{{
+    "campo_1": "valor",
+    "campo_2": "opción1 | opción2",
+    "campo_3": ["lista", "de", "items"]
+}}
+"""
+
+---
+
+================================================================================
+PAUTAS DE FORMATO
+================================================================================
+
+✓ ROL CLARO
+  - "Eres un modelo experto en [dominio]"
+  - "Eres un analista de [especialidad]"
+  - "Eres un experto en [área]"
+
+✓ TAREA
+  - Máximo 2 líneas
+  - Comenzar con verbo: "Analizar", "Agrupar", "Determinar", "Extraer"
+  - Ejemplo: "Dado un conjunto de preguntas, identificar el patrón común"
+
+✓ VARIABLES Y XML TAGS
+  - Usar tags descriptivos: <variable_nombre>contenido</variable_nombre>
+  - En prompts complejos, agrupar en <entrada> y </entrada>
+  - Variables a interpolar van en {curly_braces}
+  - Ejemplo: <step_conversation>{step_conversation}</step_conversation>
+
+✓ REGLA CRÍTICA
+  - Usar solo cuando hay restricciones importantes
+  - Debe ser una línea clara y directa
+  - Ejemplos:
+    * "Todo debe extraerse EXCLUSIVAMENTE de <source_principal>"
+    * "No asumir contexto externo, usar solo lo proporcionado"
+    * "La respuesta debe ser estrictamente JSON sin markdown"
+
+✓ INSTRUCCIONES
+  - Enumerar con números (1, 2, 3...)
+  - Máximo 4-5 pasos principales
+  - Usar sub-puntos (- o •) para detalles
+  - Orden lógico: lectura → análisis → extracción → salida
+
+✓ EJEMPLOS
+  - Incluir solo si la tarea es ambigua
+  - Usar formato: "ej: 'ejemplo concreto'"
+  - Máximo 1-2 ejemplos por instrucción
+
+✓ FORMATO DE ENTRADA
+  - Usar estructura <entrada></entrada>
+  - Listar cada variable con su tag XML
+  - Sintaxis: <nombre_variable>{nombre_variable}</nombre_variable>
+
+✓ FORMATO DE SALIDA (JSON)
+  - Siempre especificar "JSON estricto"
+  - Aclarar: "sin markdown", "sin preámbulos"
+  - Usar tipos consistentes:
+    * strings: "valor"
+    * arrays: ["item1", "item2"]
+    * enums: "opción1 | opción2"
+    * objects: {"campo": "valor"}
+  - Ejemplo con comentarios entre {} para mostrar estructura
+
+✓ NOTAS FINALES
+  - Comportamiento con campos vacíos: "Si no aplica, usar [] o ''"
+  - Restricciones de lengua: "Todos los textos en español"
+  - Restricciones de longitud: "Máximo 6 palabras", "1-2 oraciones"
+  - Comportamiento con ambigüedad: "Si no puede determinarse, usar 'No determinada'"
+
+================================================================================
+CHECKLIST ANTES DE USAR UN PROMPT
+================================================================================
+
+[ ] ¿El rol está claramente definido?
+[ ] ¿La TAREA es concisa (máx 2 líneas)?
+[ ] ¿Las variables están entre XML tags?
+[ ] ¿Hay REGLA CRÍTICA si es necesario?
+[ ] ¿Las instrucciones son pasos lógicos (1, 2, 3...)?
+[ ] ¿El formato de entrada usa <entrada> y variables en {}?
+[ ] ¿El formato de salida es JSON estricto?
+[ ] ¿Las notas cubren edge cases?
+[ ] ¿Todo está en español?
+[ ] ¿El prompt es reutilizable sin hardcoding?
+
+================================================================================
+EJEMPLOS DE USO EN CÓDIGO
+================================================================================
+
+# Ejemplo 1: Prompt complejo
+user_content = f"<full_conversation>{full_conv}</full_conversation>\n"
+user_content += f"<step_information>{stage_info}</step_information>\n"
+user_content += f"<step_conversation>{step_conv}</step_conversation>"
+res = call_llm(SYS_PROMPT_STEP_SUMMARY, user_content)
+
+# Ejemplo 2: Prompt simple
+user_content = f"<full_conversation>{full_conv}</full_conversation>"
+res = call_llm(SYS_PROMPT_RESOLUTION, user_content)
+
+# Extracción de JSON
+result = extract_json(res)
+
+================================================================================
+ANTI-PATRONES A EVITAR
+================================================================================
+
+✗ Prompts sin rol claro
+✗ Tareas ambiguas o mayores a 2 líneas
+✗ Variables sin XML tags
+✗ Instrucciones fuera de orden lógico
+✗ Formatos de salida no-JSON o inconsistentes
+✗ Notas finales que repiten las instrucciones
+✗ Prompts hardcodeados (sin variables en {})
+✗ Mezclar español e inglés
+✗ No especificar comportamiento en edge cases
+✗ Pedir análisis sin especificar fuente
+
+================================================================================

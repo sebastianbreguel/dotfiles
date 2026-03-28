@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp:*)",
+      "mcp__plugin_context-mode_context-mode__ctx_fetch_and_index",
+      "mcp__plugin_context-mode_context-mode__ctx_search",
+      "Bash(git clone:*)",
+      "Bash(cd:*)",
+      "Bash(ls:*)",
+      "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
+      "Bash(git add:*)",
+      "Bash(gh repo:*)",
+      "Bash(brew install:*)",
+      "Bash(gh auth:*)",
+      "Bash(git remote:*)",
+      "Bash(cp:*)"
+    ]
+  }
+}

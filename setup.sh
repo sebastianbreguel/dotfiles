@@ -17,7 +17,7 @@ fi
 
 # 2. Homebrew Formulae
 echo "[2/9] Installing Homebrew formulae..."
-brew install ca-certificates ffmpeg fzf htop lame lazygit mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep sdl2 tmux zsh zsh-autosuggestions 2>/dev/null || true
+brew install aitop ca-certificates ffmpeg fzf gh go htop jq lame lazygit mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep sdl2 shellcheck tmux zsh zsh-autosuggestions 2>/dev/null || true
 
 # 3. Homebrew Casks
 echo "[3/9] Installing Homebrew casks..."
@@ -64,7 +64,7 @@ fi
 
 # 7. Global npm packages
 echo "[7/9] Installing global npm packages..."
-npm install -g pnpm@10.30.3 @google/gemini-cli @openai/codex vercel 2>/dev/null || true
+npm install -g pnpm@10.30.3 @anthropic-ai/claude-code @google/gemini-cli @openai/codex @kilocode/cli @qwen-code/qwen-code @cubic-dev-ai/cli @probelabs/probe agent-browser mint openclaw op puzldai vercel 2>/dev/null || true
 
 # 8. Python packages
 echo "[8/9] Installing Python packages..."
@@ -78,6 +78,7 @@ cp -r "$SCRIPT_DIR/.claude/agents/"* ~/.claude/agents/ 2>/dev/null || true
 cp -r "$SCRIPT_DIR/.claude/skills/"* ~/.claude/skills/ 2>/dev/null || true
 cp -r "$SCRIPT_DIR/.claude/commands/"* ~/.claude/commands/ 2>/dev/null || true
 cp "$SCRIPT_DIR/.claude/settings.json" ~/.claude/settings.json 2>/dev/null || true
+cp "$SCRIPT_DIR/.claude/settings.local.json" ~/.claude/settings.local.json 2>/dev/null || true
 
 # gstack skills
 if [ ! -d ~/.claude/skills/gstack ]; then

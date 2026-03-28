@@ -1,5 +1,142 @@
 {
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "haiku"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Glob",
+      "Grep",
+      "Agent",
+      "Skill",
+      "ToolSearch",
+      "NotebookEdit",
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "EnterWorktree",
+      "ExitWorktree",
+      "WebSearch",
+      "WebFetch",
+      "TodoWrite",
+      "TaskCreate",
+      "TaskGet",
+      "TaskList",
+      "TaskOutput",
+      "TaskStop",
+      "TaskUpdate",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(git checkout*)",
+      "Bash(git stash*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(git worktree *)",
+      "Bash(git show*)",
+      "Bash(git rev-parse*)",
+      "Bash(git remote -v*)",
+      "Bash(git fetch*)",
+      "Bash(git cherry-pick*)",
+      "Bash(gh *)",
+      "Bash(uv *)",
+      "Bash(pnpm *)",
+      "Bash(bun *)",
+      "Bash(ls *)",
+      "Bash(ls)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(touch *)",
+      "Bash(chmod *)",
+      "Bash(echo *)",
+      "Bash(cd *)",
+      "Bash(python *)",
+      "Bash(node *)",
+      "Bash(npx *)",
+      "Bash(jq *)",
+      "Bash(sort *)",
+      "Bash(uniq *)",
+      "Bash(date*)",
+      "Bash(env)",
+      "Bash(printenv*)",
+      "Bash(docker ps*)",
+      "Bash(docker logs*)",
+      "Bash(docker compose*)",
+      "Bash(brew *)",
+      "Bash(curl *)",
+      "Bash(pytest *)",
+      "Bash(make *)",
+      "Bash(shellcheck *)",
+      "mcp__plugin_context-mode_context-mode__*",
+      "mcp__plugin_socraticode_socraticode__*",
+      "mcp__plugin_context7_context7__*",
+      "mcp__plugin_playwright_playwright__*",
+      "mcp__codefleet__*"
+    ],
+    "deny": [
+      "Bash(rm -rf /)*",
+      "Bash(rm -rf ~)*",
+      "Bash(rm -rf .)*",
+      "Bash(git push --force*)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean -f*)",
+      "Bash(*DROP DATABASE*)",
+      "Bash(*DROP TABLE*)",
+      "Bash(*DELETE FROM*WHERE*)",
+      "Bash(*TRUNCATE*)",
+      "Bash(chmod 777*)",
+      "Bash(curl*|*sh)",
+      "Bash(curl*|*bash)",
+      "Bash(wget*|*sh)",
+      "Bash(sudo rm*)",
+      "Bash(pkill*)",
+      "Bash(killall*)"
+    ]
+  },
+  "disabledMcpjsonServers": [
+    "claude-ai-ClickUp",
+    "claude-ai-Gmail",
+    "claude-ai-Slack",
+    "claude-ai-Google_Calendar"
+  ],
   "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sebabreguel/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v semgrep >/dev/null 2>&1; then semgrep --config=auto \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null || true; fi; if command -v bandit >/dev/null 2>&1 && [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.py ]]; then bandit \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null || true; fi; if command -v gitleaks >/dev/null 2>&1; then gitleaks detect --source=\"$CLAUDE_TOOL_FILE_PATH\" --no-git 2>/dev/null || true; fi; if grep -qE '(password|secret|key|token)\\s*=\\s*[\"\\x27][^\"\\x27]{8,}' \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null; then echo \"Warning: Potential hardcoded secrets detected in $CLAUDE_TOOL_FILE_PATH\" >&2; fi"
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "Bash|WebFetch|Read|Grep|Agent|Task|mcp__plugin_context-mode_context-mode__ctx_execute|mcp__plugin_context-mode_context-mode__ctx_execute_file|mcp__plugin_context-mode_context-mode__ctx_batch_execute",
@@ -7,6 +144,15 @@
           {
             "type": "command",
             "command": "node \"/Users/sebabreguel/.claude/plugins/cache/context-mode/context-mode/1.0.21/hooks/pretooluse.mjs\""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sebabreguel/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
           }
         ]
       }
@@ -23,14 +169,29 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'plugin_dir=$(ls -d \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\"/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | awk -F/ '\"'\"'{ print $(NF-1) \"\\t\" $(0) }'\"'\"' | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1 | cut -f2-); exec /Users/sebabreguel/.bun/bin/bun --env-file /dev/null \"${plugin_dir}src/index.ts\"'"
+  },
   "enabledPlugins": {
-    "context-mode@context-mode": true,
     "code-simplifier@claude-plugins-official": true,
-    "claude-mem@thedotmack": true,
+    "context-mode@context-mode": true,
+    "context7@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "sanity-plugin@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "claude-hud@claude-hud": true,
+    "feature-dev@claude-plugins-official": true,
+    "socraticode@socraticode": true
   },
   "extraKnownMarketplaces": {
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    },
     "context-mode": {
       "source": {
         "source": "github",
@@ -42,8 +203,24 @@
         "source": "github",
         "repo": "thedotmack/claude-mem"
       }
+    },
+    "claude-hud": {
+      "source": {
+        "source": "github",
+        "repo": "jarrodwatts/claude-hud"
+      }
+    },
+    "socraticode": {
+      "source": {
+        "source": "github",
+        "repo": "giancarloerra/socraticode"
+      }
     }
   },
-  "effortLevel": "medium",
-  "voiceEnabled": true
+  "autoUpdatesChannel": "stable",
+  "voiceEnabled": true,
+  "autoMemoryEnabled": false,
+  "autoDreamEnabled": true,
+  "autoCompactThreshold": 0.7,
+  "effortLevel": "low"
 }
