@@ -154,7 +154,7 @@ function App() {
             <div className="section-icon" style={{ background: 'rgba(244,114,182,0.1)' }}>&#129302;</div>
             <h2>Claude Code - Custom Agents</h2>
           </div>
-          <p className="section-desc">16 agentes especializados que se lanzan automaticamente segun la tarea. Todos usan Opus.</p>
+          <p className="section-desc">16 agentes especializados que se lanzan automaticamente segun la tarea.</p>
           {Object.entries(filteredAgents).map(([cat, items]) => (
             <div className="subcategory" key={cat}>
               <h3>{cat}</h3>

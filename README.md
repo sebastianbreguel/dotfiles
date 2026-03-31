@@ -227,8 +227,18 @@ Host github.com
 
 ```bash
 npm install -g \
+  @anthropic-ai/claude-code \
   @google/gemini-cli \
   @openai/codex \
+  @kilocode/cli \
+  @qwen-code/qwen-code \
+  @cubic-dev-ai/cli \
+  @probelabs/probe \
+  agent-browser \
+  mint \
+  openclaw \
+  op \
+  puzldai \
   vercel
 ```
 
@@ -275,11 +285,16 @@ code --install-extension rvest.vs-code-prettier-eslint
 # https://docs.anthropic.com/en/docs/claude-code
 
 # Plugins habilitados (se activan desde Claude Code):
-# 1. context-mode       (repo: mksglu/context-mode)
-# 2. code-simplifier    (claude-plugins-official)
-# 3. claude-mem          (repo: thedotmack/claude-mem)
-# 4. skill-creator      (claude-plugins-official)
-# 5. sanity-plugin      (claude-plugins-official)
+# 1. code-simplifier      (claude-plugins-official)
+# 2. context-mode         (context-mode)
+# 3. context7             (claude-plugins-official)
+# 4. frontend-design      (claude-plugins-official)
+# 5. playwright           (claude-plugins-official)
+# 6. skill-creator        (claude-plugins-official)
+# 7. superpowers          (claude-plugins-official)
+# 8. claude-hud           (claude-hud)
+# 9. feature-dev          (claude-plugins-official)
+# 10. claude-subconscious (claude-subconscious)
 ```
 
 ### Settings (`~/.claude/settings.json`)
@@ -287,11 +302,16 @@ code --install-extension rvest.vs-code-prettier-eslint
 ```json
 {
   "enabledPlugins": {
-    "context-mode@context-mode": true,
     "code-simplifier@claude-plugins-official": true,
-    "claude-mem@thedotmack": true,
+    "context-mode@context-mode": true,
+    "context7@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "sanity-plugin@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "claude-hud@claude-hud": true,
+    "feature-dev@claude-plugins-official": true,
+    "claude-subconscious@claude-subconscious": true
   },
   "extraKnownMarketplaces": {
     "context-mode": {
@@ -299,6 +319,15 @@ code --install-extension rvest.vs-code-prettier-eslint
     },
     "thedotmack": {
       "source": { "source": "github", "repo": "thedotmack/claude-mem" }
+    },
+    "claude-hud": {
+      "source": { "source": "github", "repo": "jarrodwatts/claude-hud" }
+    },
+    "socraticode": {
+      "source": { "source": "github", "repo": "giancarloerra/socraticode" }
+    },
+    "claude-subconscious": {
+      "source": { "source": "github", "repo": "letta-ai/claude-subconscious" }
     }
   },
   "effortLevel": "medium",
@@ -312,7 +341,8 @@ code --install-extension rvest.vs-code-prettier-eslint
 {
   "permissions": {
     "allow": [
-      "Bash(claude mcp:*)",
+      "Bash(claude --version)",
+      "Bash(npm list:*)",
       "mcp__plugin_context-mode_context-mode__ctx_fetch_and_index",
       "mcp__plugin_context-mode_context-mode__ctx_search",
       "Bash(git clone:*)",
@@ -336,7 +366,7 @@ git clone https://github.com/garrytan/gstack.git
 cd gstack && bun install && bun run build
 ```
 
-Skills incluidos: `browse`, `qa`, `review`, `ship`, `retro`, `plan-ceo-review`, `plan-eng-review`, `setup-browser-cookies`, `generate-readme`
+Skills incluidos: `browse`, `browser-automation`, `cross-ai-debate`, `doc-sync`, `dream`, `electron`, `explore-app`, `fastAPI-standards`, `generate-readme`, `health`, `pipeline-review`, `pre-merge-review`, `project-docs`, `refactor-analysis`, `review-plan-engineering`, `setup-browser-cookies`, `ship-pr`, `slack`, `test-and-fix`, `vercel-sandbox`, `weekly-retro`
 
 ---
 
@@ -347,21 +377,21 @@ Los agentes custom estan en `~/.claude/agents/`:
 | Agente | Uso |
 |--------|-----|
 | ai-ml-expert | Arquitectura AI/ML, prompts, RAG, embeddings |
-| code-explainer | Explicar y documentar codigo |
+| ai-researcher | Papers, experimentos, metodologia, escritura cientifica |
+| architecture-reference | Patrones de arquitectura para pipelines FastAPI |
+| ceo-product-strategist | Vision estrategica CEO, roadmap, impacto de producto |
 | code-modularizer | Refactorizar y modularizar archivos grandes |
-| customer-success | Comunicaciones con clientes, onboarding |
+| code-simplifier | Simplificar y limpiar codigo |
 | data-science-analytics | EDA, estadisticas, visualizacion |
 | db-engineering | Esquemas DB, queries, migraciones |
 | fullstack-refactor-architect | Arquitectura cross-stack |
-| ops-impact-analyst | ROI, metricas de negocio |
-| product-manager | Specs, user stories, priorizacion |
+| neuroai-research-director | Metodologia NeuroAI, disenio de experimentos |
+| neuroscience-ai-expert | Neurociencia, brain-computer interfaces, neuro-AI |
+| prompt-engineering | Craft y optimizar prompts para LLMs |
 | qa-test-engineer | Tests, edge cases, QA |
-| sales-engineer | Demos, propuestas tecnicas |
-| scrum-planner | Sprint planning, estimaciones |
+| skeptical-reviewer | Devil's advocate, stress-test decisiones |
 | tech-lead | Decisiones tecnicas cross-domain |
-| ui-designer | Layouts, design systems, componentes |
-| unit-economics-analyst | Unit economics, pricing |
-| ux-designer | Flujos de usuario, friccion |
+| thesis-reviewer | Review de tesis, deteccion texto AI |
 
 > Para copiar: `cp -r ~/.claude/agents/ <nuevo-pc>:~/.claude/agents/`
 
@@ -370,6 +400,8 @@ Los agentes custom estan en `~/.claude/agents/`:
 ## 13. Claude Code - Custom Command
 
 - `/redesign-ui` — Analiza y redisena componentes UI usando agentes ui-designer y ux-designer
+- `/python-review` — Revisa codigo Python para calidad, seguridad y mejores practicas
+- `/security-scan` — Escaneo de seguridad del proyecto. Vulnerabilidades, secretos, dependencias
 
 ---
 
@@ -404,10 +436,10 @@ nvm install 25
 curl -fsSL https://bun.sh/install | bash
 
 # 7. Global npm
-npm install -g pnpm@10.30.3 @google/gemini-cli @openai/codex vercel
+npm install -g pnpm@10.30.3 @anthropic-ai/claude-code @google/gemini-cli @openai/codex @kilocode/cli @qwen-code/qwen-code @cubic-dev-ai/cli @probelabs/probe agent-browser mint openclaw op puzldai vercel
 
 # 8. Python packages
-pip3 install anthropic beautifulsoup4 bertopic fastapi hdbscan httpx numpy pandas plotly pydantic requests rich scikit-learn scipy sentence-transformers torch transformers typer umap-learn uvicorn python-dotenv pyyaml
+uv pip install anthropic beautifulsoup4 bertopic fastapi hdbscan httpx numpy pandas plotly pydantic requests rich scikit-learn scipy sentence-transformers torch transformers typer umap-learn uvicorn python-dotenv pyyaml
 
 # 9. Git
 git config --global user.name "your-username"

@@ -1,8 +1,8 @@
 export const stats = [
   { number: "30+", label: "Mac Apps" },
   { number: "10", label: "CC Plugins" },
-  { number: "21", label: "AI Agents" },
-  { number: "28", label: "Skills" },
+  { number: "16", label: "AI Agents" },
+  { number: "21", label: "Skills" },
   { number: "21", label: "Extensions" },
 ];
 
@@ -68,12 +68,10 @@ export const plugins = [
   { name: "superpowers", desc: "Superpowers: writing-plans, executing-plans, brainstorming, systematic-debugging.", source: "claude-plugins-official" },
   { name: "claude-hud", desc: "HUD (Heads-Up Display) para Claude Code. Status line con info en tiempo real.", source: "jarrodwatts/claude-hud" },
   { name: "feature-dev", desc: "Asistente de desarrollo de features. Planificacion, implementacion, testing.", source: "claude-plugins-official" },
-  { name: "socraticode", desc: "Metodo socratico para code review. Preguntas que mejoran la calidad del codigo.", source: "giancarloerra/socraticode" },
+  { name: "claude-subconscious", desc: "Agente subconsciente de Letta AI. Memoria persistente entre sesiones.", source: "letta-ai/claude-subconscious" },
 ];
 
 export const skills = [
-  { name: "/ask", desc: "Pregunta al AI que escribio el codigo. Ayuda a entender codigo existente." },
-  { name: "/browse", desc: "Headless browser para QA testing. Navega URLs, toma screenshots. ~100ms." },
   { name: "/browser-automation", desc: "Browser automation CLI. Navegacion, forms, scraping, screenshots." },
   { name: "/cross-ai-debate", desc: "Debate adversarial entre Claude Code, Codex CLI y Gemini CLI." },
   { name: "/doc-sync", desc: "Auditoria y sincronizacion de CLAUDE.md y README.md. Detecta drift." },
@@ -82,18 +80,13 @@ export const skills = [
   { name: "/explore-app", desc: "Exploracion sistematica de web apps. Reporte con screenshots." },
   { name: "/fastAPI-standards", desc: "Guia para construir/refactorizar pipelines FastAPI + Prefect + pgvector." },
   { name: "/generate-readme", desc: "Genera README preciso analizando el codigo fuente del proyecto." },
-  { name: "/git-ai-search", desc: "Busca y restaura contexto de conversaciones AI desde historial de git." },
+  { name: "/health", desc: "Diagnostico cuando Claude se siente lento o ignora reglas. Audita hooks y MCP." },
   { name: "/pipeline-review", desc: "Auditoria full-stack de codigo de pipelines. Agentes paralelos." },
-  { name: "/plan-ceo-review", desc: "Review modo CEO/founder. Repensar el problema, producto 10-star." },
-  { name: "/plan-eng-review", desc: "Review modo Eng Manager. Arquitectura, edge cases, test coverage." },
   { name: "/pre-merge-review", desc: "Review pre-landing de PRs. SQL safety, trust boundaries, side effects." },
   { name: "/project-docs", desc: "Genera vambe.md y db.md como referencia de contexto para AI." },
-  { name: "/prompt-analysis", desc: "Analiza patrones de prompting AI y tasas de aceptacion." },
-  { name: "/qa", desc: "Testing sistematico de web apps. Modos: diff-aware, full, quick, regression." },
   { name: "/refactor-analysis", desc: "Analiza tech debt antes de refactorizar. Identifica code smells." },
-  { name: "/retro", desc: "Retrospectiva semanal. Commits, patrones de trabajo, metricas de calidad." },
+  { name: "/review-plan-engineering", desc: "Review de planes de ingenieria. Arquitectura, data flow, tests." },
   { name: "/setup-browser-cookies", desc: "Importa cookies de tu browser real al headless para testing autenticado." },
-  { name: "/ship", desc: "Workflow completo: merge, tests, review, bump version, changelog, PR." },
   { name: "/ship-pr", desc: "Workflow de PR: merge main, tests, review diff, bump VERSION, changelog, commit, push, crear PR." },
   { name: "/slack", desc: "Interactua con workspaces Slack via browser automation." },
   { name: "/test-and-fix", desc: "QA testing sistematico de web apps. Modos: diff-aware, full, quick, regression." },
@@ -109,7 +102,6 @@ export const agents = {
     { name: "db-engineering", desc: "Schemas, queries, migraciones, indexing" },
     { name: "code-modularizer", desc: "Romper archivos grandes, extraer duplicados" },
     { name: "code-simplifier", desc: "Simplificar, refactorizar y limpiar codigo" },
-    { name: "code-explainer", desc: "Explicar y documentar codigo existente" },
     { name: "skeptical-reviewer", desc: "Devil's advocate. Desafia suposiciones antes de decidir" },
   ],
   "AI & Data": [
@@ -118,20 +110,14 @@ export const agents = {
     { name: "prompt-engineering", desc: "Craft y optimizar prompts para LLMs" },
     { name: "data-science-analytics", desc: "EDA, estadisticas, visualizacion, ML" },
   ],
+  "Neurociencia & Academia": [
+    { name: "neuroscience-ai-expert", desc: "Neurociencia, mecanismos neurales, brain-computer interfaces" },
+    { name: "neuroai-research-director", desc: "Metodologia de investigacion, NeuroAI, disenio de experimentos" },
+    { name: "thesis-reviewer", desc: "Review de tesis, deteccion de texto AI, escritura academica" },
+    { name: "ceo-product-strategist", desc: "Vision estrategica CEO, roadmap, impacto de producto" },
+  ],
   "QA & Testing": [
     { name: "qa-test-engineer", desc: "Test strategies, edge cases, automation" },
-  ],
-  "Producto & Negocio": [
-    { name: "product-manager", desc: "Specs, user stories, priorizacion" },
-    { name: "scrum-planner", desc: "Sprint planning, estimaciones, timelines" },
-    { name: "ops-impact-analyst", desc: "ROI, metricas de negocio, reportes" },
-    { name: "unit-economics-analyst", desc: "Unit economics, pricing, profitabilidad" },
-    { name: "sales-engineer", desc: "Demos, propuestas tecnicas, RFPs" },
-    { name: "customer-success", desc: "Onboarding, QBRs, churn risk" },
-  ],
-  "Diseno": [
-    { name: "ui-designer", desc: "Layouts, design systems, componentes" },
-    { name: "ux-designer", desc: "Flujos de usuario, friction points" },
   ],
 };
 

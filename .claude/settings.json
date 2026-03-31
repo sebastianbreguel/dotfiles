@@ -1,6 +1,6 @@
 {
   "env": {
-    "CLAUDE_CODE_SUBAGENT_MODEL": "haiku"
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
   },
   "attribution": {
     "commit": "",
@@ -83,11 +83,11 @@
       "Bash(pytest *)",
       "Bash(make *)",
       "Bash(shellcheck *)",
+      "Bash(rtk *)",
       "mcp__plugin_context-mode_context-mode__*",
       "mcp__plugin_socraticode_socraticode__*",
       "mcp__plugin_context7_context7__*",
-      "mcp__plugin_playwright_playwright__*",
-      "mcp__codefleet__*"
+      "mcp__plugin_playwright_playwright__*"
     ],
     "deny": [
       "Bash(rm -rf /)*",
@@ -114,19 +114,11 @@
     "claude-ai-ClickUp",
     "claude-ai-Gmail",
     "claude-ai-Slack",
-    "claude-ai-Google_Calendar"
+    "claude-ai-Google_Calendar",
+    "claude-ai-PostHog"
   ],
   "hooks": {
     "PostToolUse": [
-      {
-        "matcher": "Write|Edit|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/sebabreguel/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
-          }
-        ]
-      },
       {
         "matcher": "Edit|Write",
         "hooks": [
@@ -135,15 +127,33 @@
             "command": "if command -v semgrep >/dev/null 2>&1; then semgrep --config=auto \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null || true; fi; if command -v bandit >/dev/null 2>&1 && [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.py ]]; then bandit \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null || true; fi; if command -v gitleaks >/dev/null 2>&1; then gitleaks detect --source=\"$CLAUDE_TOOL_FILE_PATH\" --no-git 2>/dev/null || true; fi; if grep -qE '(password|secret|key|token)\\s*=\\s*[\"\\x27][^\"\\x27]{8,}' \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null; then echo \"Warning: Potential hardcoded secrets detected in $CLAUDE_TOOL_FILE_PATH\" >&2; fi"
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sebabreguel/.claude/hooks/auto-format.sh"
+          }
+        ]
       }
     ],
     "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sebabreguel/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      },
       {
         "matcher": "Bash|WebFetch|Read|Grep|Agent|Task|mcp__plugin_context-mode_context-mode__ctx_execute|mcp__plugin_context-mode_context-mode__ctx_execute_file|mcp__plugin_context-mode_context-mode__ctx_batch_execute",
         "hooks": [
           {
             "type": "command",
-            "command": "node \"/Users/sebabreguel/.claude/plugins/cache/context-mode/context-mode/1.0.21/hooks/pretooluse.mjs\""
+            "command": "node \"/Users/sebabreguel/.claude/plugins/cache/context-mode/context-mode/1.0.54/hooks/pretooluse.mjs\""
           }
         ]
       },
@@ -152,7 +162,40 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/sebabreguel/.git-ai/bin/git-ai checkpoint claude --hook-input stdin"
+            "command": "/Users/sebabreguel/.claude/hooks/protect-files.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sebabreguel/.claude/hooks/stop-verify.sh"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sebabreguel/.claude/hooks/precompact-save.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /Users/sebabreguel/.claude/plugins/cache/context-mode/context-mode/1.0.54/hooks/userpromptsubmit.mjs"
           }
         ]
       }
@@ -163,7 +206,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"/Users/sebabreguel/.claude/plugins/cache/context-mode/context-mode/1.0.21/hooks/sessionstart.mjs\""
+            "command": "node \"/Users/sebabreguel/.claude/plugins/cache/context-mode/context-mode/1.0.54/hooks/sessionstart.mjs\""
           }
         ]
       }
@@ -183,7 +226,7 @@
     "superpowers@claude-plugins-official": true,
     "claude-hud@claude-hud": true,
     "feature-dev@claude-plugins-official": true,
-    "socraticode@socraticode": true
+    "claude-subconscious@claude-subconscious": true
   },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
@@ -215,12 +258,19 @@
         "source": "github",
         "repo": "giancarloerra/socraticode"
       }
+    },
+    "claude-subconscious": {
+      "source": {
+        "source": "github",
+        "repo": "letta-ai/claude-subconscious"
+      }
     }
   },
+  "effortLevel": "medium",
   "autoUpdatesChannel": "stable",
   "voiceEnabled": true,
   "autoMemoryEnabled": false,
   "autoDreamEnabled": true,
-  "autoCompactThreshold": 0.7,
-  "effortLevel": "low"
+  "skipDangerousModePermissionPrompt": true,
+  "autoCompactThreshold": 0.6
 }

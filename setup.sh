@@ -62,13 +62,14 @@ if ! command -v uv &>/dev/null; then
   curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
-# 7. Global npm packages
+# 7. Global npm packages (pnpm first, then use pnpm for the rest)
 echo "[7/9] Installing global npm packages..."
-npm install -g pnpm@10.30.3 @anthropic-ai/claude-code @google/gemini-cli @openai/codex @kilocode/cli @qwen-code/qwen-code @cubic-dev-ai/cli @probelabs/probe agent-browser mint openclaw op puzldai vercel 2>/dev/null || true
+npm install -g pnpm@10.30.3 2>/dev/null || true
+pnpm install -g @anthropic-ai/claude-code @google/gemini-cli @openai/codex @kilocode/cli @qwen-code/qwen-code @cubic-dev-ai/cli @probelabs/probe agent-browser mint openclaw op puzldai vercel 2>/dev/null || true
 
 # 8. Python packages
 echo "[8/9] Installing Python packages..."
-pip3 install anthropic beautifulsoup4 bertopic fastapi hdbscan httpx numpy pandas plotly pydantic requests rich scikit-learn scipy sentence-transformers torch transformers typer umap-learn uvicorn python-dotenv pyyaml 2>/dev/null || true
+uv pip install --system anthropic beautifulsoup4 bertopic fastapi hdbscan httpx numpy pandas plotly pydantic requests rich scikit-learn scipy sentence-transformers torch transformers typer umap-learn uvicorn python-dotenv pyyaml 2>/dev/null || true
 
 # 9. Claude Code config
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -78,7 +79,7 @@ cp -r "$SCRIPT_DIR/.claude/agents/"* ~/.claude/agents/ 2>/dev/null || true
 cp -r "$SCRIPT_DIR/.claude/skills/"* ~/.claude/skills/ 2>/dev/null || true
 cp -r "$SCRIPT_DIR/.claude/commands/"* ~/.claude/commands/ 2>/dev/null || true
 cp "$SCRIPT_DIR/.claude/settings.json" ~/.claude/settings.json 2>/dev/null || true
-cp "$SCRIPT_DIR/.claude/settings.local.json" ~/.claude/settings.local.json 2>/dev/null || true
+# settings.local.json is per-project, not copied globally
 
 # gstack skills
 if [ ! -d ~/.claude/skills/gstack ]; then
@@ -97,15 +98,28 @@ echo "Manual steps remaining:"
 echo "  1. Copy your SSH keys to ~/.ssh/"
 echo "  2. Copy ~/.secrets (env vars)"
 echo "  3. Copy ~/.p10k.zsh (or run: p10k configure)"
-echo "  4. Install VS Code extensions:"
+echo "  4. Install VS Code / Cursor extensions:"
 echo "     code --install-extension anthropic.claude-code"
 echo "     code --install-extension dbaeumer.vscode-eslint"
 echo "     code --install-extension eamodio.gitlens"
-echo "     code --install-extension ms-python.python"
-echo "     code --install-extension ms-toolsai.jupyter"
-echo "     code --install-extension pkief.material-icon-theme"
-echo "     code --install-extension rvest.vs-code-prettier-eslint"
+echo "     code --install-extension esbenp.prettier-vscode"
+echo "     code --install-extension git-ai.git-ai-vscode"
+echo "     code --install-extension github.copilot-chat"
+echo "     code --install-extension gitpod.gitpod-theme"
+echo "     code --install-extension kd3n1z.vscode-material-theme-icons"
 echo "     code --install-extension mechatroner.rainbow-csv"
+echo "     code --install-extension mhutchie.git-graph"
+echo "     code --install-extension ms-python.debugpy"
+echo "     code --install-extension ms-python.python"
+echo "     code --install-extension ms-python.vscode-pylance"
+echo "     code --install-extension ms-python.vscode-python-envs"
+echo "     code --install-extension ms-toolsai.jupyter"
+echo "     code --install-extension ms-toolsai.jupyter-keymap"
+echo "     code --install-extension ms-toolsai.jupyter-renderers"
+echo "     code --install-extension ms-toolsai.vscode-jupyter-cell-tags"
+echo "     code --install-extension ms-toolsai.vscode-jupyter-slideshow"
+echo "     code --install-extension rvest.vs-code-prettier-eslint"
+echo "     code --install-extension shd101wyy.markdown-preview-enhanced"
 echo "  5. Configure git:"
 echo "     git config --global user.name \"your-username\""
 echo "     git config --global user.email \"your_email@example.com\""

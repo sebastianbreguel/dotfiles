@@ -89,7 +89,7 @@ Plugins del marketplace de Claude Code. Se activan desde `settings.json`.
 | **superpowers** | Superpowers: writing-plans, executing-plans, brainstorming, systematic-debugging. | claude-plugins-official | Free |
 | **claude-hud** | HUD (Heads-Up Display) para Claude Code. Status line con info en tiempo real. | [jarrodwatts/claude-hud](https://github.com/jarrodwatts/claude-hud) | Free |
 | **feature-dev** | Asistente de desarrollo de features. Planificacion, implementacion, testing. | claude-plugins-official | Free |
-| **socraticode** | Metodo socratico para code review. Preguntas que mejoran la calidad del codigo. | [giancarloerra/socraticode](https://github.com/giancarloerra/socraticode) | Free |
+| **claude-subconscious** | Agente subconsciente de Letta AI. Memoria persistente entre sesiones de Claude Code. | [letta-ai/claude-subconscious](https://github.com/letta-ai/claude-subconscious) | Free |
 
 ---
 
@@ -99,8 +99,6 @@ Skills instalados via [gstack](https://github.com/garrytan/gstack) (Garry Tan) y
 
 | Skill | Comando | Descripcion | Costo |
 |-------|---------|-------------|-------|
-| **Ask** | `/ask` | Pregunta al AI que escribio el codigo. Ayuda a entender codigo existente, onboarding, walkthroughs. | Free |
-| **Browse** | `/browse` | Headless browser para QA testing y dogfooding. Navega URLs, interactua con elementos, toma screenshots. ~100ms por comando. | Free |
 | **Browser Automation** | `/browser-automation` | Browser automation CLI para AI agents. Navegacion, forms, scraping, screenshots. | Free |
 | **Cross-AI Debate** | `/cross-ai-debate` | Debate adversarial entre Claude Code, Codex CLI y Gemini CLI. Analisis multi-perspectiva. | Free |
 | **Doc Sync** | `/doc-sync` | Auditoria y sincronizacion de CLAUDE.md y README.md. Detecta drift en documentacion. | Free |
@@ -109,18 +107,13 @@ Skills instalados via [gstack](https://github.com/garrytan/gstack) (Garry Tan) y
 | **Explore App** | `/explore-app` | Exploracion sistematica de web apps para encontrar bugs y UX issues. Reporte con screenshots. | Free |
 | **FastAPI Standards** | `/fastAPI-standards` | Guia para construir/refactorizar pipelines FastAPI + Prefect + PostgreSQL/pgvector. | Free |
 | **Generate README** | `/generate-readme` | Genera README preciso para proyectos Python analizando el codigo fuente. | Free |
-| **Git AI Search** | `/git-ai-search` | Busca y restaura contexto de conversaciones AI desde el historial de git. | Free |
+| **Health** | `/health` | Diagnostico cuando Claude se siente lento o ignora reglas. Audita hooks y MCP. | Free |
 | **Pipeline Review** | `/pipeline-review` | Auditoria full-stack de codigo de pipelines. Agentes paralelos especializados. | Free |
-| **Plan CEO Review** | `/plan-ceo-review` | Review modo CEO/founder. Repensar el problema, encontrar el producto 10-star, desafiar premisas. | Free |
-| **Plan Eng Review** | `/plan-eng-review` | Review modo Eng Manager. Arquitectura, data flow, edge cases, test coverage, performance. | Free |
 | **Pre-Merge Review** | `/pre-merge-review` | Review pre-landing de PRs. Analiza SQL safety, LLM trust boundaries, side effects. | Free |
 | **Project Docs** | `/project-docs` | Genera vambe.md y db.md como referencia de contexto para AI. | Free |
-| **Prompt Analysis** | `/prompt-analysis` | Analiza patrones de prompting AI y tasas de aceptacion. | Free |
-| **QA** | `/qa` | Testing sistematico de web apps. Modos: diff-aware, full, quick, regression. Genera reporte con health score. | Free |
 | **Refactor Analysis** | `/refactor-analysis` | Analiza tech debt antes de refactorizar. Identifica code smells y friccion. | Free |
-| **Retro** | `/retro` | Retrospectiva semanal. Analiza commits, patrones de trabajo, metricas de calidad. Team-aware. | Free |
+| **Review Plan Engineering** | `/review-plan-engineering` | Review de planes de ingenieria. Arquitectura, data flow, edge cases, tests. | Free |
 | **Setup Browser Cookies** | `/setup-browser-cookies` | Importa cookies de tu browser real (Chrome, Arc, Brave) al headless browser para testing autenticado. | Free |
-| **Ship** | `/ship` | Workflow de deploy: merge main, tests, review diff, bump version, changelog, commit, push, crear PR. | Free |
 | **Ship PR** | `/ship-pr` | Workflow de PR: merge main, tests, review diff, bump VERSION, changelog, commit, push, crear PR. | Free |
 | **Slack** | `/slack` | Interactua con workspaces Slack via browser automation. Check channels, send messages, search. | Free |
 | **Test & Fix** | `/test-and-fix` | QA testing sistematico de web apps. Modos: diff-aware, full, quick, regression. | Free |
@@ -137,13 +130,12 @@ Agentes especializados que se lanzan automaticamente segun el tipo de tarea. Ubi
 
 | Agente | Descripcion | Modelo | Costo |
 |--------|-------------|--------|-------|
-| **tech-lead** | Decisiones tecnicas de alto nivel, coordinacion cross-domain, descomposicion de problemas. | opus | Free (usa tu plan Claude) |
+| **tech-lead** | Decisiones tecnicas de alto nivel, coordinacion cross-domain, descomposicion de problemas. | opus | Free |
 | **fullstack-refactor-architect** | Cambios arquitectonicos mayores, disenar APIs, refactorizar monolitos, patrones cross-stack. | opus | Free |
 | **architecture-reference** | Patrones de arquitectura, implementacion, estructura de codigo para pipelines FastAPI. | opus | Free |
 | **db-engineering** | Disenar tablas, optimizar queries, indexing, migraciones, elegir entre patrones PostgreSQL. | opus | Free |
 | **code-modularizer** | Romper archivos grandes, extraer logica duplicada, preparar code para escalar equipo. | opus | Free |
 | **code-simplifier** | Simplificar, refactorizar y limpiar codigo. Reducir complejidad sin cambiar comportamiento. | opus | Free |
-| **code-explainer** | Explicar y documentar codigo existente, onboarding, walkthroughs. | opus | Free |
 | **skeptical-reviewer** | Devil's advocate. Desafia suposiciones, presenta contra-argumentos antes de tomar decisiones. | opus | Free |
 
 ### AI & Data
@@ -155,29 +147,20 @@ Agentes especializados que se lanzan automaticamente segun el tipo de tarea. Ubi
 | **prompt-engineering** | Craft, refinar y optimizar prompts para LLMs. System prompts, few-shot, templates. | opus | Free |
 | **data-science-analytics** | EDA, statistical testing, metricas, visualizacion, modelos predictivos (sklearn, XGBoost). | opus | Free |
 
+### Neurociencia & Academia
+
+| Agente | Descripcion | Modelo | Costo |
+|--------|-------------|--------|-------|
+| **neuroscience-ai-expert** | Neurociencia, mecanismos neurales, ciencia cognitiva, brain-computer interfaces, neuro-AI. | opus | Free |
+| **neuroai-research-director** | Metodologia de investigacion, NeuroAI, disenio de experimentos, neurociencia computacional. | opus | Free |
+| **thesis-reviewer** | Review de tesis y escritura academica. Detecta texto AI, prosa verbosa, revisa rigor academico. | opus | Free |
+| **ceo-product-strategist** | Vision estrategica CEO/founder. Roadmap, impacto de producto, posicionamiento de mercado. | opus | Free |
+
 ### QA & Testing
 
 | Agente | Descripcion | Modelo | Costo |
 |--------|-------------|--------|-------|
 | **qa-test-engineer** | Estrategias de testing, edge cases, tests automatizados, cobertura, load testing. | opus | Free |
-
-### Producto & Negocio
-
-| Agente | Descripcion | Modelo | Costo |
-|--------|-------------|--------|-------|
-| **product-manager** | Specs de features, user stories, priorizacion de backlog, criterios de aceptacion. | opus | Free |
-| **scrum-planner** | Sprint planning, estimacion de esfuerzo, dependencias, timelines de ejecucion. | opus | Free |
-| **ops-impact-analyst** | ROI de features, reportes ejecutivos, metricas de negocio, performance de AI agents. | opus | Free |
-| **unit-economics-analyst** | Unit economics, pricing, profitabilidad por cliente, proyecciones de costos API. | opus | Free |
-| **sales-engineer** | Demos, propuestas tecnicas, RFP responses, ROI projections, objeciones tecnicas. | opus | Free |
-| **customer-success** | Comunicaciones con clientes, onboarding, QBRs, churn risk, playbooks de soporte. | opus | Free |
-
-### Diseno
-
-| Agente | Descripcion | Modelo | Costo |
-|--------|-------------|--------|-------|
-| **ui-designer** | Dashboards, component libraries, design systems, interfaces data-dense. | opus | Free |
-| **ux-designer** | Flujos de usuario, onboarding, friction points, error states, configuracion. | opus | Free |
 
 ---
 
