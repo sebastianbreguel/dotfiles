@@ -1,248 +1,129 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import './App.css'
-import { stats, navItems, apps, plugins, skills, agents, extensions, cliTools, shellTools } from './data'
-
-const Badge = ({ cost }) => (
-  <span className={`badge badge-${cost}`}>
-    {cost === 'free' ? 'Free' : cost === 'paid' ? 'Paid' : 'Freemium'}
-  </span>
-)
-
-const Card = ({ name, desc, cost, install, id }) => (
-  <div className="card">
-    <div className="card-top">
-      <span className="card-name">{name}</span>
-      {cost && <Badge cost={cost} />}
-    </div>
-    <div className="card-desc">{desc}</div>
-    {(install || id) && <div className="card-install">{install || id}</div>}
-  </div>
-)
-
-const AgentCard = ({ name, desc }) => (
-  <div className="agent-card">
-    <div className="agent-name">{name}</div>
-    <div className="agent-desc">{desc}</div>
-  </div>
-)
+import { items } from './data'
+import StatsBar from './components/StatsBar'
+import SearchBar from './components/SearchBar'
+import Sidebar from './components/Sidebar'
+import CardGrid from './components/CardGrid'
+import DetailPanel from './components/DetailPanel'
 
 function App() {
   const [search, setSearch] = useState('')
-  const [activeSection, setActiveSection] = useState(null)
-
-  const q = search.toLowerCase()
-
-  const filterItems = (items) =>
-    items.filter(i => i.name.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q))
-
-  const filterGrouped = (groups) => {
-    const result = {}
-    for (const [cat, items] of Object.entries(groups)) {
-      const filtered = filterItems(items)
-      if (filtered.length > 0) result[cat] = filtered
+  const [activeCategory, setActiveCategory] = useState(null)
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [dark, setDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme')
+      if (saved) return saved === 'dark'
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
     }
+    return false
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+    localStorage.setItem('theme', dark ? 'dark' : 'light')
+  }, [dark])
+
+  const filteredItems = useMemo(() => {
+    let result = items
+
+    if (activeCategory) {
+      if (activeCategory.includes(':')) {
+        const [cat, sub] = activeCategory.split(':')
+        result = result.filter(i => i.category === cat && i.subcategory === sub)
+      } else {
+        result = result.filter(i => i.category === activeCategory)
+      }
+    }
+
+    if (search) {
+      const q = search.toLowerCase()
+      result = result.filter(i =>
+        i.name.toLowerCase().includes(q) ||
+        i.description.toLowerCase().includes(q) ||
+        (i.tags && i.tags.some(t => t.toLowerCase().includes(q)))
+      )
+    }
+
     return result
-  }
-
-  const filteredApps = useMemo(() => filterGrouped(apps), [q])
-  const filteredPlugins = useMemo(() => filterItems(plugins), [q])
-  const filteredSkills = useMemo(() => filterItems(skills), [q])
-  const filteredAgents = useMemo(() => filterGrouped(agents), [q])
-  const filteredExtensions = useMemo(() => filterItems(extensions), [q])
-  const filteredCli = useMemo(() => filterGrouped(cliTools), [q])
-  const filteredShell = useMemo(() => filterItems(shellTools), [q])
-
-  const scrollTo = (id) => {
-    setActiveSection(id)
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+  }, [search, activeCategory])
 
   return (
-    <div className="container">
-      {/* Hero */}
-      <div className="hero">
-        <h1>dotfiles</h1>
-        <p>Mi setup completo de desarrollo para macOS. Todo lo necesario para configurar una nueva maquina desde cero.</p>
-        <div className="stats-row">
-          {stats.map(s => (
-            <div className="stat" key={s.label}>
-              <div className="stat-number">{s.number}</div>
-              <div className="stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Nav */}
-      <nav>
-        {navItems.map(item => (
-          <a
-            key={item.id}
-            className={activeSection === item.id ? 'active' : ''}
-            onClick={() => scrollTo(item.id)}
+    <div className="app-layout">
+      <header className="app-header">
+        <StatsBar />
+        <div className="header-actions">
+          <SearchBar value={search} onChange={setSearch} />
+          <button
+            className="theme-toggle"
+            onClick={() => setDark(d => !d)}
+            title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-label="Toggle theme"
           >
-            {item.label}
-          </a>
-        ))}
-      </nav>
-
-      {/* Search */}
-      <div className="search-wrapper">
-        <input
-          className="search-input"
-          type="text"
-          placeholder="Buscar herramienta..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-        />
-      </div>
-
-      {/* Mac Apps */}
-      {Object.keys(filteredApps).length > 0 && (
-        <section id="apps">
-          <div className="section-header">
-            <div className="section-icon" style={{ background: 'rgba(34,211,238,0.1)' }}>&#127758;</div>
-            <h2>Mac Apps</h2>
-          </div>
-          {Object.entries(filteredApps).map(([cat, items]) => (
-            <div className="subcategory" key={cat}>
-              <h3>{cat}</h3>
-              <div className="grid">
-                {items.map(app => <Card key={app.name} {...app} />)}
-              </div>
-            </div>
-          ))}
-        </section>
-      )}
-
-      {/* Plugins */}
-      {filteredPlugins.length > 0 && (
-        <section id="plugins">
-          <div className="section-header">
-            <div className="section-icon" style={{ background: 'rgba(167,139,250,0.1)' }}>&#9889;</div>
-            <h2>Claude Code - Plugins</h2>
-          </div>
-          <p className="section-desc">Plugins del marketplace que extienden las capacidades de Claude Code.</p>
-          <div className="grid">
-            {filteredPlugins.map(p => (
-              <Card key={p.name} name={p.name} desc={p.desc} cost="free" install={p.source} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Skills */}
-      {filteredSkills.length > 0 && (
-        <section id="skills">
-          <div className="section-header">
-            <div className="section-icon" style={{ background: 'rgba(74,222,128,0.1)' }}>&#128295;</div>
-            <h2>Claude Code - Skills</h2>
-          </div>
-          <p className="section-desc">
-            Skills de <a href="https://github.com/garrytan/gstack" target="_blank" rel="noreferrer">gstack</a> (Garry Tan). Se invocan con /skill-name.
-          </p>
-          <div className="grid">
-            {filteredSkills.map(s => <Card key={s.name} name={s.name} desc={s.desc} cost="free" />)}
-          </div>
-        </section>
-      )}
-
-      {/* Agents */}
-      {Object.keys(filteredAgents).length > 0 && (
-        <section id="agents">
-          <div className="section-header">
-            <div className="section-icon" style={{ background: 'rgba(244,114,182,0.1)' }}>&#129302;</div>
-            <h2>Claude Code - Custom Agents</h2>
-          </div>
-          <p className="section-desc">16 agentes especializados que se lanzan automaticamente segun la tarea.</p>
-          {Object.entries(filteredAgents).map(([cat, items]) => (
-            <div className="subcategory" key={cat}>
-              <h3>{cat}</h3>
-              <div className="agents-grid">
-                {items.map(a => <AgentCard key={a.name} {...a} />)}
-              </div>
-            </div>
-          ))}
-        </section>
-      )}
-
-      {/* Extensions */}
-      {filteredExtensions.length > 0 && (
-        <section id="extensions">
-          <div className="section-header">
-            <div className="section-icon" style={{ background: 'rgba(251,191,36,0.1)' }}>&#128230;</div>
-            <h2>VS Code / Cursor Extensions</h2>
-          </div>
-          <div className="grid">
-            {filteredExtensions.map(e => <Card key={e.id} name={e.name} desc={e.desc} cost={e.cost} install={e.id} />)}
-          </div>
-        </section>
-      )}
-
-      {/* CLI Tools */}
-      {Object.keys(filteredCli).length > 0 && (
-        <section id="cli">
-          <div className="section-header">
-            <div className="section-icon" style={{ background: 'rgba(251,146,60,0.1)' }}>&#9000;</div>
-            <h2>CLI Tools</h2>
-          </div>
-          {Object.entries(filteredCli).map(([cat, items]) => (
-            <div className="subcategory" key={cat}>
-              <h3>{cat}</h3>
-              <div className="grid">
-                {items.map(t => <Card key={t.name} {...t} />)}
-              </div>
-            </div>
-          ))}
-        </section>
-      )}
-
-      {/* Shell */}
-      {filteredShell.length > 0 && (
-        <section id="shell">
-          <div className="section-header">
-            <div className="section-icon" style={{ background: 'rgba(34,211,238,0.1)' }}>&gt;_</div>
-            <h2>Shell Setup</h2>
-          </div>
-          <div className="grid">
-            {filteredShell.map(s => <Card key={s.name} {...s} />)}
-          </div>
-        </section>
-      )}
-
-      {/* Quick Start */}
-      <div className="quickstart" id="quickstart">
-        <h2>Quick Start</h2>
-        <p className="section-desc" style={{ marginBottom: '1rem' }}>
-          Clona el repo y ejecuta el script. Instala todo automaticamente.
-        </p>
-        <pre>
-          <span className="comment"># 1. Install Xcode CLI tools</span>{'\n'}
-          xcode-select --install{'\n\n'}
-          <span className="comment"># 2. Install Homebrew</span>{'\n'}
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"{'\n'}
-          eval "$(/opt/homebrew/bin/brew shellenv)"{'\n\n'}
-          <span className="comment"># 3. Clone and run</span>{'\n'}
-          git clone https://github.com/sebastianbreguel/dotfiles.git ~/dotfiles{'\n'}
-          cd ~/dotfiles && ./setup.sh
-        </pre>
-        <div className="quickstart-details">
-          <h3>El script instala:</h3>
-          <div className="quickstart-grid">
-            <div className="qs-item"><span className="qs-check">&#10003;</span> Homebrew formulae + casks</div>
-            <div className="qs-item"><span className="qs-check">&#10003;</span> Oh My Zsh + Powerlevel10k</div>
-            <div className="qs-item"><span className="qs-check">&#10003;</span> Node v25 (NVM) + Bun + uv</div>
-            <div className="qs-item"><span className="qs-check">&#10003;</span> npm global packages</div>
-            <div className="qs-item"><span className="qs-check">&#10003;</span> Python packages</div>
-            <div className="qs-item"><span className="qs-check">&#10003;</span> Claude Code config + agents</div>
-            <div className="qs-item"><span className="qs-check">&#10003;</span> gstack skills</div>
-            <div className="qs-item"><span className="qs-check">&#10003;</span> 20+ Mac apps</div>
-          </div>
+            {dark ? (
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
+            ) : (
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </button>
         </div>
+      </header>
+
+      <div className="app-body">
+        {sidebarOpen && (
+          <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
+        )}
+        <Sidebar
+          activeCategory={activeCategory}
+          onCategoryChange={setActiveCategory}
+          isOpen={sidebarOpen}
+          onMobileClose={() => setSidebarOpen(false)}
+        />
+        <main className="app-main">
+          <CardGrid items={filteredItems} onItemClick={setSelectedItem} />
+        </main>
       </div>
 
-      <footer>
-        Built with Claude Code &mdash; <a href="https://github.com/sebastianbreguel/dotfiles" target="_blank" rel="noreferrer">github.com/sebastianbreguel/dotfiles</a>
+      <DetailPanel
+        item={selectedItem}
+        onClose={() => setSelectedItem(null)}
+        onItemClick={setSelectedItem}
+      />
+
+      <footer className="app-footer">
+        <div className="footer-setup">
+          <span className="footer-setup-label">Quick setup</span>
+          <code className="footer-setup-cmd mono">git clone https://github.com/sebastianbreguel/dotfiles && cd dotfiles && ./setup.sh</code>
+        </div>
+        <div className="footer-links">
+          <a href="https://github.com/sebastianbreguel/dotfiles" target="_blank" rel="noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            Source
+          </a>
+          <span className="footer-sep">·</span>
+          <a href="https://github.com/sebastianbreguel/dotfiles/blob/main/setup.sh" target="_blank" rel="noreferrer">
+            setup.sh
+          </a>
+          <span className="footer-sep">·</span>
+          <span className="footer-credit">by <a href="https://github.com/sebastianbreguel" target="_blank" rel="noreferrer">@sebastianbreguel</a></span>
+        </div>
       </footer>
     </div>
   )
