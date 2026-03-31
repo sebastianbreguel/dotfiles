@@ -1,0 +1,29 @@
+app/src/App.jsx
+  c1898704661c4bd2 109-125
+app/src/components/ToolCard.jsx
+  c1898704661c4bd2 12-17,21,27-32
+app/src/components/DetailPanel.jsx
+  c1898704661c4bd2 39-46
+app/src/App.css
+  c1898704661c4bd2 47,51-54,57-66,69-83,86,88-89,91,94-97,104-110,113-115,576-615,721-725,733-740,743-747,749-752,1086-1098
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "880d0edd0118a4e8b28c772e6f13ea5f8b6702f3",
+  "prompts": {
+    "c1898704661c4bd2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13f97381-12be-425b-81ba-66cc35936c5e",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "sebastianbreguel <62109266+sebastianbreguel@users.noreply.github.com>",
+      "messages": [],
+      "total_additions": 176,
+      "total_deletions": 9,
+      "accepted_lines": 175,
+      "overriden_lines": 0
+    }
+  }
+}
