@@ -1,0 +1,43 @@
+app/src/pages/about.js
+  3c4a8b74dfec86c3 1-28
+app/vite.config.js
+  3c4a8b74dfec86c3 2,5-6
+app/src/theme.js
+  3c4a8b74dfec86c3 1-24
+app/src/router.js
+  3c4a8b74dfec86c3 1-39
+app/src/components/nav.js
+  3c4a8b74dfec86c3 1-41
+app/src/pages/toolkit.js
+  3c4a8b74dfec86c3 1-183
+app/src/components/footer.js
+  3c4a8b74dfec86c3 1-17
+app/src/pages/home.js
+  3c4a8b74dfec86c3 1-38
+app/src/main.js
+  3c4a8b74dfec86c3 2-18
+app/src/pages/works.js
+  3c4a8b74dfec86c3 1-35
+app/src/app.css
+  3c4a8b74dfec86c3 1-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "0ee94b77e715018e9752fa21b25883a604db4c05",
+  "prompts": {
+    "3c4a8b74dfec86c3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b2512758-320a-4548-a4b2-eab5532d6fbc",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "sebastianbreguel <62109266+sebastianbreguel@users.noreply.github.com>",
+      "messages": [],
+      "total_additions": 470,
+      "total_deletions": 6,
+      "accepted_lines": 3365,
+      "overriden_lines": 0
+    }
+  }
+}
