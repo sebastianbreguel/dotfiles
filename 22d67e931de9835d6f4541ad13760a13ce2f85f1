@@ -1,0 +1,27 @@
+.claude/settings.json
+  6476240e178772cf 4
+.gitignore
+  6476240e178772cf 1-55
+app/src/data.js
+  6476240e178772cf 41-44,1556-1769
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "22d67e931de9835d6f4541ad13760a13ce2f85f1",
+  "prompts": {
+    "6476240e178772cf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bbdfa2bd-f33d-47fe-a344-e649868c9e80",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "sebastianbreguel <62109266+sebastianbreguel@users.noreply.github.com>",
+      "messages": [],
+      "total_additions": 286,
+      "total_deletions": 13,
+      "accepted_lines": 274,
+      "overriden_lines": 0
+    }
+  }
+}
