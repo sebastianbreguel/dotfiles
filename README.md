@@ -1,6 +1,4 @@
-# Setup Completo - PC de Seba Breguel
-> Generado: 2026-03-14
-
+# Setup Completo
 ---
 
 ## Indice
