@@ -46,6 +46,22 @@ export default function DetailPanel({ item, onClose, onItemClick }) {
           </div>
           <p className="detail-desc">{item.description}</p>
 
+          {item.category === 'claude-code' && (
+            <div className="detail-video-wrap">
+              <video
+                key={item.id}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="detail-video"
+                onError={(e) => { e.target.parentElement.style.display = 'none' }}
+              >
+                <source src={`/videos/items/${item.id}.mp4`} type="video/mp4" />
+              </video>
+            </div>
+          )}
+
           {item.why && (
             <div className="detail-why">
               <span className="detail-why-icon" aria-hidden="true">

@@ -1221,3 +1221,17 @@
     font-size: 0.7rem;
   }
 }
+
+/* ========== Detail Video ========== */
+.detail-video-wrap {
+  margin: 1rem 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #1a1a2e;
+}
+
+.detail-video {
+  width: 100%;
+  display: block;
+}
