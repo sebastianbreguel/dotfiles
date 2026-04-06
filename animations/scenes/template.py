@@ -29,7 +29,7 @@ class ItemFlowScene(Scene):
         self.play(FadeIn(input_text, shift=DOWN * 0.2), run_time=FAST)
 
         # Arrow to main box
-        main_box = labeled_box(name, color, width=4.5, height=0.8, fill_opacity=0.2)
+        main_box = labeled_box(name, color, width=5.5, height=1.0, fill_opacity=0.2)
         main_box.shift(UP * 1.2)
         arr_in = Arrow(
             input_text.get_bottom(),
@@ -50,9 +50,9 @@ class ItemFlowScene(Scene):
                 box = labeled_box(
                     use,
                     color,
-                    width=2.2,
-                    height=0.5,
-                    font_size=12,
+                    width=2.8,
+                    height=0.65,
+                    font_size=SMALL_SIZE,
                     fill_opacity=0.1,
                 )
                 box.move_to([start_x + i * spacing, -0.3, 0])

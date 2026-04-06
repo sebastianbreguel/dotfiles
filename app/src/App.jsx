@@ -96,7 +96,7 @@ function App() {
           onMobileClose={() => setSidebarOpen(false)}
         />
         <main className="app-main">
-          <HowItWorks />
+          {(activeCategory === 'claude-code' || (activeCategory && activeCategory.startsWith('claude-code:'))) && <HowItWorks />}
           <CardGrid items={filteredItems} onItemClick={setSelectedItem} />
         </main>
       </div>
