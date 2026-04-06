@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar'
 import Sidebar from './components/Sidebar'
 import CardGrid from './components/CardGrid'
 import DetailPanel from './components/DetailPanel'
+import HowItWorks from './components/HowItWorks'
 
 function App() {
   const [search, setSearch] = useState('')
@@ -95,6 +96,7 @@ function App() {
           onMobileClose={() => setSidebarOpen(false)}
         />
         <main className="app-main">
+          <HowItWorks />
           <CardGrid items={filteredItems} onItemClick={setSelectedItem} />
         </main>
       </div>
