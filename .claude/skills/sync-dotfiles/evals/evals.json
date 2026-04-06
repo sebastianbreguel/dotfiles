@@ -1,0 +1,23 @@
+{
+  "skill_name": "sync-dotfiles",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "sincroniza mis dotfiles",
+      "expected_output": "Copies all config files from machine to repo, detects new/removed brew packages, updates data.js with new items, updates README.md sections, syncs Claude Code config, and shows a summary of all changes",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "instalé unas cosas nuevas con brew y extensiones de vscode, actualiza el repo y la página",
+      "expected_output": "Detects newly installed brew formulae/casks and VS Code extensions, adds them to data.js with proper schema, updates README sections 2/3/9, copies updated config files, shows summary highlighting what's new",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "quiero que mi repo de dotfiles refleje lo que tengo instalado ahora en mi mac",
+      "expected_output": "Full sync: config files copied, all tool lists compared against data.js, new items added, possibly-removed items flagged, README and setup.sh updated, Claude Code config synced, clear summary printed",
+      "files": []
+    }
+  ]
+}

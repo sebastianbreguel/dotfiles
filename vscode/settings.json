@@ -1,4 +1,4 @@
 {
-  "window.autoDetectColorScheme": true,
-  "workbench.preferredDarkColorTheme": "Visual Studio Dark"
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark"
 }
