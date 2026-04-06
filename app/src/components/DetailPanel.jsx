@@ -43,8 +43,26 @@ export default function DetailPanel({ item, onClose, onItemClick }) {
                 {item.cost === 'free' ? 'Free' : item.cost === 'freemium' ? 'Freemium' : 'Paid'}
               </span>
             )}
+            {item.tags && item.tags.length > 0 && (
+              <div className="detail-tags-inline">
+                {item.tags.map(tag => (
+                  <span key={tag} className="detail-tag mono">{tag}</span>
+                ))}
+              </div>
+            )}
           </div>
           <p className="detail-desc">{item.description}</p>
+
+          {item.why && (
+            <div className="detail-why">
+              <span className="detail-why-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </span>
+              <p className="detail-why-text">{item.why}</p>
+            </div>
+          )}
 
           {item.category === 'claude-code' && (
             <div className="detail-video-wrap">
@@ -59,17 +77,6 @@ export default function DetailPanel({ item, onClose, onItemClick }) {
               >
                 <source src={`/videos/items/${item.id}.mp4`} type="video/mp4" />
               </video>
-            </div>
-          )}
-
-          {item.why && (
-            <div className="detail-why">
-              <span className="detail-why-icon" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
-              </span>
-              <p className="detail-why-text">{item.why}</p>
             </div>
           )}
 
@@ -105,16 +112,6 @@ export default function DetailPanel({ item, onClose, onItemClick }) {
             </div>
           )}
 
-          {item.tags && item.tags.length > 0 && (
-            <div className="detail-section">
-              <label className="detail-label">Tags</label>
-              <div className="detail-tags">
-                {item.tags.map(tag => (
-                  <span key={tag} className="detail-tag mono">{tag}</span>
-                ))}
-              </div>
-            </div>
-          )}
 
           {relatedItems.length > 0 && (
             <div className="detail-section">

@@ -3,9 +3,13 @@ OUTPUT = output
 MANIM = python3 -m manim
 QUALITY = -ql --format=gif
 
-.PHONY: all clean $(SCENES)
+.PHONY: all clean videos $(SCENES)
 
 all: $(SCENES)
+
+# Generate all per-item flow videos (reads from flows.json)
+videos:
+	python3 generate_all.py
 
 $(SCENES):
 	cd /Users/sebabreguel/personal/dotfiles/animations && $(MANIM) $(QUALITY) -o $@ scenes/$@.py $$(python3 -c "print(''.join(w.title() for w in '$@'.split('_')) + 'Scene')")

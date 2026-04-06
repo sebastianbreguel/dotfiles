@@ -23,7 +23,7 @@ def render_item(item: dict) -> bool:
         sys.executable,
         "-m",
         "manim",
-        "-ql",
+        "-qm",
         "--format=gif",
         "-o",
         item_id,

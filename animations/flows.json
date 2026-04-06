@@ -3,543 +3,701 @@
     "id": "plugin-context-mode",
     "name": "context-mode",
     "color": "#a855f7",
-    "input": "Tool output (500+ lines)",
+    "input": "git log --oneline (2000 lines)",
     "uses": [
-      "FTS5 indexing",
-      "Token counting",
-      "ctx_search API"
+      "Index in FTS5",
+      "Search indexed data",
+      "Save 90% tokens"
     ],
-    "output": "Indexed knowledge base"
+    "output": "Only relevant commits returned"
   },
   {
     "id": "plugin-code-simplifier",
     "name": "code-simplifier",
     "color": "#a855f7",
-    "input": "Recently modified code",
+    "input": "Messy function after quick fix",
     "uses": [
-      "AST analysis",
-      "Pattern detection",
-      "Refactor rules"
+      "Find redundancy",
+      "Flatten nesting",
+      "Extract helpers"
     ],
-    "output": "Simplified, cleaner code"
+    "output": "Same behavior, cleaner code"
   },
   {
     "id": "plugin-context7",
     "name": "context7",
     "color": "#a855f7",
-    "input": "Library name + question",
+    "input": "How does Next.js 15 routing work?",
     "uses": [
-      "Doc resolver",
-      "Snippet search",
-      "Version matching"
+      "Resolve library",
+      "Fetch latest docs"
     ],
-    "output": "Up-to-date documentation"
+    "output": "Current API docs, not stale training data"
   },
   {
     "id": "plugin-frontend-design",
     "name": "frontend-design",
     "color": "#a855f7",
-    "input": "UI requirements",
+    "input": "Build a dashboard page",
     "uses": [
-      "Component patterns",
-      "CSS generation",
-      "Layout system"
+      "Analyze design system",
+      "Generate components",
+      "Style with CSS"
     ],
-    "output": "Production-grade UI code"
+    "output": "Production UI, not generic AI code"
   },
   {
     "id": "plugin-playwright",
     "name": "playwright",
     "color": "#a855f7",
-    "input": "Browser action request",
+    "input": "Test login flow on staging",
     "uses": [
-      "Headless Chrome",
-      "DOM interaction",
-      "Screenshots"
+      "Navigate pages",
+      "Fill forms",
+      "Assert state"
     ],
-    "output": "Browser automation results"
+    "output": "Automated browser test results"
   },
   {
     "id": "plugin-skill-creator",
     "name": "skill-creator",
     "color": "#a855f7",
-    "input": "Skill idea or existing skill",
+    "input": "I want a /deploy skill",
     "uses": [
-      "Template scaffolding",
-      "Eval runner",
-      "Benchmarks"
+      "Scaffold template",
+      "Write skill logic",
+      "Run evals"
     ],
-    "output": "Tested, deployable skill"
+    "output": "Tested skill ready to install"
   },
   {
     "id": "plugin-superpowers",
     "name": "superpowers",
     "color": "#a855f7",
-    "input": "Task or feature request",
+    "input": "Add auth to our API",
     "uses": [
-      "Brainstorming",
-      "Plan writing",
+      "Brainstorm design",
+      "Write plan",
       "TDD",
-      "Debugging"
+      "Ship PR"
     ],
-    "output": "Structured implementation"
+    "output": "Feature built with full workflow"
   },
   {
     "id": "plugin-claude-hud",
     "name": "claude-hud",
     "color": "#a855f7",
-    "input": "Session state",
+    "input": "Active coding session",
     "uses": [
-      "Status rendering",
-      "Token tracking",
-      "Layout engine"
+      "Track tokens used",
+      "Show git branch",
+      "Display mode"
     ],
-    "output": "Real-time status line"
+    "output": "Always-visible status bar"
   },
   {
     "id": "plugin-feature-dev",
     "name": "feature-dev",
     "color": "#a855f7",
-    "input": "Feature requirement",
+    "input": "Add user notifications",
     "uses": [
-      "Codebase analysis",
-      "Architecture planning",
-      "Code review"
+      "Explore codebase",
+      "Plan architecture",
+      "Review code"
     ],
-    "output": "Implemented feature with tests"
+    "output": "Feature with tests and review"
   },
   {
     "id": "plugin-claude-subconscious",
     "name": "claude-subconscious",
     "color": "#a855f7",
-    "input": "Conversation context",
+    "input": "Yesterday we decided to use Redis",
     "uses": [
-      "Memory persistence",
-      "Cross-session recall",
-      "Letta AI"
+      "Save to memory",
+      "Recall next session"
     ],
-    "output": "Persistent agent memory"
+    "output": "Remembers across conversations"
   },
   {
     "id": "skill-browser-automation",
     "name": "/browser-automation",
     "color": "#22c55e",
-    "input": "URL + action to perform",
+    "input": "Fill out the signup form on staging",
     "uses": [
-      "Page navigation",
-      "Element interaction",
-      "Screenshots"
+      "Open browser",
+      "Fill fields",
+      "Click submit"
     ],
-    "output": "Browser task completed"
+    "output": "Form submitted, screenshot captured"
   },
   {
     "id": "skill-cross-ai-debate",
     "name": "/cross-ai-debate",
     "color": "#22c55e",
-    "input": "Topic + evaluation criteria",
+    "input": "Should we use GraphQL or REST?",
     "uses": [
-      "Claude Code",
-      "Codex CLI",
-      "Gemini CLI"
+      "Claude argues",
+      "Codex argues",
+      "Gemini argues"
     ],
-    "output": "Multi-perspective analysis"
+    "output": "Best answer from 3 AI perspectives"
   },
   {
     "id": "skill-doc-sync",
     "name": "/doc-sync",
     "color": "#22c55e",
-    "input": "Repository path",
+    "input": "Repo after major refactor",
     "uses": [
-      "CLAUDE.md audit",
-      "README.md audit",
-      "Drift detection"
+      "Audit CLAUDE.md",
+      "Audit README.md",
+      "Find drift"
     ],
-    "output": "Synchronized documentation"
+    "output": "Docs match actual code"
   },
   {
     "id": "skill-dream",
     "name": "/dream",
     "color": "#22c55e",
-    "input": "Existing memories + logs",
+    "input": "End of work session",
     "uses": [
-      "Signal gathering",
-      "Topic merging",
-      "Index pruning"
+      "Gather signals",
+      "Merge topics",
+      "Prune stale"
     ],
-    "output": "Consolidated memory system"
+    "output": "Clean, consolidated memory"
   },
   {
     "id": "skill-electron",
     "name": "/electron",
     "color": "#22c55e",
-    "input": "Electron app + task",
+    "input": "Automate VS Code settings sync",
     "uses": [
-      "CDP connection",
-      "DevTools Protocol",
-      "App interaction"
+      "Connect via CDP",
+      "Navigate UI",
+      "Execute actions"
     ],
-    "output": "Desktop app automated"
+    "output": "Desktop app task completed"
   },
   {
     "id": "skill-explore-app",
     "name": "/explore-app",
     "color": "#22c55e",
-    "input": "Web app URL",
+    "input": "QA our web app before launch",
     "uses": [
-      "Page discovery",
-      "Interaction testing",
-      "Bug detection"
+      "Click every page",
+      "Test all forms",
+      "Find visual bugs"
     ],
-    "output": "Bug report + UX issues"
+    "output": "Bug report with screenshots"
   },
   {
     "id": "skill-health",
     "name": "/health",
     "color": "#22c55e",
-    "input": "Current session state",
+    "input": "Claude feels slow or wrong",
     "uses": [
-      "Hook audit",
-      "MCP check",
-      "Rule validation"
+      "Check hooks",
+      "Verify MCP",
+      "Validate rules"
     ],
-    "output": "Health diagnosis + fixes"
+    "output": "Diagnosis + auto-fixes applied"
   },
   {
     "id": "skill-weekly-retro",
     "name": "/weekly-retro",
     "color": "#22c55e",
-    "input": "Git history (7 days)",
+    "input": "Friday afternoon",
     "uses": [
-      "Commit analysis",
-      "Pattern detection",
-      "Per-person stats"
+      "Analyze commits",
+      "Track patterns",
+      "Score per person"
     ],
-    "output": "Engineering retrospective"
+    "output": "What went well + improve next week"
   },
   {
     "id": "skill-ship-pr",
     "name": "/ship-pr",
     "color": "#22c55e",
-    "input": "Completed feature branch",
+    "input": "Feature branch ready to merge",
     "uses": [
       "Merge main",
       "Run tests",
-      "Review diff",
-      "Bump VERSION"
+      "Bump version",
+      "Create PR"
     ],
-    "output": "PR created and pushed"
+    "output": "PR created with changelog"
   },
   {
     "id": "skill-test-and-fix",
     "name": "/test-and-fix",
     "color": "#22c55e",
-    "input": "Web app to QA",
+    "input": "New feature deployed to staging",
     "uses": [
-      "Diff analysis",
-      "Page testing",
-      "Bug reproduction"
+      "Analyze git diff",
+      "Test affected pages",
+      "Fix bugs"
     ],
-    "output": "Bugs found and fixed"
+    "output": "All bugs found and fixed"
   },
   {
     "id": "skill-pre-merge-review",
     "name": "/pre-merge-review",
     "color": "#22c55e",
-    "input": "PR diff vs main",
+    "input": "PR #142 ready for review",
     "uses": [
-      "SQL safety",
-      "LLM trust boundaries",
-      "Side effects"
+      "Check SQL safety",
+      "Verify auth boundaries",
+      "Scan side effects"
     ],
-    "output": "Pre-landing review report"
+    "output": "Safe to merge (or blockers listed)"
   },
   {
     "id": "skill-pipeline-review",
     "name": "/pipeline-review",
     "color": "#22c55e",
-    "input": "Pipeline codebase",
+    "input": "Our ETL pipeline code",
     "uses": [
-      "Parallel agents",
-      "Stage analysis",
-      "Pattern audit"
+      "Launch parallel reviewers",
+      "Audit each stage"
     ],
-    "output": "Full pipeline code audit"
+    "output": "Full audit with priority fixes"
   },
   {
     "id": "skill-project-docs",
     "name": "/project-docs",
     "color": "#22c55e",
-    "input": "Project directory",
+    "input": "New team member joining Monday",
     "uses": [
-      "Code scanning",
-      "DB schema extraction",
-      "Doc generation"
+      "Scan all code",
+      "Extract DB schema",
+      "Generate docs"
     ],
-    "output": "vambe.md + db.md"
+    "output": "vambe.md + db.md for onboarding"
   },
   {
     "id": "skill-refactor-analysis",
     "name": "/refactor-analysis",
     "color": "#22c55e",
-    "input": "Codebase or module",
+    "input": "Code feels messy after sprint",
     "uses": [
-      "Tech debt scoring",
-      "Friction mapping",
-      "Dependency analysis"
+      "Score tech debt",
+      "Map friction points",
+      "Rank priorities"
     ],
-    "output": "Refactoring priority report"
+    "output": "Where to refactor first"
   },
   {
     "id": "skill-generate-readme",
     "name": "/generate-readme",
     "color": "#22c55e",
-    "input": "Python project",
+    "input": "Python project, no docs",
     "uses": [
-      "Code analysis",
-      "Dependency scan",
-      "Usage extraction"
+      "Read source code",
+      "Find dependencies",
+      "Extract usage"
     ],
-    "output": "Accurate README.md"
+    "output": "Accurate README from real code"
   },
   {
     "id": "skill-panel",
     "name": "/panel",
     "color": "#22c55e",
-    "input": "Decision to evaluate",
+    "input": "Should we add caching here?",
     "uses": [
-      "Simplification lens",
+      "Simplify lens",
       "Architecture lens",
       "Product lens"
     ],
-    "output": "Three-perspective feedback"
+    "output": "3 expert opinions on one decision"
   },
   {
     "id": "skill-redesign-ui",
     "name": "/redesign-ui",
     "color": "#22c55e",
-    "input": "UI component path",
+    "input": "This settings page looks dated",
     "uses": [
-      "UI designer agent",
-      "UX designer agent",
-      "Code generation"
+      "UI designer analyzes",
+      "UX designer reviews"
     ],
-    "output": "Redesigned component"
+    "output": "Modernized component code"
+  },
+  {
+    "id": "agent-browser",
+    "name": "browser agent",
+    "color": "#f97316",
+    "input": "Check if login page loads correctly",
+    "uses": [
+      "Navigate URL",
+      "Take screenshot",
+      "Assert elements"
+    ],
+    "output": "Page verified with evidence"
   },
   {
     "id": "agent-code-reviewer",
     "name": "code-reviewer",
     "color": "#f97316",
-    "input": "Code diff or PR",
+    "input": "Review my auth middleware PR",
     "uses": [
-      "Glob",
-      "Grep",
-      "Read",
-      "Pattern matching"
+      "Read all changed files",
+      "Check patterns",
+      "Rank severity"
     ],
-    "output": "Review with issues ranked"
+    "output": "Only high-confidence issues"
   },
   {
     "id": "agent-tech-lead",
     "name": "tech-lead",
     "color": "#f97316",
-    "input": "Cross-domain problem",
+    "input": "API is slow + ML scoring broke",
     "uses": [
-      "Problem decomposition",
-      "Architecture review",
-      "Coordination"
+      "Diagnose root cause",
+      "Coordinate backend + ML fix"
     ],
-    "output": "Technical decision + plan"
+    "output": "Action plan across domains"
   },
   {
     "id": "agent-code-simplifier",
-    "name": "code-simplifier agent",
+    "name": "code-simplifier",
     "color": "#f97316",
-    "input": "Complex or messy code",
+    "input": "500-line function with deep nesting",
     "uses": [
-      "Redundancy detection",
-      "Logic flattening",
-      "Helper extraction"
+      "Remove redundancy",
+      "Flatten logic",
+      "Extract helpers"
     ],
-    "output": "Simplified code"
+    "output": "Same behavior, half the lines"
   },
   {
     "id": "agent-code-modularizer",
     "name": "code-modularizer",
     "color": "#f97316",
-    "input": "Large file or module",
+    "input": "utils.ts is 1200 lines",
     "uses": [
-      "Boundary analysis",
-      "Interface design",
-      "Code splitting"
+      "Find boundaries",
+      "Design interfaces",
+      "Split files"
     ],
-    "output": "Modular architecture"
+    "output": "5 focused modules, clear imports"
   },
   {
     "id": "agent-fullstack-refactor",
-    "name": "fullstack-refactor-architect",
+    "name": "fullstack-refactor",
     "color": "#f97316",
-    "input": "Architecture question",
+    "input": "Extract user service from monolith",
     "uses": [
-      "API design",
-      "Service extraction",
-      "Error patterns"
+      "Design API contract",
+      "Plan migration",
+      "Handle errors"
     ],
-    "output": "Cross-stack architecture plan"
+    "output": "Service extraction blueprint"
   },
   {
     "id": "agent-db-engineering",
     "name": "db-engineering",
     "color": "#f97316",
-    "input": "DB schema or slow query",
+    "input": "Query takes 12s on 50M rows",
     "uses": [
-      "Query optimization",
-      "Index strategy",
-      "Migration planning"
+      "Analyze EXPLAIN",
+      "Suggest indexes",
+      "Plan migration"
     ],
-    "output": "Optimized schema + migration"
+    "output": "Query runs in 200ms"
   },
   {
     "id": "agent-ai-ml-expert",
     "name": "ai-ml-expert",
     "color": "#f97316",
-    "input": "AI/ML design question",
+    "input": "RAG returns irrelevant chunks",
     "uses": [
-      "Model selection",
-      "RAG architecture",
-      "Eval framework"
+      "Check embedding model",
+      "Review chunking",
+      "Add reranking"
     ],
-    "output": "AI architecture decision"
+    "output": "Retrieval quality fixed"
   },
   {
     "id": "agent-prompt-engineering",
     "name": "prompt-engineering",
     "color": "#f97316",
-    "input": "Prompt to optimize",
+    "input": "LLM output is inconsistent",
     "uses": [
-      "Output analysis",
-      "Few-shot design",
-      "Schema structuring"
+      "Analyze failures",
+      "Add few-shot examples",
+      "Structure output"
     ],
-    "output": "Optimized prompt"
+    "output": "Reliable, consistent LLM output"
   },
   {
     "id": "agent-ai-researcher",
     "name": "ai-researcher",
     "color": "#f97316",
-    "input": "Research question",
+    "input": "What baselines for our benchmark?",
     "uses": [
-      "Literature analysis",
-      "Experiment design",
-      "Statistical review"
+      "Analyze literature",
+      "Design experiment"
     ],
-    "output": "Research findings"
+    "output": "Methodology + comparison plan"
   },
   {
-    "id": "agent-qa-test-engineer",
+    "id": "agent-qa-test",
     "name": "qa-test-engineer",
     "color": "#f97316",
-    "input": "Feature to test",
+    "input": "New endpoint accepts user input",
     "uses": [
-      "Edge case generation",
-      "Test code writing",
-      "Load planning"
+      "Generate edge cases",
+      "Write test code",
+      "Plan load test"
     ],
-    "output": "Comprehensive test suite"
+    "output": "Test suite covering all failure modes"
   },
   {
     "id": "agent-skeptical-reviewer",
     "name": "skeptical-reviewer",
     "color": "#f97316",
-    "input": "Proposal or decision",
+    "input": "Let's rewrite this in Rust",
     "uses": [
-      "Assumption challenging",
-      "Counter-arguments",
-      "Evidence demands"
+      "Challenge assumption",
+      "Demand benchmarks",
+      "Propose alternative"
     ],
-    "output": "Stress-tested decision"
+    "output": "Decision stress-tested"
   },
   {
     "id": "agent-data-science",
-    "name": "data-science-analytics",
+    "name": "data-science",
     "color": "#f97316",
-    "input": "Data + analysis question",
+    "input": "CSV of user sessions",
     "uses": [
-      "EDA",
-      "Statistical testing",
-      "Visualization"
+      "Run cohort analysis",
+      "Test significance",
+      "Visualize"
     ],
-    "output": "Analytical insights"
+    "output": "Retention patterns + insights"
   },
   {
     "id": "agent-ops-impact",
     "name": "ops-impact-analyst",
     "color": "#f97316",
-    "input": "Feature or model change",
+    "input": "We switched to GPT-4o last month",
     "uses": [
-      "KPI analysis",
-      "Cost modeling",
-      "ROI calculation"
+      "Compare KPIs before/after",
+      "Calculate cost savings"
     ],
-    "output": "Business impact report"
+    "output": "ROI report for stakeholders"
   },
   {
     "id": "agent-ceo-strategist",
-    "name": "ceo-product-strategist",
+    "name": "ceo-strategist",
     "color": "#f97316",
-    "input": "Product or roadmap question",
+    "input": "What should we build in Q3?",
     "uses": [
-      "Market analysis",
-      "Client value mapping",
-      "Priority framework"
+      "Analyze client needs",
+      "Map market gaps",
+      "Rank features"
     ],
-    "output": "Strategic recommendation"
+    "output": "Prioritized roadmap"
   },
   {
-    "id": "agent-karpathy",
+    "id": "agent-andrej-karpathy",
     "name": "andrej-karpathy",
     "color": "#f97316",
-    "input": "Code or AI architecture",
+    "input": "Review my training loop",
     "uses": [
-      "Simplicity lens",
-      "First principles",
-      "Complexity stripping"
+      "Strip complexity",
+      "First principles only"
     ],
-    "output": "Brutally simple implementation"
+    "output": "Brutally simple version"
   },
   {
-    "id": "agent-sutskever",
+    "id": "agent-ilya-sutskever",
     "name": "ilya-sutskever",
     "color": "#f97316",
-    "input": "AI trajectory question",
+    "input": "Will scaling solve this?",
     "uses": [
-      "Scaling analysis",
-      "Safety reasoning",
-      "Deep conviction"
+      "Analyze scaling limits",
+      "Reason about safety"
     ],
-    "output": "Oracle-like AI assessment"
+    "output": "Deep conviction on AI trajectory"
   },
   {
-    "id": "agent-lecun",
+    "id": "agent-yann-lecun",
     "name": "yann-lecun",
     "color": "#f97316",
-    "input": "AI approach to critique",
+    "input": "Our LLM-based approach",
     "uses": [
-      "World-model thinking",
-      "Hype detection",
-      "Alternative proposals"
+      "Critique limitations",
+      "Propose world models"
     ],
-    "output": "Contrarian AI perspective"
+    "output": "Contrarian take with alternatives"
   },
   {
-    "id": "agent-da-vinci",
+    "id": "agent-leonardo-da-vinci",
     "name": "leonardo-da-vinci",
     "color": "#f97316",
-    "input": "Design or architecture problem",
+    "input": "How to design this system?",
     "uses": [
       "Cross-domain patterns",
-      "Nature-inspired design",
-      "First principles"
+      "Nature-inspired thinking"
     ],
-    "output": "Polymathic design insight"
+    "output": "Unexpected design insight"
+  },
+  {
+    "id": "agent-architecture-reference",
+    "name": "architecture-reference",
+    "color": "#f97316",
+    "input": "How should I structure this service?",
+    "uses": [
+      "Check existing patterns",
+      "Match conventions"
+    ],
+    "output": "Architecture guidance for your codebase"
+  },
+  {
+    "id": "agent-neuroscience",
+    "name": "neuroscience-expert",
+    "color": "#f97316",
+    "input": "How does memory consolidation work?",
+    "uses": [
+      "Neural mechanisms",
+      "Cognitive models"
+    ],
+    "output": "Neuroscience-informed insight"
+  },
+  {
+    "id": "agent-neuroai-director",
+    "name": "neuroai-director",
+    "color": "#f97316",
+    "input": "Bridge brain science and AI design",
+    "uses": [
+      "Map neural parallels",
+      "Guide research direction"
+    ],
+    "output": "Neuro-AI convergence strategy"
+  },
+  {
+    "id": "agent-thesis-reviewer",
+    "name": "thesis-reviewer",
+    "color": "#f97316",
+    "input": "Review my methodology chapter",
+    "uses": [
+      "Check rigor",
+      "Detect AI-generated text"
+    ],
+    "output": "Academic quality feedback"
+  },
+  {
+    "id": "agent-tw93",
+    "name": "tw93-gatekeeper",
+    "color": "#f97316",
+    "input": "Will upstream accept this feature?",
+    "uses": [
+      "Apply 6-gate filter",
+      "Check scope"
+    ],
+    "output": "Merge probability + reshape advice"
+  },
+  {
+    "id": "skill-fastapi-standards",
+    "name": "/fastapi-standards",
+    "color": "#22c55e",
+    "input": "Building a FastAPI endpoint",
+    "uses": [
+      "Check conventions",
+      "Apply patterns",
+      "Add validation"
+    ],
+    "output": "Endpoint following project standards"
+  },
+  {
+    "id": "skill-review-plan",
+    "name": "/review-plan",
+    "color": "#22c55e",
+    "input": "Implementation plan draft",
+    "uses": [
+      "Check architecture",
+      "Verify data flow",
+      "Review tests"
+    ],
+    "output": "Plan approved or issues flagged"
+  },
+  {
+    "id": "skill-setup-browser-cookies",
+    "name": "/setup-browser-cookies",
+    "color": "#22c55e",
+    "input": "Need to test authenticated pages",
+    "uses": [
+      "Import from Chrome/Arc",
+      "Select domains"
+    ],
+    "output": "Headless browser has your session"
+  },
+  {
+    "id": "skill-slack",
+    "name": "/slack",
+    "color": "#22c55e",
+    "input": "Check unread messages in #eng",
+    "uses": [
+      "Open Slack in browser",
+      "Navigate channels"
+    ],
+    "output": "Messages read and summarized"
+  },
+  {
+    "id": "skill-vercel-sandbox",
+    "name": "/vercel-sandbox",
+    "color": "#22c55e",
+    "input": "Test my Next.js app in isolation",
+    "uses": [
+      "Spin up microVM",
+      "Run Chrome inside"
+    ],
+    "output": "Browser automation in Vercel sandbox"
+  },
+  {
+    "id": "skill-simplify",
+    "name": "/simplify",
+    "color": "#22c55e",
+    "input": "Code after a big feature push",
+    "uses": [
+      "Check for reuse",
+      "Audit quality",
+      "Fix issues"
+    ],
+    "output": "Cleaner code, same behavior"
+  },
+  {
+    "id": "skill-loop",
+    "name": "/loop",
+    "color": "#22c55e",
+    "input": "Check deploy status every 5 min",
+    "uses": [
+      "Run command on interval",
+      "Report changes"
+    ],
+    "output": "Recurring task running in background"
+  },
+  {
+    "id": "skill-schedule",
+    "name": "/schedule",
+    "color": "#22c55e",
+    "input": "Run /health check daily at 9am",
+    "uses": [
+      "Create cron trigger",
+      "Set up remote agent"
+    ],
+    "output": "Scheduled agent running on cron"
+  },
+  {
+    "id": "skill-claude-api",
+    "name": "/claude-api",
+    "color": "#22c55e",
+    "input": "Build app with Anthropic SDK",
+    "uses": [
+      "Set up client",
+      "Configure tools",
+      "Handle streaming"
+    ],
+    "output": "Working Claude API integration"
   }
 ]

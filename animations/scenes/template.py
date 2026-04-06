@@ -44,15 +44,17 @@ class ItemFlowScene(Scene):
         if uses:
             use_boxes = []
             total = len(uses)
-            spacing = min(2.5, 10.0 / max(total, 1))
+            box_w = min(3.2, 12.0 / max(total, 1) - 0.8)
+            spacing = box_w + 0.8
             start_x = -spacing * (total - 1) / 2
+            use_font = SMALL_SIZE if total <= 3 else 20
             for i, use in enumerate(uses):
                 box = labeled_box(
                     use,
                     color,
-                    width=2.8,
-                    height=0.65,
-                    font_size=SMALL_SIZE,
+                    width=box_w,
+                    height=0.7,
+                    font_size=use_font,
                     fill_opacity=0.1,
                 )
                 box.move_to([start_x + i * spacing, -0.3, 0])
