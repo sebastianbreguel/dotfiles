@@ -40,6 +40,47 @@ if (!categoriesMatch || !itemsMatch) {
 const CATEGORIES = new Function(`return ${categoriesMatch[1]}`)();
 const items = new Function(`return ${itemsMatch[1]}`)();
 
+// ---------------------------------------------------------------------------
+// 1b. Schema validation — warn on missing/invalid fields
+// ---------------------------------------------------------------------------
+const REQUIRED_FIELDS = ["id", "name", "category", "subcategory", "description"];
+const validCategories = Object.keys(CATEGORIES);
+const validationWarnings = [];
+
+items.forEach((item) => {
+  const label = item.id || item.name || "(unknown)";
+
+  for (const field of REQUIRED_FIELDS) {
+    if (item[field] === undefined || item[field] === null || item[field] === "") {
+      validationWarnings.push(`Warning: item "${label}" — missing field "${field}"`);
+    }
+  }
+
+  if (typeof item.id !== "string" || item.id.trim() === "") {
+    validationWarnings.push(`Warning: item "${label}" — id must be a non-empty string`);
+  }
+
+  if (item.category && !validCategories.includes(item.category)) {
+    validationWarnings.push(`Warning: item "${label}" — invalid category "${item.category}"`);
+  }
+
+  if (
+    item.category &&
+    CATEGORIES[item.category] &&
+    item.subcategory &&
+    !CATEGORIES[item.category].subcategories?.[item.subcategory]
+  ) {
+    validationWarnings.push(
+      `Warning: item "${label}" — invalid subcategory "${item.subcategory}" for category "${item.category}"`
+    );
+  }
+});
+
+if (validationWarnings.length > 0) {
+  validationWarnings.forEach((w) => console.warn(w));
+  console.warn(`\n${validationWarnings.length} validation warning(s) found.\n`);
+}
+
 console.log(`Loaded ${items.length} items from data.js`);
 
 // ---------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 
 Mi setup completo de desarrollo en macOS. No es solo config — es el sistema entero: que uso, por que lo uso, y como todo se conecta.
 
-**138 herramientas** trackeadas con explicacion personal de cada una. Un `setup.sh` que levanta todo desde cero. Y una [pagina interactiva](app/) para explorarlo visualmente.
+**150+ herramientas** trackeadas con explicacion personal de cada una. Un `setup.sh` que levanta todo desde cero. Y una [pagina interactiva](app/) para explorarlo visualmente.
 
 ## Que hay aqui
 
@@ -29,18 +29,25 @@ Lo que mas diferencia este setup. 16 agentes custom, 22+ skills, y un sistema de
 
 **Agentes** — personalidades especializadas que se invocan por tarea:
 
+*Rotacion diaria* — los que uso constantemente:
+
 | Agente | Para que |
 |--------|----------|
 | tech-lead | Decisiones tecnicas cross-domain |
-| ai-ml-expert | Arquitectura AI/ML, RAG, embeddings |
-| skeptical-reviewer | Devil's advocate, stress-test decisiones |
 | code-simplifier | Simplificar y limpiar codigo |
+| skeptical-reviewer | Devil's advocate, stress-test decisiones |
 | qa-test-engineer | Tests, edge cases, QA |
+| ai-ml-expert | Arquitectura AI/ML, RAG, embeddings |
+
+*Especializados* — para tareas puntuales:
+
+| Agente | Para que |
+|--------|----------|
 | fullstack-refactor-architect | Arquitectura cross-stack |
 | data-science-analytics | EDA, estadisticas, visualizacion |
 | prompt-engineering | Craft y optimizar prompts para LLMs |
-| neuroscience-ai-expert | Neurociencia, brain-computer interfaces |
 | ai-researcher | Papers, experimentos, escritura cientifica |
+| neuroscience-ai-expert | Neurociencia, brain-computer interfaces |
 | + 6 mas... | [Ver todos en .claude/agents/](.claude/agents/) |
 
 **Skills** — workflows automatizados invocados con `/skill-name`:
@@ -58,7 +65,7 @@ cd app && pnpm install && pnpm dev
 
 ### Single Source of Truth
 
-`app/src/data.js` es la unica fuente de verdad. Contiene las 138 herramientas con:
+`app/src/data.js` es la unica fuente de verdad. Contiene las 150+ herramientas con:
 - Nombre, descripcion, categoria
 - Comando de instalacion
 - Costo (free/freemium/paid)

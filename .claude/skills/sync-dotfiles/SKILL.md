@@ -183,6 +183,25 @@ After syncing, print a clear summary:
 - settings.json updated
 ```
 
+### Drift check (setup.sh vs data.js)
+
+Before asking the user to review, cross-reference `setup.sh` against `data.js` to catch drift:
+
+1. **Brew formulae** — Extract the package list from `setup.sh` line 20 (the `brew install ...` line). Compare against all items in `data.js` that have `installMethod: "brew"` and do **not** contain `--cask` in their `install` field. Flag mismatches.
+2. **Brew casks** — Extract the cask list from `setup.sh` line 24 (the `brew install --cask ...` line). Compare against all items in `data.js` that contain `--cask` in their `install` field. Flag mismatches.
+3. **npm/pnpm globals** — Extract the global package list from `setup.sh` line 68. Compare against all items in `data.js` with `installMethod` of `"npm"` or `"pnpm"`. Flag mismatches.
+4. **VS Code extensions** — Extract extensions from `setup.sh` lines 134-143. Compare against all items in `data.js` with `category: "extensions"`. Flag mismatches.
+
+For each comparison, report mismatches in this format:
+
+```
+### Drift: setup.sh vs data.js
+- In setup.sh but not in data.js: tool-x, tool-y
+- In data.js but not in setup.sh: tool-z
+```
+
+If there are any mismatches, ask the user if they want to update `setup.sh` to match `data.js` (since `data.js` is the source of truth).
+
 Ask the user to review the changes before committing. Use `git diff` to show what changed.
 
 ## Notes
