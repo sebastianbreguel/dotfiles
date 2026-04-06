@@ -17,7 +17,7 @@ fi
 
 # 2. Homebrew Formulae
 echo "[2/9] Installing Homebrew formulae..."
-brew install aitop ca-certificates ffmpeg fzf gh go htop jq lame mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep sdl2 shellcheck tmux zsh zsh-autosuggestions 2>/dev/null || true
+brew install aitop ca-certificates ffmpeg fzf gh go htop jq lame mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck tmux zsh zsh-autosuggestions 2>/dev/null || true
 
 # 3. Homebrew Casks
 echo "[3/9] Installing Homebrew casks..."
@@ -74,20 +74,83 @@ uv pip install --system anthropic beautifulsoup4 bertopic fastapi hdbscan httpx 
 # 9. Claude Code config
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 echo "[9/9] Copying Claude Code config..."
-mkdir -p ~/.claude/agents ~/.claude/skills ~/.claude/commands
+mkdir -p ~/.claude/agents ~/.claude/skills ~/.claude/commands ~/.claude/hooks
 cp -r "$SCRIPT_DIR/.claude/agents/"* ~/.claude/agents/ 2>/dev/null || true
-cp -r "$SCRIPT_DIR/.claude/skills/"* ~/.claude/skills/ 2>/dev/null || true
+# Copy skills except gstack (cloned separately from git)
+for skill_dir in "$SCRIPT_DIR/.claude/skills/"*/; do
+  [ "$(basename "$skill_dir")" = "gstack" ] && continue
+  cp -r "$skill_dir" ~/.claude/skills/ 2>/dev/null || true
+done
 cp -r "$SCRIPT_DIR/.claude/commands/"* ~/.claude/commands/ 2>/dev/null || true
+cp -r "$SCRIPT_DIR/.claude/hooks/"* ~/.claude/hooks/ 2>/dev/null || true
+chmod +x ~/.claude/hooks/*.sh 2>/dev/null || true
 cp "$SCRIPT_DIR/.claude/settings.json" ~/.claude/settings.json 2>/dev/null || true
+cp "$SCRIPT_DIR/.claude/CLAUDE.md" ~/.claude/CLAUDE.md 2>/dev/null || true
+cp "$SCRIPT_DIR/.claude/RTK.md" ~/.claude/RTK.md 2>/dev/null || true
 # settings.local.json is per-project, not copied globally
 
-# gstack skills
-if [ ! -d ~/.claude/skills/gstack ]; then
-  echo "       Installing gstack skills..."
-  cd ~/.claude/skills
-  git clone https://github.com/garrytan/gstack.git
-  cd gstack && bun install && bun run build
+# gstack skills (git clone, not copied from dotfiles)
+if [ ! -d ~/.claude/skills/gstack/.git ]; then
+  echo "       Cloning gstack skills..."
+  git clone https://github.com/garrytan/gstack.git ~/.claude/skills/gstack 2>/dev/null || true
 fi
+
+# Shell configs
+echo "[+] Copying shell configs..."
+cp "$SCRIPT_DIR/shell/.zshrc" ~/.zshrc
+cp "$SCRIPT_DIR/shell/.p10k.zsh" ~/.p10k.zsh
+
+# Git config
+echo "[+] Copying git config..."
+cp "$SCRIPT_DIR/git/.gitconfig" ~/.gitconfig
+mkdir -p ~/.config/git
+cp "$SCRIPT_DIR/git/ignore" ~/.config/git/ignore
+
+# GitHub CLI config
+echo "[+] Copying gh config..."
+mkdir -p ~/.config/gh
+cp "$SCRIPT_DIR/gh/config.yml" ~/.config/gh/config.yml
+
+# SSH config
+echo "[+] Copying SSH config..."
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+cp "$SCRIPT_DIR/ssh/config" ~/.ssh/config
+chmod 600 ~/.ssh/config
+
+# cmux config
+echo "[+] Copying cmux config..."
+mkdir -p ~/.config/cmux
+cp "$SCRIPT_DIR/settings.json" ~/.config/cmux/settings.json 2>/dev/null || true
+
+# VS Code settings
+echo "[+] Copying VS Code settings..."
+VSCODE_DIR="$HOME/Library/Application Support/Code/User"
+mkdir -p "$VSCODE_DIR"
+cp "$SCRIPT_DIR/vscode/settings.json" "$VSCODE_DIR/settings.json" 2>/dev/null || true
+
+# VS Code extensions
+echo "[+] Installing VS Code extensions..."
+if command -v code &>/dev/null; then
+  EXTENSIONS=(
+    anthropic.claude-code dbaeumer.vscode-eslint eamodio.gitlens
+    esbenp.prettier-vscode git-ai.git-ai-vscode github.copilot-chat
+    gitpod.gitpod-theme kd3n1z.vscode-material-theme-icons
+    mechatroner.rainbow-csv mhutchie.git-graph ms-python.debugpy
+    ms-python.python ms-python.vscode-pylance ms-python.vscode-python-envs
+    ms-toolsai.jupyter ms-toolsai.jupyter-keymap ms-toolsai.jupyter-renderers
+    ms-toolsai.vscode-jupyter-cell-tags ms-toolsai.vscode-jupyter-slideshow
+    rvest.vs-code-prettier-eslint shd101wyy.markdown-preview-enhanced
+  )
+  for ext in "${EXTENSIONS[@]}"; do
+    code --install-extension "$ext" --force 2>/dev/null || true
+  done
+else
+  echo "       'code' CLI not found, skipping VS Code extensions"
+fi
+
+# macOS system preferences
+echo "[+] Applying macOS preferences..."
+bash "$SCRIPT_DIR/macos.sh"
 
 echo ""
 echo "=============================="
@@ -95,32 +158,10 @@ echo "  Setup complete!"
 echo "=============================="
 echo ""
 echo "Manual steps remaining:"
-echo "  1. Copy your SSH keys to ~/.ssh/"
+echo "  1. Copy your SSH keys to ~/.ssh/ (id_ed25519 + id_ed25519.pub)"
 echo "  2. Copy ~/.secrets (env vars)"
-echo "  3. Copy ~/.p10k.zsh (or run: p10k configure)"
-echo "  4. Install VS Code / Cursor extensions:"
-echo "     code --install-extension anthropic.claude-code"
-echo "     code --install-extension dbaeumer.vscode-eslint"
-echo "     code --install-extension eamodio.gitlens"
-echo "     code --install-extension esbenp.prettier-vscode"
-echo "     code --install-extension git-ai.git-ai-vscode"
-echo "     code --install-extension github.copilot-chat"
-echo "     code --install-extension gitpod.gitpod-theme"
-echo "     code --install-extension kd3n1z.vscode-material-theme-icons"
-echo "     code --install-extension mechatroner.rainbow-csv"
-echo "     code --install-extension mhutchie.git-graph"
-echo "     code --install-extension ms-python.debugpy"
-echo "     code --install-extension ms-python.python"
-echo "     code --install-extension ms-python.vscode-pylance"
-echo "     code --install-extension ms-python.vscode-python-envs"
-echo "     code --install-extension ms-toolsai.jupyter"
-echo "     code --install-extension ms-toolsai.jupyter-keymap"
-echo "     code --install-extension ms-toolsai.jupyter-renderers"
-echo "     code --install-extension ms-toolsai.vscode-jupyter-cell-tags"
-echo "     code --install-extension ms-toolsai.vscode-jupyter-slideshow"
-echo "     code --install-extension rvest.vs-code-prettier-eslint"
-echo "     code --install-extension shd101wyy.markdown-preview-enhanced"
-echo "  5. Configure git:"
-echo "     git config --global user.name \"your-username\""
-echo "     git config --global user.email \"your_email@example.com\""
+echo "  3. Run: gh auth login"
+echo "  4. Run: op account add  (1Password CLI)"
+echo "  5. VS Code extensions will be installed if 'code' CLI is available"
+echo "  6. Install rtk: cargo install rtk  (for Claude Code token savings hook)"
 echo ""
