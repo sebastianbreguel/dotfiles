@@ -17,11 +17,11 @@ fi
 
 # 2. Homebrew Formulae
 echo "[2/9] Installing Homebrew formulae..."
-brew install aitop ca-certificates ffmpeg fzf gh go htop jq lame mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck tmux zsh zsh-autosuggestions 2>/dev/null || true
+brew install aitop ca-certificates deno ffmpeg fzf gh git-filter-repo go htop jq lame lean-ctx mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck tmux zsh zsh-autosuggestions 2>/dev/null || true
 
 # 3. Homebrew Casks
 echo "[3/9] Installing Homebrew casks..."
-brew install --cask 1password-cli alt-tab betterdisplay cmux font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp onyx 2>/dev/null || true
+brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp onyx 2>/dev/null || true
 
 # 4. Oh My Zsh + Powerlevel10k
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
