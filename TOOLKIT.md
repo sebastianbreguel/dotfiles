@@ -210,6 +210,8 @@
 | **ilya-sutskever** | Persona de Sutskever: scaling laws, safety, convicciones profundas sobre AI. |
 | **leonardo-da-vinci** | Persona de Da Vinci: pensamiento polimata, patrones cross-domain, arte + ciencia. |
 | **yann-lecun** | Persona de LeCun: world models, critica contrarian, rigor cientifico combativo. |
+| **paul-graham** | Persona de PG: evaluacion de startups first-principles, escritura clara, contrarian product thinking. |
+| **steve-jobs** | Persona de Jobs: vision de producto, obsesion por el diseno, simplicidad por sustraccion. |
 | **ops-impact-analyst** | ROI de features, metricas de negocio, reportes ejecutivos. |
 | **tw93** | Gatekeeper de Mole: minimalismo, safety-first, scope discipline. |
 | **Paul Graham** | Piensa como Paul Graham: startups, simplicidad, growth, y ensayos claros. |
@@ -252,5 +254,5 @@
 
 ---
 
-> **150 herramientas** en total. 137 free, 9 freemium, 4 paid.
+> **152 herramientas** en total. 139 free, 9 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.

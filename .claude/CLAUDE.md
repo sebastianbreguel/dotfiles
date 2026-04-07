@@ -3,6 +3,7 @@
 # Git Commits
 
 - NEVER add Co-Authored-By lines to git commits
+- NEVER add "Generated with Claude Code" or similar attribution lines in PRs, commits, or any output
 
 # Verification
 
