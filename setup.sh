@@ -193,7 +193,10 @@ fi
 # macOS system preferences (no-op on Linux)
 if $IS_MAC; then
   echo "[+] Applying macOS preferences..."
-  bash "$SCRIPT_DIR/macos.sh"
+  osascript -e 'tell application "System Preferences" to quit' 2>/dev/null || true
+  defaults write com.apple.dock autohide -bool true
+  defaults write com.apple.dock tilesize -int 128
+  killall Dock 2>/dev/null || true
 fi
 
 # Default shell → zsh on Linux
