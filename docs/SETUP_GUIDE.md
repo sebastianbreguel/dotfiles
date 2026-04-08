@@ -177,7 +177,6 @@ brew install --cask \
   jordanbaird-ice \
   macs-fan-control \
   obsidian \
-  onyx \
   postman \
   rectangle \
   slack \
@@ -206,7 +205,6 @@ brew install --cask \
 | Cloudflare WARP | `brew install --cask cloudflare-warp` |
 | Drata Agent | Manual (empresa) |
 | Neo4j Desktop | Manual |
-| OnyX | `brew install --cask onyx` |
 
 ---
 
@@ -468,7 +466,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew install ca-certificates ffmpeg fzf htop lame mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep sdl2 tmux zsh zsh-autosuggestions
 
 # 3. Casks
-brew install --cask 1password-cli alt-tab betterdisplay cmux font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp onyx
+brew install --cask 1password-cli alt-tab betterdisplay cmux font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp
 
 # 4. Oh My Zsh + P10k
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

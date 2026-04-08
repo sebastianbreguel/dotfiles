@@ -21,7 +21,7 @@ brew install aitop bats-core ca-certificates deno ffmpeg fzf gh git-filter-repo 
 
 # 3. Homebrew Casks
 echo "[3/9] Installing Homebrew casks..."
-brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp onyx 2>/dev/null || true
+brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp 2>/dev/null || true
 
 # 4. Oh My Zsh + Powerlevel10k
 if [ ! -d "$HOME/.oh-my-zsh" ]; then

@@ -37,7 +37,6 @@
 | **[Ice](https://icemenubar.app)** | Menu bar manager. Oculta iconos para mantener la barra limpia. | `brew install --cask jordanbaird-ice` | free |
 | **[Stats](https://github.com/exelban/stats)** | Monitor del sistema en la menu bar. CPU, RAM, disco, red. | `brew install --cask stats` | free |
 | **[Macs Fan Control](https://crystalidea.com/macs-fan-control)** | Control manual de ventiladores y monitoreo de temperatura. | `brew install --cask macs-fan-control` | freemium |
-| **[OnyX](https://www.titanium-software.fr/en/onyx.html)** | Mantenimiento y optimizacion de macOS. Limpieza de cache. | `brew install --cask onyx` | free |
 | **[1Password CLI](https://1password.com)** | Acceso a passwords desde terminal. Secrets management. | `brew install --cask 1password-cli` | paid |
 | **cmux** | Multiplexor de sesiones Claude Code en paralelo. | `brew install --cask cmux` | free |
 | **[RightFont](https://rightfontapp.com)** | Gestor de fuentes para macOS. Preview, activacion, organizacion. | `Manual download` | freemium |
