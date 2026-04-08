@@ -100,6 +100,10 @@ fi
 # 7. Global npm packages (pnpm first, then use pnpm for the rest)
 echo "[7/9] Installing global npm packages..."
 npm install -g pnpm@10.30.3 2>/dev/null || true
+export PNPM_HOME="$HOME/.local/share/pnpm"
+mkdir -p "$PNPM_HOME"
+export PATH="$PNPM_HOME:$PATH"
+pnpm setup 2>/dev/null || true
 pnpm install -g @anthropic-ai/claude-code @google/gemini-cli @openai/codex @kilocode/cli @qwen-code/qwen-code @cubic-dev-ai/cli @probelabs/probe agent-browser mint openclaw op puzldai vercel 2>/dev/null || true
 
 # 8. Python packages
