@@ -6,22 +6,57 @@ echo "  Dotfiles Setup Script"
 echo "=============================="
 echo ""
 
-# 1. Homebrew
-if ! command -v brew &>/dev/null; then
-  echo "[1/9] Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-  echo "[1/9] Homebrew already installed, skipping..."
+OS="$(uname -s)"
+IS_MAC=false
+IS_LINUX=false
+[[ "$OS" == "Darwin" ]] && IS_MAC=true
+[[ "$OS" == "Linux"  ]] && IS_LINUX=true
+
+if ! $IS_MAC && ! $IS_LINUX; then
+  echo "ERROR: unsupported OS '$OS'"; exit 1
 fi
 
-# 2. Homebrew Formulae
-echo "[2/9] Installing Homebrew formulae..."
-brew install aitop bats-core ca-certificates deno ffmpeg fzf gh git-filter-repo glow go htop jq lame lean-ctx mas mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck sox tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
+# 1. Package manager
+if $IS_MAC; then
+  if ! command -v brew &>/dev/null; then
+    echo "[1/9] Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || eval "$(/usr/local/bin/brew shellenv)" 2>/dev/null || true
+  else
+    echo "[1/9] Homebrew already installed."
+  fi
+else
+  if ! command -v apt-get &>/dev/null; then
+    echo "ERROR: only Debian/Ubuntu Linux supported."; exit 1
+  fi
+  echo "[1/9] apt-get available."
+fi
 
-# 3. Homebrew Casks
-echo "[3/9] Installing Homebrew casks..."
-brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp 2>/dev/null || true
+# 2. CLI packages
+echo "[2/9] Installing CLI packages..."
+if $IS_MAC; then
+  brew install aitop bats-core ca-certificates deno ffmpeg fzf gh git-filter-repo glow go htop jq lame lean-ctx mas mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck sox tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
+else
+  sudo apt-get update -y
+  sudo apt-get install -y \
+    build-essential ca-certificates curl wget git gnupg lsb-release \
+    zsh tmux htop jq ripgrep fzf unzip \
+    python3 python3-pip python3-venv \
+    postgresql-client redis-tools ffmpeg sox 2>/dev/null || true
+  if ! command -v gh &>/dev/null; then
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list
+    sudo apt-get update -y && sudo apt-get install -y gh
+  fi
+fi
+
+# 3. GUI apps (macOS only)
+if $IS_MAC; then
+  echo "[3/9] Installing Homebrew casks..."
+  brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp 2>/dev/null || true
+else
+  echo "[3/9] Skipping GUI casks (Linux)."
+fi
 
 # 4. Oh My Zsh + Powerlevel10k
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -127,11 +162,13 @@ echo "[+] Copying cmux config..."
 mkdir -p ~/.config/cmux
 cp "$SCRIPT_DIR/settings.json" ~/.config/cmux/settings.json 2>/dev/null || true
 
-# VS Code settings
-echo "[+] Copying VS Code settings..."
-VSCODE_DIR="$HOME/Library/Application Support/Code/User"
-mkdir -p "$VSCODE_DIR"
-cp "$SCRIPT_DIR/vscode/settings.json" "$VSCODE_DIR/settings.json" 2>/dev/null || true
+# VS Code settings (macOS only)
+if $IS_MAC; then
+  echo "[+] Copying VS Code settings..."
+  VSCODE_DIR="$HOME/Library/Application Support/Code/User"
+  mkdir -p "$VSCODE_DIR"
+  cp "$SCRIPT_DIR/vscode/settings.json" "$VSCODE_DIR/settings.json" 2>/dev/null || true
+fi
 
 # VS Code extensions
 echo "[+] Installing VS Code extensions..."
@@ -153,9 +190,16 @@ else
   echo "       'code' CLI not found, skipping VS Code extensions"
 fi
 
-# macOS system preferences
-echo "[+] Applying macOS preferences..."
-bash "$SCRIPT_DIR/macos.sh"
+# macOS system preferences (no-op on Linux)
+if $IS_MAC; then
+  echo "[+] Applying macOS preferences..."
+  bash "$SCRIPT_DIR/macos.sh"
+fi
+
+# Default shell → zsh on Linux
+if $IS_LINUX && [ "$(basename "$SHELL")" != "zsh" ] && command -v zsh &>/dev/null; then
+  chsh -s "$(command -v zsh)" || true
+fi
 
 echo ""
 echo "=============================="

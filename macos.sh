@@ -2,6 +2,11 @@
 # macOS system preferences
 # Run once after a fresh install. Requires logout/restart for some settings to apply.
 
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  echo "macos.sh: not macOS, skipping."
+  exit 0
+fi
+
 echo "Applying macOS preferences..."
 
 # Close System Preferences to avoid conflicts
