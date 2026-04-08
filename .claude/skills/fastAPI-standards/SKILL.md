@@ -1,7 +1,7 @@
 ---
 name: fastAPI-standards
 description: >
-  Guide for building and refactoring a FastAPI + Prefect + PostgreSQL/pgvector analytics pipeline
+  Guide for building and refactoring a FastAPI + PostgreSQL/pgvector analytics pipeline
   that extracts insights from chat data using LLM classification, embeddings, UMAP/HDBSCAN clustering,
   and narrative generation. Use this skill whenever working on this project's codebase — including
   adding features, refactoring, debugging, creating new endpoints, modifying pipeline stages,
@@ -20,7 +20,7 @@ labeling → narrative generation, served via FastAPI with results stored in Pos
 | Layer              | Technology                                      |
 |--------------------|------------------------------------------------|
 | API                | FastAPI + asyncpg + SQLAlchemy (async) + Alembic |
-| Orchestration      | Prefect                                         |
+| Orchestration      | Custom flows (file-based stages)                |
 | Database           | PostgreSQL + pgvector                           |
 | Embeddings         | Jina AI (or configurable provider)              |
 | Clustering         | UMAP + HDBSCAN                                  |
@@ -74,8 +74,8 @@ When creating new files or refactoring, follow this layout:
     └── pipeline_system/
         ├── __init__.py
         ├── config.py              # Pipeline-specific config (extends base)
-        ├── flows.py               # Prefect flows
-        ├── tasks.py               # Prefect tasks
+        ├── flows.py               # Pipeline flows
+        ├── tasks.py               # Pipeline tasks
         ├── stages/                # One file per pipeline stage
         │   ├── __init__.py
         │   ├── preprocessor.py
@@ -106,6 +106,141 @@ Key structural rules:
 - **No duplicate LLM clients.** `services/llm.py` is the ONE place LLM clients are initialized. Everything else imports from it.
 - **All Pydantic schemas live in `models/`.** Routers, pipeline stages, and services import from there.
 - **Config flows down.** `src/config.py` holds all env vars. `pipeline_system/config.py` extends it for pipeline-specific settings. Nothing else reads env vars directly.
+
+## Pro Techniques (FastAPI ≥0.110)
+
+These are the modern, production-grade idioms. Prefer them over older patterns.
+
+### 1. Lifespan over `@app.on_event`
+`on_event("startup"/"shutdown")` is deprecated. Use an async context manager:
+
+```python
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    app.state.llm = build_llm_client()
+    app.state.db_engine = create_async_engine(...)
+    yield
+    await app.state.db_engine.dispose()
+
+app = FastAPI(lifespan=lifespan)
+```
+
+Use this for: warming model clients, opening pools, prefetching pipeline config, registering background workers.
+
+### 2. `Annotated` dependencies (PEP 593)
+Avoid repeating `Depends(...)` in every signature. Define type aliases in `deps.py`:
+
+```python
+DBSession = Annotated[AsyncSession, Depends(get_db)]
+CurrentUser = Annotated[User, Depends(get_api_key)]
+LLM = Annotated[AnthropicClient, Depends(get_llm)]
+
+@router.get("/insights")
+async def list_insights(db: DBSession, user: CurrentUser): ...
+```
+
+### 3. Dependencies with `yield` + exception handling
+Sessions must rollback on `HTTPException` and close in `finally`:
+
+```python
+async def get_db():
+    async with SessionLocal() as session:
+        try:
+            yield session
+        except HTTPException:
+            await session.rollback()
+            raise
+        finally:
+            await session.close()
+```
+
+### 4. Router-level dependencies and prefixes
+Don't repeat auth on every endpoint. Set it on the router:
+
+```python
+router = APIRouter(
+    prefix="/pipeline",
+    tags=["pipeline"],
+    dependencies=[Depends(get_api_key)],
+)
+```
+
+### 5. Settings via `lru_cache`
+`Settings()` should be a singleton. Wrap with `@lru_cache` and inject via `Depends` so tests can override:
+
+```python
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
+
+SettingsDep = Annotated[Settings, Depends(get_settings)]
+```
+
+In tests: `app.dependency_overrides[get_settings] = lambda: Settings(env="test")`.
+
+### 6. BackgroundTasks vs real queue
+`BackgroundTasks` runs **in the same process after the response**. OK for: sending a webhook, logging, cache invalidation. **NOT OK** for pipeline runs — those must go to a real queue (Prefect/RQ/Celery/cron) so they survive restarts and don't block workers.
+
+### 7. Streaming responses (SSE) for long LLM calls
+Use `StreamingResponse` or `EventSourceResponse` for token-by-token narrative streaming:
+
+```python
+@router.get("/narrate/stream")
+async def narrate_stream(run_id: str) -> EventSourceResponse:
+    async def gen():
+        async for token in llm.stream(prompt):
+            yield {"data": token}
+    return EventSourceResponse(gen())
+```
+
+### 8. Middleware order matters
+Middleware is applied **bottom-up** (last added = outermost). Recommended order:
+1. `CORSMiddleware` (outermost — must see preflight)
+2. `GZipMiddleware(minimum_size=1000)`
+3. Custom request-id / structured logging middleware
+4. `TrustedHostMiddleware` in prod
+
+### 9. Centralized exception handlers
+Don't sprinkle `try/except` in routers. Register once on the app:
+
+```python
+@app.exception_handler(PipelineError)
+async def pipeline_error_handler(request, exc: PipelineError):
+    return JSONResponse(status_code=422, content={"error": exc.code, "detail": exc.detail})
+```
+
+### 10. Async tests with `httpx.AsyncClient` + lifespan
+`TestClient` does NOT trigger lifespan in async tests. Use `asgi-lifespan`:
+
+```python
+from httpx import AsyncClient, ASGITransport
+from asgi_lifespan import LifespanManager
+
+@pytest.mark.anyio
+async def test_endpoint():
+    async with LifespanManager(app), AsyncClient(transport=ASGITransport(app), base_url="http://t") as ac:
+        r = await ac.get("/health")
+        assert r.status_code == 200
+```
+
+### 11. `response_model` with `exclude_none` / `model_config`
+For dashboard endpoints with optional fields, use `response_model_exclude_none=True` to keep payloads small. Define `model_config = ConfigDict(from_attributes=True)` on Pydantic v2 schemas that map from SQLAlchemy ORM rows.
+
+### 12. Concurrency limiter for external APIs
+Wrap LLM/embedding calls in an `asyncio.Semaphore` exposed via `services/llm.py` so the whole app shares a single rate limit (avoids hammering Anthropic/Jina from parallel pipeline stages).
+
+### 13. Structured logging with request-id
+Use `structlog` + a middleware that sets `contextvars` (request_id, pipeline_run_id, org_id). Every log line in a request is automatically tagged — critical for debugging multi-tenant pipelines.
+
+### 14. Health vs readiness
+- `/health` → cheap liveness (process up). No DB call.
+- `/ready` → checks DB, LLM key, embedding service. Used by k8s/Cloud Run readiness probe.
+
+### 15. Pydantic v2 perf
+Use `model_dump(mode="json")` instead of `.dict()`. For hot paths, `TypeAdapter(list[Model]).validate_python(...)` is much faster than per-item validation.
 
 ## Architecture Rules
 
@@ -155,7 +290,7 @@ Each step is safe to do independently without breaking functionality.
 
 Every pipeline stage must:
 1. Accept and return Pydantic models (defined in `src/models/pipeline.py`)
-2. Be a Prefect `@task` with retries and result caching
+2. Be idempotent with file-based caching
 3. Accept a `pipeline_run_id` parameter and tag all outputs with it
 4. Use the shared embedding/LLM services (never instantiate clients directly)
 5. Be idempotent — safe to re-run without side effects
@@ -167,7 +302,7 @@ Every FastAPI endpoint must:
 1. Use Pydantic models for request/response (from `src/models/`)
 2. Get DB session via `Depends(get_db)` from `deps.py`
 3. Get auth via `Depends(get_api_key)` from `deps.py`
-4. Never run pipeline logic synchronously — trigger via Prefect, serve results from DB
+4. Never run pipeline logic synchronously — trigger via background task, serve results from DB
 5. Use cursor-based pagination for list endpoints
 6. Return consistent error responses using a shared exception handler
 

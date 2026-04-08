@@ -155,6 +155,7 @@ brew install \
   tectonic \
   tmux \
   yvgude/lean-ctx/lean-ctx \
+  zig \
   zsh-autosuggestions
 ```
 

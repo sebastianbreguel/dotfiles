@@ -99,6 +99,11 @@
 | **[PostgreSQL 15](https://www.postgresql.org)** | Base de datos relacional. El estandar de la industria. | free |
 | **[Redis](https://redis.io)** | Base de datos in-memory. Cache, queues, pub/sub. | free |
 | **[git-filter-repo](https://github.com/newren/git-filter-repo)** | Reescribir historial de git de forma segura. Reemplaza filter-branch. | free |
+| **[Zig](https://ziglang.org)** | Lenguaje de programacion de sistemas. Compilador y build system. | free |
+| **[Ruff](https://docs.astral.sh/ruff)** | Linter y formatter para Python. Ultra rapido, reemplaza flake8+isort+black. | free |
+| **[pre-commit](https://pre-commit.com)** | Framework de hooks para git. Ejecuta linters y checks antes de cada commit. | free |
+| **[complexipy](https://github.com/rohaquinern/complexipy)** | Analizador de complejidad cognitiva para Python. Detecta funciones dificiles de mantener. | free |
+| **[code-review-graph](https://github.com/sebastianbreguel/code-review-graph)** | MCP server para busqueda semantica de codigo. Grafo de dependencias y analisis de impacto. | free |
 
 ### Package Managers & Deploy
 
@@ -129,6 +134,7 @@
 | **[mole](https://github.com/davrodpin/mole)** | SSH tunneling simplificado. Crea tunnels con un comando. | free |
 | **[Glow](https://github.com/charmbracelet/glow)** | Render de Markdown en la terminal con syntax highlighting y paginacion. | free |
 | **[mas](https://github.com/mas-cli/mas)** | CLI para Mac App Store. Instalar, actualizar y buscar apps desde la terminal. | free |
+| **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** | Descargador de video/audio de YouTube y +1000 sitios. Fork mejorado de youtube-dl. | free |
 | **[lean-ctx](https://github.com/yvgude/lean-ctx)** | Optimizador de contexto para LLMs. Comprime salida de comandos manteniendo informacion clave. | free |
 
 ## 3. Shell Setup
@@ -158,6 +164,8 @@
 | **claude-hud** | HUD (Heads-Up Display) para Claude Code. Status line con info en tiempo real. | free |
 | **feature-dev** | Asistente de desarrollo de features. Planificacion, implementacion, testing. | free |
 | **claude-subconscious** | Agente subconsciente de Letta AI. Memoria persistente entre sesiones. | free |
+| **[caveman](https://github.com/JuliusBrussee/caveman)** | Modo cavernicola. Comprime respuestas 50-75% eliminando relleno, articulos y filler. | free |
+| **[code-review](https://github.com/anthropics/claude-code)** | Plugin oficial de Anthropic para code review de PRs. | free |
 
 ### Skills
 
@@ -260,5 +268,5 @@
 
 ---
 
-> **158 herramientas** en total. 145 free, 9 freemium, 4 paid.
+> **166 herramientas** en total. 153 free, 9 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.

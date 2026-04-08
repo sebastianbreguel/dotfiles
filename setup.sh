@@ -17,7 +17,7 @@ fi
 
 # 2. Homebrew Formulae
 echo "[2/9] Installing Homebrew formulae..."
-brew install aitop bats-core ca-certificates deno ffmpeg fzf gh git-filter-repo glow go htop jq lame lean-ctx mas mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck sox tectonic tmux zsh zsh-autosuggestions 2>/dev/null || true
+brew install aitop bats-core ca-certificates deno ffmpeg fzf gh git-filter-repo glow go htop jq lame lean-ctx mas mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck sox tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
 
 # 3. Homebrew Casks
 echo "[3/9] Installing Homebrew casks..."
@@ -69,6 +69,10 @@ pnpm install -g @anthropic-ai/claude-code @google/gemini-cli @openai/codex @kilo
 
 # 8. Python packages
 echo "[8/9] Installing Python packages..."
+uv tool install ruff pre-commit complexipy code-review-graph yt-dlp 2>/dev/null || true
+
+# 8b. Python packages
+echo "[8b/9] Installing Python packages..."
 uv pip install --system anthropic beautifulsoup4 bertopic fastapi hdbscan httpx numpy pandas plotly pydantic requests rich scikit-learn scipy sentence-transformers torch transformers typer umap-learn uvicorn python-dotenv pyyaml 2>/dev/null || true
 
 # 9. Claude Code config
@@ -87,6 +91,7 @@ chmod +x ~/.claude/hooks/*.sh 2>/dev/null || true
 cp "$SCRIPT_DIR/.claude/settings.json" ~/.claude/settings.json 2>/dev/null || true
 cp "$SCRIPT_DIR/.claude/CLAUDE.md" ~/.claude/CLAUDE.md 2>/dev/null || true
 cp "$SCRIPT_DIR/.claude/RTK.md" ~/.claude/RTK.md 2>/dev/null || true
+cp "$SCRIPT_DIR/.mcp.json" ~/.mcp.json 2>/dev/null || true
 # settings.local.json is per-project, not copied globally
 
 # gstack skills (git clone, not copied from dotfiles)

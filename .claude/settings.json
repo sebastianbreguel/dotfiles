@@ -59,7 +59,8 @@
     "code-simplifier@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true
+    "feature-dev@claude-plugins-official": false,
+    "caveman@caveman": true
   },
   "extraKnownMarketplaces": {
     "claude-hud": {
@@ -84,6 +85,12 @@
       "source": {
         "source": "github",
         "repo": "giancarloerra/socraticode"
+      }
+    },
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
       }
     }
   },
