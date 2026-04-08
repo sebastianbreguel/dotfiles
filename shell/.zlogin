@@ -2,4 +2,6 @@
 if [[ -n "$SSH_CONNECTION" && -f "$HOME/vambe-cli.js" ]]; then
   node "$HOME/vambe-cli.js"
   [ -t 0 ] && stty sane 2>/dev/null
+  true
 fi
+true
