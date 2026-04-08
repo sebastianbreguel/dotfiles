@@ -30,7 +30,7 @@ export NVM_DIR="$HOME/.nvm"
 . "$HOME/.local/bin/env"
 
 # pnpm
-export PNPM_HOME="/Users/sebabreguel/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -41,4 +41,4 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Aliases
-alias claude-mem='bun "/Users/sebabreguel/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'

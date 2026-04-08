@@ -143,6 +143,7 @@ fi
 echo "[+] Copying shell configs..."
 cp "$SCRIPT_DIR/shell/.zshrc" ~/.zshrc
 cp "$SCRIPT_DIR/shell/.p10k.zsh" ~/.p10k.zsh
+cp "$SCRIPT_DIR/shell/.zlogin" ~/.zlogin 2>/dev/null || true
 
 # Git config
 echo "[+] Copying git config..."

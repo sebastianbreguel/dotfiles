@@ -116,6 +116,7 @@ cp "$SCRIPT_DIR/.mcp.json"             ~/.mcp.json             2>/dev/null || tr
 echo "[7/7] Copying dotfiles..."
 cp "$SCRIPT_DIR/shell/.zshrc"    ~/.zshrc     2>/dev/null || true
 cp "$SCRIPT_DIR/shell/.p10k.zsh" ~/.p10k.zsh  2>/dev/null || true
+cp "$SCRIPT_DIR/shell/.zlogin"   ~/.zlogin    2>/dev/null || true
 cp "$SCRIPT_DIR/git/.gitconfig"  ~/.gitconfig 2>/dev/null || true
 mkdir -p ~/.config/git ~/.config/gh
 cp "$SCRIPT_DIR/git/ignore"      ~/.config/git/ignore    2>/dev/null || true
