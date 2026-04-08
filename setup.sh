@@ -17,7 +17,7 @@ fi
 
 # 2. Homebrew Formulae
 echo "[2/9] Installing Homebrew formulae..."
-brew install aitop ca-certificates deno ffmpeg fzf gh git-filter-repo go htop jq lame lean-ctx mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck tmux zsh zsh-autosuggestions 2>/dev/null || true
+brew install aitop bats-core ca-certificates deno ffmpeg fzf gh git-filter-repo glow go htop jq lame lean-ctx mas mole ncdu nvm nvtop openssl@3 postgresql@15 redis ripgrep rtk sdl2 shellcheck sox tectonic tmux zsh zsh-autosuggestions 2>/dev/null || true
 
 # 3. Homebrew Casks
 echo "[3/9] Installing Homebrew casks..."

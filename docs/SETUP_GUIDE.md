@@ -136,11 +136,15 @@ brew install \
   ffmpeg \
   fzf \
   gh \
+  git-filter-repo \
+  glow \
   go \
   htop \
   jq \
+  mas \
   mole \
   ncdu \
+  nvm \
   nvtop \
   postgresql@15 \
   redis \
@@ -150,6 +154,7 @@ brew install \
   sox \
   tectonic \
   tmux \
+  yvgude/lean-ctx/lean-ctx \
   zsh-autosuggestions
 ```
 

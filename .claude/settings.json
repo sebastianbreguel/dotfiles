@@ -88,7 +88,7 @@
     }
   },
   "effortLevel": "medium",
-  "autoCompactWindow": 170000,
+  "autoCompactWindow": 200000,
   "voiceEnabled": true,
   "autoDreamEnabled": false
 }

@@ -98,6 +98,7 @@
 | **[tectonic](https://tectonic-typesetting.github.io)** | Compilador de LaTeX moderno. Descarga paquetes automaticamente. | free |
 | **[PostgreSQL 15](https://www.postgresql.org)** | Base de datos relacional. El estandar de la industria. | free |
 | **[Redis](https://redis.io)** | Base de datos in-memory. Cache, queues, pub/sub. | free |
+| **[git-filter-repo](https://github.com/newren/git-filter-repo)** | Reescribir historial de git de forma segura. Reemplaza filter-branch. | free |
 
 ### Package Managers & Deploy
 
@@ -106,6 +107,7 @@
 | **[pnpm](https://pnpm.io)** | Package manager rapido y eficiente en disco. | free |
 | **[uv](https://docs.astral.sh/uv/)** | Python package manager ultra rapido. Escrito en Rust. | free |
 | **[Vercel](https://vercel.com)** | CLI para deploy de apps web. | freemium |
+| **[NVM](https://github.com/nvm-sh/nvm)** | Node Version Manager. Instalar y cambiar entre versiones de Node.js. | free |
 
 ### Terminal Tools
 
@@ -125,6 +127,9 @@
 | **[RTK (Rust Token Killer)](https://github.com/nicholasgasior/rtk)** | Proxy CLI que ahorra 60-90% de tokens en operaciones de dev. | free |
 | **[sox](https://sox.sourceforge.net)** | Procesamiento de audio en linea de comandos. Grabacion, conversion, efectos. | free |
 | **[mole](https://github.com/davrodpin/mole)** | SSH tunneling simplificado. Crea tunnels con un comando. | free |
+| **[Glow](https://github.com/charmbracelet/glow)** | Render de Markdown en la terminal con syntax highlighting y paginacion. | free |
+| **[mas](https://github.com/mas-cli/mas)** | CLI para Mac App Store. Instalar, actualizar y buscar apps desde la terminal. | free |
+| **[lean-ctx](https://github.com/yvgude/lean-ctx)** | Optimizador de contexto para LLMs. Comprime salida de comandos manteniendo informacion clave. | free |
 
 ## 3. Shell Setup
 
@@ -183,6 +188,7 @@
 | **/loop** | `Built-in skill` | Ejecuta un prompt o slash command en intervalo recurrente. |
 | **/schedule** | `Built-in skill` | Crea agentes remotos que ejecutan en cron schedule. |
 | **/claude-api** | `Built-in skill` | Guia para construir apps con Claude API y Anthropic SDK. |
+| **/avoid-ai-writing** | `Built-in skill` | Detecta y reescribe patrones de escritura AI. Audita contenido para eliminar AI-isms. |
 | **Sync Dotfiles** | `/sync-dotfiles` | Sincroniza config de la maquina al repo. Detecta herramientas nuevas, actualiza data.js y regenera docs. |
 | **Browser (headless)** | `/browser` | Headless browser para QA testing. Screenshots, navegacion, verificacion de estado. |
 
@@ -201,6 +207,7 @@
 | **ai-researcher** | Papers, experimentos, metodologia, escritura cientifica. |
 | **prompt-engineering** | Craft y optimizar prompts para LLMs. |
 | **data-science-analytics** | EDA, estadisticas, visualizacion, ML. |
+| **data-pipeline-engineer** | ETL/ELT, orchestration, ML workflows, FastAPI + data stores. |
 | **neuroscience-ai-expert** | Neurociencia, mecanismos neurales, brain-computer interfaces. |
 | **neuroai-research-director** | Metodologia de investigacion, NeuroAI, disenio de experimentos. |
 | **thesis-reviewer** | Review de tesis, deteccion de texto AI, escritura academica. |
@@ -214,7 +221,6 @@
 | **steve-jobs** | Persona de Jobs: vision de producto, obsesion por el diseno, simplicidad por sustraccion. |
 | **ops-impact-analyst** | ROI de features, metricas de negocio, reportes ejecutivos. |
 | **tw93** | Gatekeeper de Mole: minimalismo, safety-first, scope discipline. |
-| **Paul Graham** | Piensa como Paul Graham: startups, simplicidad, growth, y ensayos claros. |
 
 ### Commands
 
@@ -254,5 +260,5 @@
 
 ---
 
-> **152 herramientas** en total. 139 free, 9 freemium, 4 paid.
+> **158 herramientas** en total. 145 free, 9 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.
