@@ -89,6 +89,10 @@ command -v uv  &>/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
 # 5. Global CLI tools
 echo "[5/7] Installing CLIs..."
 npm install -g pnpm@10.30.3 2>/dev/null || true
+export PNPM_HOME="$HOME/.local/share/pnpm"
+mkdir -p "$PNPM_HOME"
+export PATH="$PNPM_HOME:$PATH"
+pnpm setup 2>/dev/null || true
 pnpm install -g @anthropic-ai/claude-code @google/gemini-cli @openai/codex 2>/dev/null || true
 uv tool install ruff pre-commit yt-dlp 2>/dev/null || true
 
