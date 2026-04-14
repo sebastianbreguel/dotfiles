@@ -25,7 +25,7 @@ dotfiles/
 
 ### Claude Code Config (`.claude/`)
 
-Lo que mas diferencia este setup. 16 agentes custom, 22+ skills, y un sistema de hooks que automatiza el workflow:
+Lo que mas diferencia este setup. 25 agentes custom, 30+ skills, y un sistema de hooks que automatiza el workflow:
 
 **Agentes** — personalidades especializadas que se invocan por tarea:
 
@@ -105,7 +105,7 @@ Esto copia configs, detecta herramientas nuevas/removidas, actualiza `data.js`, 
 |------|-------------|
 | Shell | zsh + Oh My Zsh + Powerlevel10k + fzf |
 | Editor | Cursor + VS Code (21 extensions) |
-| AI | Claude Code (16 agentes, 22+ skills, 10 plugins) |
+| AI | Claude Code (25 agentes, 30+ skills, 10 plugins) |
 | Terminal | tmux + cmux + htop + nvtop |
 | Langs | Node 25 (NVM) + Python 3.14 (uv) + Bun + Go + Deno |
 | DB | PostgreSQL 15 + Redis |

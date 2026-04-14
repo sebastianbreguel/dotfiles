@@ -1,16 +1,23 @@
-# React + Vite
+# Dotfiles Toolkit Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pagina interactiva para explorar las 150+ herramientas del setup. React 19 + Vite.
 
-Currently, two official plugins are available:
+## Dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+pnpm install && pnpm dev
+```
 
-## React Compiler
+## Estructura
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `src/data.js` — single source of truth con todas las herramientas
+- `src/App.jsx` — layout principal con busqueda, categorias, dark mode
+- `src/components/` — cards, panel de detalle, seccion "How It Works" con videos Manim
 
-## Expanding the ESLint configuration
+## Build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+pnpm build
+```
+
+Output en `dist/`. Deployable en cualquier hosting estatico.
