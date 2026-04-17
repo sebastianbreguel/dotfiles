@@ -13,7 +13,7 @@ dotfiles/
   ssh/            SSH config
   vscode/         VS Code settings
   gh/             GitHub CLI config
-  .claude/        16 agentes, 22+ skills, hooks, commands, settings
+  .claude/        25 agentes, 24 skills, hooks, commands, settings
   app/            Pagina React con todo el catalogo (Vite + React 19)
   animations/     Videos Manim del ecosistema Claude Code
   scripts/        Generador de docs desde data.js
@@ -25,7 +25,7 @@ dotfiles/
 
 ### Claude Code Config (`.claude/`)
 
-Lo que mas diferencia este setup. 25 agentes custom, 30+ skills, y un sistema de hooks que automatiza el workflow:
+Lo que mas diferencia este setup. 25 agentes custom, 24 skills, y un sistema de hooks que automatiza el workflow:
 
 **Agentes** — personalidades especializadas que se invocan por tarea:
 
@@ -51,7 +51,7 @@ Lo que mas diferencia este setup. 25 agentes custom, 30+ skills, y un sistema de
 | + 6 mas... | [Ver todos en .claude/agents/](.claude/agents/) |
 
 **Skills** — workflows automatizados invocados con `/skill-name`:
-`/sync-dotfiles`, `/ship-pr`, `/panel`, `/weekly-retro`, `/pre-merge-review`, `/explore-app`, `/browser-automation`, `/dream`, y [20+ mas](.claude/skills/).
+`/sync-dotfiles`, `/ship-pr`, `/panel`, `/weekly-retro`, `/pre-merge-review`, `/explore-app`, `/browser-automation`, `/dream`, y [16 mas](.claude/skills/).
 
 **Plugins** — superpowers, context-mode, context7, skill-creator, playwright, frontend-design, claude-hud, feature-dev, claude-mem, code-simplifier.
 
@@ -105,7 +105,7 @@ Esto copia configs, detecta herramientas nuevas/removidas, actualiza `data.js`, 
 |------|-------------|
 | Shell | zsh + Oh My Zsh + Powerlevel10k + fzf |
 | Editor | Cursor + VS Code (21 extensions) |
-| AI | Claude Code (25 agentes, 30+ skills, 10 plugins) |
+| AI | Claude Code (25 agentes, 24 skills, 10 plugins) |
 | Terminal | tmux + cmux + htop + nvtop |
 | Langs | Node 25 (NVM) + Python 3.14 (uv) + Bun + Go + Deno |
 | DB | PostgreSQL 15 + Redis |
