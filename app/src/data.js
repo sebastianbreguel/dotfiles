@@ -191,20 +191,6 @@ export const items = [
     related: [],
     why: "Lo uso en el trabajo para monitorear pipelines en produccion. Cuando algo falla a las 2am, es lo primero que abro.",
   },
-  {
-    id: "t3-code",
-    name: "T3 Code",
-    category: "apps",
-    subcategory: "desarrollo",
-    description: "GUI minimalista para agentes de codigo AI. Wrapper visual sobre Claude/Codex.",
-    install: "brew install --cask t3-code",
-    installMethod: "brew",
-    cost: "free",
-    tags: ["ai", "editor", "agents"],
-    url: "https://t3.chat/code",
-    related: ["cursor", "claude-code-cli", "codex-cli"],
-    why: "GUI liviana para correr agentes de codigo. Mas simple que Cursor cuando solo quiero un wrapper visual sobre Claude o Codex.",
-  },
   // === Mac Apps: Utilidades ===
   {
     id: "alttab",

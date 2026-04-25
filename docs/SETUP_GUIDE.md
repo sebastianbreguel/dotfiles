@@ -184,7 +184,6 @@ brew install --cask \
   slack \
   spotify \
   stats \
-  t3-code \
   visual-studio-code
 ```
 

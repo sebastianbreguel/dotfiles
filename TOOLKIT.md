@@ -26,7 +26,6 @@
 | **[Neo4j Desktop](https://neo4j.com)** | Gestion de bases de datos de grafos Neo4j. | `Download from neo4j.com` | free |
 | **[Obsidian](https://obsidian.md)** | Editor de notas en Markdown. Plugins, graph view, vault local. | `brew install --cask obsidian` | free |
 | **Conductor** | Observabilidad y monitoreo de infraestructura. | `Enterprise install` | paid |
-| **[T3 Code](https://t3.chat/code)** | GUI minimalista para agentes de codigo AI. Wrapper visual sobre Claude/Codex. | `brew install --cask t3-code` | free |
 
 ### Utilidades
 
@@ -259,5 +258,5 @@
 
 ---
 
-> **157 herramientas** en total. 144 free, 9 freemium, 4 paid.
+> **156 herramientas** en total. 143 free, 9 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.
