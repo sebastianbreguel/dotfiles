@@ -16,14 +16,12 @@
 
 | App | Descripcion | Instalacion | Costo |
 |-----|-------------|-------------|-------|
-| **[Cursor](https://cursor.com)** | Editor de codigo con AI integrado (Claude, GPT). Basado en VS Code. | `brew install --cask cursor` | freemium |
 | **[Claude Desktop](https://claude.ai)** | App de escritorio de Claude. Chat + Claude Code integrado. | `brew install --cask claude` | freemium |
 | **[Docker Desktop](https://docker.com)** | Contenedores para ejecutar apps aisladas y dev environments. | `brew install --cask docker` | free |
 | **[DataGrip](https://www.jetbrains.com/datagrip/)** | IDE de JetBrains para bases de datos. SQL, PostgreSQL, Redis. | `brew install --cask datagrip` | paid |
 | **[Postman](https://postman.com)** | Testing y documentacion de APIs. Collections, environments. | `brew install --cask postman` | free |
 | **[Visual Studio Code](https://code.visualstudio.com)** | Editor de codigo open source de Microsoft. Extensions marketplace. | `brew install --cask visual-studio-code` | free |
 | **[Xcode](https://developer.apple.com/xcode/)** | IDE de Apple para desarrollo iOS/macOS. | `App Store` | free |
-| **[Neo4j Desktop](https://neo4j.com)** | Gestion de bases de datos de grafos Neo4j. | `Download from neo4j.com` | free |
 | **[Obsidian](https://obsidian.md)** | Editor de notas en Markdown. Plugins, graph view, vault local. | `brew install --cask obsidian` | free |
 | **Conductor** | Observabilidad y monitoreo de infraestructura. | `Enterprise install` | paid |
 
@@ -258,5 +256,5 @@
 
 ---
 
-> **156 herramientas** en total. 143 free, 9 freemium, 4 paid.
+> **154 herramientas** en total. 142 free, 8 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.

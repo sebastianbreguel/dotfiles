@@ -52,20 +52,6 @@ export const CATEGORIES = {
 export const items = [
   // === Mac Apps: Desarrollo ===
   {
-    id: "cursor",
-    name: "Cursor",
-    category: "apps",
-    subcategory: "desarrollo",
-    description: "Editor de codigo con AI integrado (Claude, GPT). Basado en VS Code.",
-    install: "brew install --cask cursor",
-    installMethod: "brew",
-    cost: "freemium",
-    tags: ["editor", "ai", "vscode"],
-    url: "https://cursor.com",
-    related: ["vscode", "claude-code"],
-    why: "Mi editor principal. La integracion con Claude es brutal para pair programming con AI.",
-  },
-  {
     id: "claude-desktop",
     name: "Claude Desktop",
     category: "apps",
@@ -76,7 +62,7 @@ export const items = [
     cost: "freemium",
     tags: ["ai", "chat", "claude"],
     url: "https://claude.ai",
-    related: ["claude-code-cli", "cursor"],
+    related: ["claude-code-cli"],
     why: "La uso para tareas de chat rapido y proyectos que no requieren la CLI. Tener Claude nativo en el escritorio cambia el workflow.",
   },
   {
@@ -132,8 +118,8 @@ export const items = [
     cost: "free",
     tags: ["editor", "microsoft"],
     url: "https://code.visualstudio.com",
-    related: ["cursor"],
-    why: "El fallback cuando necesito abrir algo rapido o cuando Cursor no es necesario. El ecosistema de extensions es imbatible.",
+    related: [],
+    why: "Mi editor principal. El ecosistema de extensions es imbatible.",
   },
   {
     id: "xcode",
@@ -148,20 +134,6 @@ export const items = [
     url: "https://developer.apple.com/xcode/",
     related: [],
     why: "Obligatorio si tocas algo de Apple. No me entusiasma, pero sin el simulador de iOS no puedo probar nada.",
-  },
-  {
-    id: "neo4j",
-    name: "Neo4j Desktop",
-    category: "apps",
-    subcategory: "desarrollo",
-    description: "Gestion de bases de datos de grafos Neo4j.",
-    install: "Download from neo4j.com",
-    installMethod: "manual",
-    cost: "free",
-    tags: ["database", "graph"],
-    url: "https://neo4j.com",
-    related: ["datagrip"],
-    why: "Para explorar grafos de conocimiento y relaciones complejas. El browser visual de Neo4j hace que los datos de grafos cobren vida.",
   },
   {
     id: "obsidian",

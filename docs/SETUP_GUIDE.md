@@ -172,7 +172,6 @@ brew install --cask \
   claude \
   cloudflare-warp \
   cmux \
-  cursor \
   datagrip \
   docker \
   google-chrome \

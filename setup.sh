@@ -53,7 +53,7 @@ fi
 # 3. GUI apps (macOS only)
 if $IS_MAC; then
   echo "[3/9] Installing Homebrew casks..."
-  brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font gemini jordanbaird-ice brave-browser claude cursor docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp 2>/dev/null || true
+  brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font gemini jordanbaird-ice brave-browser claude docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp 2>/dev/null || true
 else
   echo "[3/9] Skipping GUI casks (Linux)."
 fi
