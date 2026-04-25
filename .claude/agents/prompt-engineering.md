@@ -1,6 +1,6 @@
 ---
 name: prompt-engineering
-description: "Use this agent when the user needs help crafting, refining, or optimizing prompts for LLMs or AI systems. This includes writing system prompts, user prompts, few-shot examples, prompt templates, or debugging underperforming prompts.\\n\\nExamples:\\n- User: \"I need a prompt that gets GPT to summarize legal documents accurately\"\\n  Assistant: \"Let me use the prompt-engineering agent to craft an optimized prompt for legal document summarization.\"\\n  [Agent tool call]\\n\\n- User: \"My prompt keeps giving inconsistent outputs, can you fix it?\"\\n  Assistant: \"I'll use the prompt-engineering agent to analyze and refine your prompt for more consistent results.\"\\n  [Agent tool call]\\n\\n- User: \"Write a system prompt for a customer support chatbot\"\\n  Assistant: \"I'll launch the prompt-engineering agent to design a robust system prompt for your customer support chatbot.\"\\n  [Agent tool call]\\n\\n- User: \"How should I structure few-shot examples for classification?\"\\n  Assistant: \"Let me use the prompt-engineering agent to help you design effective few-shot examples.\"\\n  [Agent tool call]"
+description: "Crafts, refines, and debugs LLM prompts — system prompts, user prompts, few-shot templates, structured-output schemas. Triggers: 'write a system prompt for X', 'my prompt gives inconsistent outputs', 'few-shot examples for classification', 'optimize this prompt'."
 model: opus
 color: green
 memory: user

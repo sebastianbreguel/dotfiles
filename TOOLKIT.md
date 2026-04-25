@@ -26,6 +26,7 @@
 | **[Neo4j Desktop](https://neo4j.com)** | Gestion de bases de datos de grafos Neo4j. | `Download from neo4j.com` | free |
 | **[Obsidian](https://obsidian.md)** | Editor de notas en Markdown. Plugins, graph view, vault local. | `brew install --cask obsidian` | free |
 | **Conductor** | Observabilidad y monitoreo de infraestructura. | `Enterprise install` | paid |
+| **[T3 Code](https://t3.chat/code)** | GUI minimalista para agentes de codigo AI. Wrapper visual sobre Claude/Codex. | `brew install --cask t3-code` | free |
 
 ### Utilidades
 
@@ -75,7 +76,6 @@
 | **Kilo Code** | CLI de Kilo Code. Coding agent en terminal. | free |
 | **Qwen Code** | CLI de Qwen para coding. | free |
 | **Cubic Dev AI** | CLI de Cubic Dev AI para coding. | free |
-| **Probe** | CLI de Probe Labs. | free |
 
 ### Browser & Automation
 
@@ -91,6 +91,8 @@
 | **OpenClaw** | CLI de OpenClaw. Herramienta de desarrollo. | free |
 | **Puzld AI** | CLI de Puzld AI. Herramienta de desarrollo. | free |
 | **OP** | CLI de OP. Herramienta de desarrollo. | free |
+| **[asciinema](https://asciinema.org)** | Grabador de sesiones de terminal. Genera recordings reproducibles y compartibles. | free |
+| **[ImageMagick](https://imagemagick.org)** | Suite de procesamiento de imagenes desde CLI. Conversion, resize, composicion. | free |
 | **[Deno](https://deno.com)** | Runtime de JS/TS con seguridad por defecto. Alternativa moderna a Node. | free |
 | **[Go](https://go.dev)** | Lenguaje compilado de Google. Concurrente, tipado, rapido. | free |
 | **[bats-core](https://github.com/bats-core/bats-core)** | Framework de testing para scripts Bash. | free |
@@ -165,6 +167,7 @@
 | **claude-subconscious** | Agente subconsciente de Letta AI. Memoria persistente entre sesiones. | free |
 | **[caveman](https://github.com/JuliusBrussee/caveman)** | Modo cavernicola. Comprime respuestas 50-75% eliminando relleno, articulos y filler. | free |
 | **[code-review](https://github.com/anthropics/claude-code)** | Plugin oficial de Anthropic para code review de PRs. | free |
+| **[compound-engineering](https://github.com/AustinKelsworthy/compound-engineering-plugin)** | Mega-plugin de Compound Engineering. Code review multi-agente, commits, PRs, debugging, planificacion, worktrees. | free |
 
 ### Skills
 
@@ -204,30 +207,17 @@
 | Agent | Descripcion |
 |-------|-------------|
 | **tech-lead** | Decisiones tecnicas, coordinacion cross-domain. |
-| **fullstack-refactor-architect** | Arquitectura, APIs, refactoring de monolitos. |
-| **architecture-reference** | Patrones de arquitectura para pipelines FastAPI. |
-| **db-engineering** | Schemas, queries, migraciones, indexing. |
-| **code-modularizer** | Romper archivos grandes, extraer duplicados. |
 | **code-simplifier** | Simplificar, refactorizar y limpiar codigo. |
-| **skeptical-reviewer** | Devil's advocate. Desafia suposiciones antes de decidir. |
 | **ai-ml-expert** | Prompts, RAG, embeddings, model selection. |
-| **ai-researcher** | Papers, experimentos, metodologia, escritura cientifica. |
 | **prompt-engineering** | Craft y optimizar prompts para LLMs. |
 | **data-science-analytics** | EDA, estadisticas, visualizacion, ML. |
 | **data-pipeline-engineer** | ETL/ELT, orchestration, ML workflows, FastAPI + data stores. |
-| **neuroscience-ai-expert** | Neurociencia, mecanismos neurales, brain-computer interfaces. |
-| **neuroai-research-director** | Metodologia de investigacion, NeuroAI, disenio de experimentos. |
 | **thesis-reviewer** | Review de tesis, deteccion de texto AI, escritura academica. |
 | **ceo-product-strategist** | Vision estrategica CEO, roadmap, impacto de producto. |
-| **qa-test-engineer** | Test strategies, edge cases, automation. |
 | **andrej-karpathy** | Persona de Karpathy: implementaciones simples, first-principles, code review minimalista. |
-| **ilya-sutskever** | Persona de Sutskever: scaling laws, safety, convicciones profundas sobre AI. |
-| **leonardo-da-vinci** | Persona de Da Vinci: pensamiento polimata, patrones cross-domain, arte + ciencia. |
-| **yann-lecun** | Persona de LeCun: world models, critica contrarian, rigor cientifico combativo. |
-| **paul-graham** | Persona de PG: evaluacion de startups first-principles, escritura clara, contrarian product thinking. |
-| **steve-jobs** | Persona de Jobs: vision de producto, obsesion por el diseno, simplicidad por sustraccion. |
 | **ops-impact-analyst** | ROI de features, metricas de negocio, reportes ejecutivos. |
 | **tw93** | Gatekeeper de Mole: minimalismo, safety-first, scope discipline. |
+| **manuel-ossa** | Perspectiva de scale-stage operator y customer-first product critique. |
 
 ### Commands
 
@@ -236,6 +226,8 @@
 | **/redesign-ui** | Analiza componentes UI y los redisena usando ui-designer y ux-designer en paralelo. |
 | **/python-review** | Revisa codigo Python para calidad, seguridad, type safety y mejores practicas. |
 | **/security-scan** | Escaneo de seguridad. Busca vulnerabilidades, secretos hardcodeados, dependencias riesgosas. |
+| **/lint** | Corre pre-commit suite completo: ruff, ty, isort, todos los hooks. |
+| **/test** | Corre pytest con detalles de fallos y coverage opcional. |
 
 ## 5. VS Code Extensions
 
@@ -267,5 +259,5 @@
 
 ---
 
-> **166 herramientas** en total. 153 free, 9 freemium, 4 paid.
+> **157 herramientas** en total. 144 free, 9 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.

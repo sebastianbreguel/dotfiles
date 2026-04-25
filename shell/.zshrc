@@ -45,7 +45,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Aliases
 alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 
-# Force backspace bindings (in case a TUI app left zle in a weird state on SSH)
-bindkey "^?" backward-delete-char
-bindkey "^H" backward-delete-char
-bindkey "^[[3~" delete-char
+# NPM global bin (added by Qwen Code installer)
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# Taskforce.sh private npm registry (token in .env, not here)

@@ -14,7 +14,7 @@ The panel presents perspectives as abstract lenses, not as named individuals. Ea
 | Lens | Focus | Question it asks | Powered by |
 |------|-------|-----------------|------------|
 | **Simplificación** | Compression, essentials, first-order terms | "What's the simplest version that works?" | `andrej-karpathy` |
-| **Arquitectura** | Structure, premises, first principles | "Is this even the right formulation?" | `yann-lecun` |
+| **Arquitectura** | Structure, premises, first principles | "Is this even the right formulation?" | `tech-lead` |
 | **Producto** | Scope, user value, discipline | "Does this earn its place?" | `tw93` |
 
 ## Mode Detection
@@ -65,7 +65,7 @@ Launch ALL THREE in a SINGLE message using the Agent tool. One call per lens. Al
 
 Each agent uses its `subagent_type` which loads the personality profile automatically:
 - `andrej-karpathy` for Simplificación
-- `yann-lecun` for Arquitectura
+- `tech-lead` for Arquitectura
 - `tw93` for Producto
 
 **Prompt to each agent:**

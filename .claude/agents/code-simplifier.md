@@ -1,6 +1,6 @@
 ---
 name: code-simplifier
-description: "Use this agent when the user asks to simplify, refactor, or clean up code to make it more readable, concise, and maintainable. This includes requests to reduce complexity, remove redundancy, flatten nested logic, extract helper functions, or improve code clarity without changing behavior.\\n\\nExamples:\\n\\n- User: \"This function is too complex, can you simplify it?\"\\n  Assistant: \"Let me use the code-simplifier agent to analyze and simplify this function.\"\\n  [Uses Agent tool to launch code-simplifier]\\n\\n- User: \"Refactor this class to be more readable\"\\n  Assistant: \"I'll use the code-simplifier agent to refactor this for better readability.\"\\n  [Uses Agent tool to launch code-simplifier]\\n\\n- User: \"Clean up this messy code\"\\n  Assistant: \"Let me launch the code-simplifier agent to clean this up.\"\\n  [Uses Agent tool to launch code-simplifier]\\n\\n- User: \"Can you reduce the nesting in this function?\"\\n  Assistant: \"I'll use the code-simplifier agent to flatten the nesting and improve clarity.\"\\n  [Uses Agent tool to launch code-simplifier]"
+description: "Simplifies/refactors code for readability and maintainability without changing behavior — reduces complexity, flattens nesting, extracts helpers, removes redundancy. Triggers: 'simplify this function', 'refactor for readability', 'clean up messy code', 'reduce nesting'."
 model: opus
 color: yellow
 memory: user

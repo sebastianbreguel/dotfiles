@@ -1,5 +1,7 @@
 ---
-description: Analyze UI components/pages and redesign them using ui-designer and ux-designer agents. Usage - /redesign-ui [file or component path]
+allowed-tools: Read, Edit, Write, Glob, Grep, Agent
+description: Analyze UI components/pages and redesign them using ui-designer and ux-designer agents
+argument-hint: <file-or-component-path>
 ---
 
 Analyze the UI of the given file, component, or page and produce a comprehensive redesign using both UX and UI expertise.

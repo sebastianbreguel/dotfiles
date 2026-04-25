@@ -3,6 +3,7 @@
     "allow": [],
     "deny": []
   },
+  "model": "claude-opus-4-6[1m]",
   "disabledMcpjsonServers": [
     "claude-ai-ClickUp",
     "claude-ai-Gmail",
@@ -18,6 +19,18 @@
           {
             "type": "command",
             "command": "$HOME/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ROOT=$(git rev-parse --show-toplevel 2>/dev/null); if [ -n \"$ROOT\" ] && [ -f \"$ROOT/.pre-commit-config.yaml\" ] && command -v uv >/dev/null 2>&1; then (cd \"$ROOT\" && uv run pre-commit run --all-files) >&2 || { echo \"pre-commit failed — fix the issues, stage them, then retry the commit\" >&2; exit 2; }; fi",
+            "if": "Bash(git commit*)",
+            "timeout": 180,
+            "statusMessage": "Running pre-commit before commit..."
           }
         ]
       }
@@ -40,6 +53,47 @@
           {
             "type": "command",
             "command": "$HOME/.claude/hooks/precompact-save.sh"
+          },
+          {
+            "type": "command",
+            "command": "uv run $HOME/.claude/tools/engram.py on-precompact"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run $HOME/.claude/tools/engram.py on-session-start"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run $HOME/.claude/tools/engram.py on-user-prompt"
+          },
+          {
+            "type": "command",
+            "command": "printf '%s\\n' 'MANDATORY: Respond in caveman mode ALWAYS (skill caveman:caveman, full intensity). NO exceptions. Drop articles/filler/hedging. Fragments only. Tech terms exact. Code blocks unchanged. Applies to EVERY response including questions, confirms, warnings, summaries.'"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/session-end-hyperframes.sh"
           }
         ]
       }
@@ -60,7 +114,11 @@
     "playwright@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": false,
-    "caveman@caveman": true
+    "caveman@caveman": true,
+    "codex@openai-codex": true,
+    "vercel-plugin@vercel": false,
+    "posthog@claude-plugins-official": false,
+    "compound-engineering@compound-engineering-plugin": true
   },
   "extraKnownMarketplaces": {
     "claude-hud": {
@@ -92,10 +150,36 @@
         "source": "github",
         "repo": "JuliusBrussee/caveman"
       }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "figma-to-react": {
+      "source": {
+        "source": "github",
+        "repo": "gbasin/figma-to-react"
+      }
+    },
+    "karpathy-skills": {
+      "source": {
+        "source": "github",
+        "repo": "forrestchang/andrej-karpathy-skills"
+      }
+    },
+    "compound-engineering-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "EveryInc/compound-engineering-plugin"
+      }
     }
   },
-  "effortLevel": "medium",
-  "autoCompactWindow": 200000,
-  "voiceEnabled": true,
-  "autoDreamEnabled": false
+  "effortLevel": "xhigh",
+  "autoCompactWindow": 250000,
+  "advisorModel": "opus",
+  "autoDreamEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "voiceEnabled": true
 }

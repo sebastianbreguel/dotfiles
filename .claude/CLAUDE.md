@@ -1,31 +1,43 @@
 @RTK.md
 
+# Response Style
+- Caveman full desde msg 1 (skill `caveman:caveman`). Drop articles/filler/hedging. Fragments OK. Tech terms exact. Code blocks unchanged.
+- Drop caveman: security warnings, irreversible confirms, multi-step seqs, user confused. Resume after.
+- Code/commits/PRs: normal prose.
+- "stop caveman" / "normal mode" → revert.
+
+# Security
+- NEVER hardcode secrets. Use env vars + `.env`. Verify `.env` in `.gitignore`.
+- Secret committed → revoke now, compromised forever.
+
 # Git Commits
 
 - NEVER add Co-Authored-By lines to git commits
 - NEVER add "Generated with Claude Code" or similar attribution lines in PRs, commits, or any output
 
-# Python Standards
-
-- Package manager: `uv` only — never `pip`, `python`, `python3` directly. Always `uv run <cmd>`, `uv add <pkg>`, `uv sync`
-- Linter/formatter: `ruff` (lint + format + isort), line length 140, double quotes
-- Type checker: `ty`
-- Type hints required on all public functions and method signatures
-- Pre-commit: run `uv run pre-commit run --all-files` before every commit
-- Tests: `uv run pytest` — mock all LLM/external API calls
-- Prefer classes over loose functions for complex/stateful logic
-
 # Verification
+- Pre-"done": run test/lint si existen. Else: verify files parse.
 
-- Before declaring work complete, run the project's test/lint commands if they exist
-- If no test commands exist, at minimum verify edited files parse correctly
+# Python
+- `uv` only (no pip/python/python3). `ruff` (line 140, double quotes). `ty` typecheck.
+- Pre-commit: `uv run pre-commit run --all-files`. Classes > loose funcs para stateful logic.
+- `str | None` not `Optional[str]`. Tests: `uv run pytest`, mock LLM/external.
+
+# Think Before Code
+- Non-trivial: research → analysis + tradeoffs → align → code. No large files pre-validation.
+- One-shot scripts: `uv run python -c '...'` o `/tmp/`, nunca commit.
+
+# Review
+- `tech-lead` = final reviewer en plans/arch/non-trivial ANTES de user. Blocks → iterar → re-review.
+- Skip: typos, 1-line fixes, doc edits, gh ops.
 
 # Token Discipline
+- No subagents para trivia (PR edits, commits, 1-file fixes, "what does X do", gh ops). Subagents solo: 3+ parallel research, pre-merge review, >30min.
+- GH ops via `gh` CLI ("actualiza body PR" → `gh pr edit <N> --body`), nunca explorar repo.
+- "mira el repo"/"investiga X" → pedir archivo/dir específico antes de explorar.
+- `/panel` solo paths específicos, nunca monorepo.
+- ~25-30 prompts o switch topic → sugerir `/clear`.
+- Short prompt + non-trivial = red flag → preguntar "¿explorar o ya sabés qué tocar?"
 
-- **Graph first**: in repos with a code-review-graph MCP (e.g. vambe-datascience), ALWAYS try graph tools (`semantic_search_nodes`, `query_graph`, `get_impact_radius`, `get_architecture_overview`, `detect_changes`) BEFORE Grep/Glob/Read
-- **No subagents for trivia**: PR body/title edits, commits, single-file fixes, doc tweaks, "what does X do" questions, `gh` operations — do these directly. Subagents only for real parallel research (3+ independent things), pre-merge review, or tasks >30 min
-- **GitHub ops via `gh` CLI**: "actualiza el body de la PR" → `gh pr edit <N> --body`, never explore the repo for this
-- **Explicit paths**: if the user says "mira el repo" / "lee el proyecto" / "investiga X", push back and ask for a specific file or dir before launching exploration
-- **`/panel` only on specific paths**, never on a whole monorepo
-- **Session budget**: at ~25-30 prompts or when switching topics, suggest `/clear`. One pipeline stage per session in staged architectures
-- **Short prompt + non-trivial task = red flag**: before launching subagents, ask "¿querés que explore el repo o ya sabés qué archivo tocar?"
+# MCP Routing
+- Real code work (refactors, multi-file, symbol lookups, impact) → load `@rules/mcp-routing.md`. Skip trivia.

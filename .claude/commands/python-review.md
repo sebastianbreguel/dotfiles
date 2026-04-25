@@ -1,3 +1,9 @@
+---
+allowed-tools: Read, Grep, Glob, Agent
+description: Review Python code for quality, security, and Vambe best practices
+argument-hint: <file-or-directory-path>
+---
+
 Review the Python code in $ARGUMENTS for quality, security, and best practices specific to the Vambe datascience stack.
 
 ## Project Context

@@ -131,6 +131,7 @@ npm install -g pnpm@10.30.3
 ```bash
 brew install \
   aitop \
+  asciinema \
   bats-core \
   deno \
   ffmpeg \
@@ -140,6 +141,7 @@ brew install \
   glow \
   go \
   htop \
+  imagemagick \
   jq \
   mas \
   mole \
@@ -182,6 +184,7 @@ brew install --cask \
   slack \
   spotify \
   stats \
+  t3-code \
   visual-studio-code
 ```
 
@@ -271,7 +274,6 @@ pnpm add -g \
   @google/gemini-cli \
   @kilocode/cli \
   @openai/codex \
-  @probelabs/probe \
   @qwen-code/qwen-code \
   agent-browser \
   mint \

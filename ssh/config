@@ -1,3 +1,29 @@
+
+Host macmini
+  HostName devss-mac-mini
+  User devs
+  Port 22
+
+  # 🔐 Autenticación con llave
+  IdentityFile ~/.ssh/id_ed25519
+  AddKeysToAgent yes
+  UseKeychain yes
+
+  # ⚡ Conexión rápida
+  ConnectTimeout 10
+
+  # 🔌 Mantener conexión viva
+  ServerAliveInterval 60
+  ServerAliveCountMax 3
+
+  # 🔒 Seguridad cómoda
+  StrictHostKeyChecking accept-new
+
+  # 🚀 Multiplexing (más rápido)
+  ControlMaster auto
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlPersist 10m
+
 Host github.com
     AddKeysToAgent yes
     UseKeychain yes

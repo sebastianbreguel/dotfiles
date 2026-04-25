@@ -25,7 +25,7 @@ dotfiles/
 
 ### Claude Code Config (`.claude/`)
 
-Lo que mas diferencia este setup. 25 agentes custom, 24 skills, y un sistema de hooks que automatiza el workflow:
+Lo que mas diferencia este setup. 24 agentes custom, 24 skills, y un sistema de hooks que automatiza el workflow:
 
 **Agentes** — personalidades especializadas que se invocan por tarea:
 
@@ -54,6 +54,27 @@ Lo que mas diferencia este setup. 25 agentes custom, 24 skills, y un sistema de 
 `/sync-dotfiles`, `/ship-pr`, `/panel`, `/weekly-retro`, `/pre-merge-review`, `/explore-app`, `/browser-automation`, `/dream`, y [16 mas](.claude/skills/).
 
 **Plugins** — superpowers, context-mode, context7, skill-creator, playwright, frontend-design, claude-hud, feature-dev, claude-mem, code-simplifier.
+
+### HyperFrames Pipeline de Claude
+
+Quedo agregado un pipeline de `SessionEnd` para exportar cada transcript de Claude a un proyecto HyperFrames listo para render:
+
+- Hook: `.claude/hooks/session-end-hyperframes.sh`
+- Exportador: `.claude/hooks/claude-hyperframes-export.mjs`
+- Salida: `~/.claude/hyperframes/projects/<session-id>/`
+- Archivo de resumen por sesion: `~/.claude/hyperframes/sessions/*.json`
+
+Render manual:
+
+```bash
+./scripts/claude-hyperframes-render.sh latest
+```
+
+Flags utiles:
+
+- `CLAUDE_HYPERFRAMES_ENABLE=0` desactiva el hook
+- `CLAUDE_HYPERFRAMES_OUT_DIR=/ruta/custom` cambia el directorio de salida
+- `CLAUDE_HYPERFRAMES_DRY_RUN=1` prueba el comando de render sin ejecutarlo
 
 ### La Pagina (`app/`)
 
@@ -105,7 +126,7 @@ Esto copia configs, detecta herramientas nuevas/removidas, actualiza `data.js`, 
 |------|-------------|
 | Shell | zsh + Oh My Zsh + Powerlevel10k + fzf |
 | Editor | Cursor + VS Code (21 extensions) |
-| AI | Claude Code (25 agentes, 24 skills, 10 plugins) |
+| AI | Claude Code (24 agentes, 24 skills, 10 plugins) |
 | Terminal | tmux + cmux + htop + nvtop |
 | Langs | Node 25 (NVM) + Python 3.14 (uv) + Bun + Go + Deno |
 | DB | PostgreSQL 15 + Redis |

@@ -1,6 +1,6 @@
 ---
 name: thesis-reviewer
-description: "Use this agent when the user asks for a review of thesis content, academic writing, or dissertation sections. This includes detecting AI-generated text, identifying verbose or inflated prose, checking for academic rigor, and improving scholarly writing quality.\\n\\nExamples:\\n\\n- User: \"Can you review this chapter of my thesis?\"\\n  Assistant: \"Let me use the thesis-reviewer agent to analyze your chapter for quality, verbosity, and potential AI-generated content.\"\\n\\n- User: \"Does this section sound too AI-generated?\"\\n  Assistant: \"I'll launch the thesis-reviewer agent to evaluate this section for AI-like patterns and suggest improvements.\"\\n\\n- User: \"I need feedback on my literature review draft\"\\n  Assistant: \"Let me use the thesis-reviewer agent to review your literature review for academic quality, conciseness, and authenticity.\"\\n\\n- User: \"Here's my methodology section, please check it\"\\n  Assistant: \"I'll use the thesis-reviewer agent to analyze your methodology section for clarity, rigor, and any verbose or artificial-sounding passages.\""
+description: "Reviews thesis/dissertation/academic writing for rigor, conciseness, and AI-generated-text patterns. Flags verbose or inflated prose. Triggers: 'review thesis chapter', 'sounds too AI-generated', 'feedback on literature review', 'check methodology section'."
 model: opus
 color: cyan
 ---
