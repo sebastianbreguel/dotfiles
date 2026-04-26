@@ -150,7 +150,6 @@ brew install \
   nvtop \
   postgresql@15 \
   redis \
-  ripgrep \
   rtk \
   shellcheck \
   sox \
@@ -168,21 +167,10 @@ brew install --cask \
   1password-cli \
   alt-tab \
   betterdisplay \
-  brave-browser \
-  claude \
-  cloudflare-warp \
   cmux \
-  datagrip \
-  docker \
   google-chrome \
   jordanbaird-ice \
-  macs-fan-control \
   obsidian \
-  postman \
-  rectangle \
-  slack \
-  spotify \
-  stats \
   visual-studio-code
 ```
 
@@ -268,17 +256,13 @@ Host github.com
 ```bash
 pnpm add -g \
   @anthropic-ai/claude-code \
-  @cubic-dev-ai/cli \
   @google/gemini-cli \
   @kilocode/cli \
   @openai/codex \
   @qwen-code/qwen-code \
   agent-browser \
-  mint \
   op \
-  openclaw \
   pnpm \
-  puzldai \
   vercel
 ```
 
@@ -302,25 +286,6 @@ pip3 install \
 ```bash
 code --install-extension ext-claude-code
 code --install-extension ext-copilot-chat
-code --install-extension ext-eslint
-code --install-extension ext-git-ai
-code --install-extension ext-git-graph
-code --install-extension ext-gitlens
-code --install-extension ext-gitpod-theme
-code --install-extension ext-jupyter
-code --install-extension ext-jupyter-cell-tags
-code --install-extension ext-jupyter-keymap
-code --install-extension ext-jupyter-renderers
-code --install-extension ext-jupyter-slideshow
-code --install-extension ext-markdown-preview
-code --install-extension ext-material-icons
-code --install-extension ext-prettier
-code --install-extension ext-prettier-eslint
-code --install-extension ext-pylance
-code --install-extension ext-python
-code --install-extension ext-python-debugger
-code --install-extension ext-python-envs
-code --install-extension ext-rainbow-csv
 ```
 
 ---

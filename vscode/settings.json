@@ -1,4 +1,5 @@
 {
     "window.autoDetectColorScheme": true,
-    "workbench.preferredDarkColorTheme": "Visual Studio Dark"
+    "workbench.preferredDarkColorTheme": "Visual Studio Dark",
+    "workbench.activityBar.compact": true
 }

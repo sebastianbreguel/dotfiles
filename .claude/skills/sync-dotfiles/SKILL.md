@@ -5,16 +5,24 @@ description: Sync the current machine's configuration into the dotfiles repo and
 
 # Sync Dotfiles
 
-This skill pulls the current machine's configuration into the dotfiles repo and updates both the data files and the README so everything stays in sync.
+This skill does a **full replace sync** — it deletes stale state in the repo and rebuilds from the machine's current configuration. It is NOT append-only; tools, configs, agents, and skills that no longer exist on the machine get removed from the repo.
 
 The dotfiles repo lives at `~/personal/dotfiles` (or wherever the current working directory is if it contains `setup.sh` and `app/src/data.js`).
+
+## Philosophy: Delete + Recreate, Not Append
+
+Every sync is a clean mirror of the machine. The repo should reflect **exactly** what's installed right now:
+- Tool uninstalled → removed from `data.js`, `setup.sh`, and generated docs
+- Agent/skill/command deleted from `~/.claude/` → deleted from repo's `.claude/`
+- Config file changed → overwritten in repo
+- Config file removed from machine → removed from repo
 
 ## Overview
 
 There are three layers to sync:
-1. **Config files** — copy actual dotfiles from the machine into the repo
-2. **Installed tools** — detect what's installed (brew, npm, pip, vscode, etc.) and update `data.js` + `README.md`
-3. **Claude Code config** — sync agents, skills, commands, hooks, and settings
+1. **Config files** — copy actual dotfiles from the machine into the repo (overwrite)
+2. **Installed tools** — detect what's installed, rebuild `data.js` (add new + remove missing), update `setup.sh` + generated docs
+3. **Claude Code config** — clean repo dirs then copy fresh from machine
 
 Run all three layers every time. Show a summary at the end.
 
@@ -34,11 +42,12 @@ Copy these files from the machine into the repo, overwriting what's there:
 | `~/.config/cmux/settings.json` | `settings.json` (root) |
 
 For each file:
-- Only copy if the source exists
+- Only copy if the source exists on the machine
+- If a repo destination exists but the source is gone from the machine → **delete** it from the repo and flag in summary
 - After copying, run a quick diff to track what changed
 - **Never copy secrets** — skip files that contain tokens, passwords, or API keys. If `.gitconfig` has credential helpers with inline tokens, strip those lines before copying.
 
-## Step 2: Detect Installed Tools
+## Step 2: Detect Installed Tools & Rebuild data.js
 
 Run these commands to get the current state of the machine:
 
@@ -62,11 +71,13 @@ ls ~/.claude/commands/*.md 2>/dev/null          # commands
 cat ~/.claude/settings.json 2>/dev/null        # settings
 ```
 
-Compare each list against what's currently in `app/src/data.js` (the `items` array).
+### Updating data.js — Full Sync (add + remove)
 
-### Updating data.js
+Compare detected tools against `app/src/data.js` (the `items` array). Two operations:
 
-For **new items** not yet in data.js:
+#### Adding new items
+
+For tools detected on the machine but not in data.js:
 - Generate an entry following the existing schema:
   ```js
   {
@@ -88,12 +99,29 @@ For **new items** not yet in data.js:
 - For the `why` field: write a short, opinionated reason in Spanish, matching the casual tone of existing entries (e.g., "Lo uso para X. Hace Y mucho mas facil.")
 - If you're unsure about category/subcategory for a new tool, pick the best fit and flag it in the summary
 
-For **removed items** (in data.js but no longer installed):
-- Don't auto-remove — flag them in the summary so the user can decide
+#### Removing uninstalled items
 
-### Regenerating TOOLKIT.md and README.md
+For items in data.js whose corresponding tool is **no longer detected** on the machine:
+- **Auto-remove** the entry from data.js
+- Also clean up any `related` references to the removed item's ID in other entries
+- Log each removal in the summary
 
-**Do not manually edit TOOLKIT.md or README install sections.** Instead, after updating `data.js`, run the generator script:
+This ensures data.js is always a 1:1 mirror of what's actually installed.
+
+### Updating setup.sh — Full Rebuild of Package Lists
+
+Replace (not append to) the hardcoded package lists in `setup.sh` with the current machine state:
+
+1. **Brew formulae** — replace the `brew install ...` line with current `brew leaves` output
+2. **Brew casks** — replace the `brew install --cask ...` line with current `brew list --cask` output
+3. **npm/pnpm globals** — replace the global package install line with current globals
+4. **VS Code extensions** — replace the extension install lines with current `code --list-extensions` output
+
+Keep the script structure and surrounding logic intact — only replace the package list values.
+
+### Regenerating TOOLKIT.md and docs
+
+**Do not manually edit TOOLKIT.md or README install sections.** After updating `data.js`, run the generator script:
 
 ```bash
 node scripts/generate-docs.js
@@ -103,13 +131,9 @@ This script reads `data.js` (the single source of truth) and:
 - Regenerates `TOOLKIT.md` completely (all tables, all categories)
 - Updates docs/SETUP_GUIDE.md sections 2, 3, 7, 8, and 9 (brew, casks, npm, pip, vscode) in-place
 
-### Updating setup.sh
+## Step 3: Sync Claude Code Config — Clean + Copy
 
-Check if `setup.sh` has hardcoded lists (brew formulae, casks, npm packages, etc.) and update them to match the current machine state. Keep the script structure intact — only update the package lists.
-
-## Step 3: Sync Claude Code Config
-
-Copy Claude Code configuration into the repo's `.claude/` directory:
+**Delete first, then copy.** This ensures removed agents/skills/commands/hooks don't linger in the repo.
 
 ```bash
 # Settings (but NOT settings.local.json — that's per-project)
@@ -119,24 +143,36 @@ cp ~/.claude/settings.json .claude/settings.json
 cp ~/.claude/CLAUDE.md .claude/CLAUDE.md
 cp ~/.claude/RTK.md .claude/RTK.md 2>/dev/null
 
-# Agents
+# Agents — delete repo dir contents, then copy fresh
+rm -f .claude/agents/*.md
 cp ~/.claude/agents/*.md .claude/agents/ 2>/dev/null
 
-# Commands
+# Commands — delete repo dir contents, then copy fresh
+rm -f .claude/commands/*.md
 mkdir -p .claude/commands
 cp ~/.claude/commands/*.md .claude/commands/ 2>/dev/null
 
-# Hooks
+# Hooks — delete repo dir contents, then copy fresh
+rm -rf .claude/hooks/*
 mkdir -p .claude/hooks
 cp ~/.claude/hooks/* .claude/hooks/ 2>/dev/null
 
-# Skills (except gstack which is a git clone, and marketplace plugins)
+# Skills — delete all non-git-managed skill dirs, then copy fresh
+# Preserve: sync-dotfiles (this skill), any .git-managed dirs
+for skill_dir in .claude/skills/*/; do
+  skill_name=$(basename "$skill_dir")
+  [[ "$skill_name" == "sync-dotfiles" ]] && continue
+  [[ -d "$skill_dir/.git" ]] && continue
+  rm -rf "$skill_dir"
+done
+
 for skill_dir in ~/.claude/skills/*/; do
   skill_name=$(basename "$skill_dir")
-  # Skip gstack (managed via git) and any marketplace-installed plugins
   [[ "$skill_name" == "gstack" ]] && continue
   [[ -d "$skill_dir/.git" ]] && continue
-  cp -r "$skill_dir" .claude/skills/
+  # Use mkdir + cp contents to avoid trailing-slash flattening
+  mkdir -p ".claude/skills/$skill_name"
+  cp -r "$skill_dir"* ".claude/skills/$skill_name/" 2>/dev/null
 done
 ```
 
@@ -144,13 +180,13 @@ done
 
 ## Step 4: Regenerate Docs
 
-After updating `data.js` with new/changed items, run the generator:
+After updating `data.js`, run the generator:
 
 ```bash
 node scripts/generate-docs.js
 ```
 
-This regenerates `TOOLKIT.md` and updates README.md install sections automatically. Never edit those files by hand.
+This regenerates `TOOLKIT.md` and updates setup guide sections automatically. Never edit those files by hand.
 
 ## Step 5: Summary
 
@@ -159,53 +195,53 @@ After syncing, print a clear summary:
 ```
 ## Sync Summary
 
-### Config files updated
-- shell/.zshrc (changed: added 3 aliases)
+### Config files
+- shell/.zshrc (updated — 3 lines changed)
 - git/.gitconfig (no changes)
+- ssh/config (REMOVED — no longer exists on machine)
 - ...
 
-### New tools detected (added to data.js)
+### Tools added to data.js
 - deno (cli/dev-tools) — JS/TS runtime
 - shellcheck (cli/dev-tools) — shell script linter
-- ...
 
-### Possibly removed tools (still in data.js but not found on machine)
-- ripgrep — not in `brew leaves` output. Remove from data.js? (y/n)
+### Tools removed from data.js
+- neo4j — uninstalled from machine
+- cursor — no longer detected
 
-### README sections updated
-- Section 2: Homebrew Formulae (+3 new, -1 removed)
-- Section 9: VS Code Extensions (+2 new)
-- ...
+### setup.sh package lists rebuilt
+- Brew formulae: 45 packages (was 43)
+- Brew casks: 12 packages (was 14, removed: neo4j, cursor)
+- npm globals: 8 packages (no change)
+- VS Code extensions: 22 (was 20)
 
 ### Claude Code config synced
-- 16 agents (2 new: ...)
-- 24 skills (1 new: ...)
+- 16 agents (2 new, 1 removed: old-agent)
+- 24 skills (1 new, 0 removed)
+- 3 commands (no change)
 - settings.json updated
+
+### Docs regenerated
+- TOOLKIT.md ✓
+- docs/SETUP_GUIDE.md ✓
 ```
 
 ### Drift check (setup.sh vs data.js)
 
-Before asking the user to review, cross-reference `setup.sh` against `data.js` to catch drift:
+After rebuilding both, cross-reference to verify they're in sync:
 
-1. **Brew formulae** — Extract the package list from `setup.sh` line 20 (the `brew install ...` line). Compare against all items in `data.js` that have `installMethod: "brew"` and do **not** contain `--cask` in their `install` field. Flag mismatches.
-2. **Brew casks** — Extract the cask list from `setup.sh` line 24 (the `brew install --cask ...` line). Compare against all items in `data.js` that contain `--cask` in their `install` field. Flag mismatches.
-3. **npm/pnpm globals** — Extract the global package list from `setup.sh` line 68. Compare against all items in `data.js` with `installMethod` of `"npm"` or `"pnpm"`. Flag mismatches.
-4. **VS Code extensions** — Extract extensions from `setup.sh` lines 134-143. Compare against all items in `data.js` with `category: "extensions"`. Flag mismatches.
+1. **Brew formulae** — Extract the package list from `setup.sh`. Compare against all items in `data.js` with `installMethod: "brew"` (no `--cask`). Flag mismatches.
+2. **Brew casks** — Extract the cask list from `setup.sh`. Compare against items with `--cask` in `install` field. Flag mismatches.
+3. **npm/pnpm globals** — Extract global packages from `setup.sh`. Compare against `installMethod: "npm"` or `"pnpm"`. Flag mismatches.
+4. **VS Code extensions** — Extract extensions from `setup.sh`. Compare against `category: "extensions"`. Flag mismatches.
 
-For each comparison, report mismatches in this format:
-
-```
-### Drift: setup.sh vs data.js
-- In setup.sh but not in data.js: tool-x, tool-y
-- In data.js but not in setup.sh: tool-z
-```
-
-If there are any mismatches, ask the user if they want to update `setup.sh` to match `data.js` (since `data.js` is the source of truth).
+If any mismatches remain after rebuild, fix them (data.js is source of truth) and report in summary.
 
 Ask the user to review the changes before committing. Use `git diff` to show what changed.
 
 ## Notes
 
 - This skill is meant to be run periodically (e.g., weekly) to keep the repo in sync
-- It's a pull operation (machine → repo), not a push (repo → machine). For pushing, use `setup.sh`
-- When in doubt, add to the summary and let the user decide rather than auto-removing
+- It's a **destructive pull** operation (machine → repo): what's on the machine wins, what's not gets deleted
+- For pushing (repo → machine), use `setup.sh`
+- The only things preserved during cleanup: this skill itself (`sync-dotfiles`), git-managed skill dirs, and marketplace plugins

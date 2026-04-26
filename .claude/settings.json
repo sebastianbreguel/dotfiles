@@ -3,7 +3,7 @@
     "allow": [],
     "deny": []
   },
-  "model": "claude-opus-4-6[1m]",
+  "model": "claude-opus-4-5",
   "disabledMcpjsonServers": [
     "claude-ai-ClickUp",
     "claude-ai-Gmail",
@@ -27,7 +27,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "ROOT=$(git rev-parse --show-toplevel 2>/dev/null); if [ -n \"$ROOT\" ] && [ -f \"$ROOT/.pre-commit-config.yaml\" ] && command -v uv >/dev/null 2>&1; then (cd \"$ROOT\" && uv run pre-commit run --all-files) >&2 || { echo \"pre-commit failed — fix the issues, stage them, then retry the commit\" >&2; exit 2; }; fi",
+            "command": "ROOT=$(git rev-parse --show-toplevel 2>/dev/null); if [ -n \"$ROOT\" ] && [ -f \"$ROOT/.pre-commit-config.yaml\" ] && command -v uv >/dev/null 2>&1; then (cd \"$ROOT\" && uv run pre-commit run --all-files) >&2 || { echo \"pre-commit failed \u2014 fix the issues, stage them, then retry the commit\" >&2; exit 2; }; fi",
             "if": "Bash(git commit*)",
             "timeout": 180,
             "statusMessage": "Running pre-commit before commit..."
@@ -118,7 +118,8 @@
     "codex@openai-codex": true,
     "vercel-plugin@vercel": false,
     "posthog@claude-plugins-official": false,
-    "compound-engineering@compound-engineering-plugin": true
+    "compound-engineering@compound-engineering-plugin": true,
+    "claude-code-setup@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-hud": {

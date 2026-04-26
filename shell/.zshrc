@@ -48,4 +48,5 @@ alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scri
 # NPM global bin (added by Qwen Code installer)
 export PATH="$HOME/.npm-global/bin:$PATH"
 
-# Taskforce.sh private npm registry (token in .env, not here)
+# Taskforce.sh private npm registry
+# NPM_TASKFORCESH_TOKEN loaded from .env or secrets manager

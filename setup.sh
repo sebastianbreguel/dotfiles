@@ -35,7 +35,7 @@ fi
 # 2. CLI packages
 echo "[2/9] Installing CLI packages..."
 if $IS_MAC; then
-  brew install aitop asciinema bats-core ca-certificates deno ffmpeg fzf gh git-filter-repo glow go htop imagemagick jq lame lean-ctx mas mole ncdu nvm nvtop openssl@3 pgvector poppler postgresql@15 postgresql@17 qwen-code redis ripgrep rtk sdl2 shellcheck sox tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
+  brew install aitop asciinema bats-core deno ffmpeg fzf gh git-filter-repo glow go htop imagemagick jq libpq mas mole ncdu nvm nvtop pam-reattach pango pgvector pkgconf poppler postgresql@15 postgresql@17 qwen-code redis rtk shellcheck sox tbb tectonic tmux lean-ctx zig zsh zsh-autosuggestions 2>/dev/null || true
 else
   sudo apt-get update -y
   sudo apt-get install -y \
@@ -53,7 +53,7 @@ fi
 # 3. GUI apps (macOS only)
 if $IS_MAC; then
   echo "[3/9] Installing Homebrew casks..."
-  brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font gemini jordanbaird-ice brave-browser claude docker postman rectangle slack spotify stats datagrip macs-fan-control cloudflare-warp 2>/dev/null || true
+  brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font gemini jordanbaird-ice 2>/dev/null || true
 else
   echo "[3/9] Skipping GUI casks (Linux)."
 fi
@@ -104,7 +104,7 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 mkdir -p "$PNPM_HOME"
 export PATH="$PNPM_HOME:$PATH"
 pnpm setup 2>/dev/null || true
-pnpm install -g @anthropic-ai/claude-code @google/gemini-cli @openai/codex @kilocode/cli @qwen-code/qwen-code @cubic-dev-ai/cli agent-browser mint openclaw op puzldai vercel 2>/dev/null || true
+pnpm install -g @anthropic-ai/claude-code @google/gemini-cli @openai/codex @kilocode/cli @qwen-code/qwen-code agent-browser op vercel 2>/dev/null || true
 
 # 8. Python packages
 echo "[8/9] Installing Python packages..."
@@ -179,14 +179,7 @@ fi
 echo "[+] Installing VS Code extensions..."
 if command -v code &>/dev/null; then
   EXTENSIONS=(
-    anthropic.claude-code dbaeumer.vscode-eslint eamodio.gitlens
-    esbenp.prettier-vscode git-ai.git-ai-vscode github.copilot-chat
-    gitpod.gitpod-theme kd3n1z.vscode-material-theme-icons
-    mechatroner.rainbow-csv mhutchie.git-graph ms-python.debugpy
-    ms-python.python ms-python.vscode-pylance ms-python.vscode-python-envs
-    ms-toolsai.jupyter ms-toolsai.jupyter-keymap ms-toolsai.jupyter-renderers
-    ms-toolsai.vscode-jupyter-cell-tags ms-toolsai.vscode-jupyter-slideshow
-    rvest.vs-code-prettier-eslint shd101wyy.markdown-preview-enhanced
+    anthropic.claude-code github.copilot-chat
   )
   for ext in "${EXTENSIONS[@]}"; do
     code --install-extension "$ext" --force 2>/dev/null || true

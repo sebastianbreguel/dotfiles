@@ -23,6 +23,8 @@
 | **[Visual Studio Code](https://code.visualstudio.com)** | Editor de codigo open source de Microsoft. Extensions marketplace. | `brew install --cask visual-studio-code` | free |
 | **[Xcode](https://developer.apple.com/xcode/)** | IDE de Apple para desarrollo iOS/macOS. | `App Store` | free |
 | **[Obsidian](https://obsidian.md)** | Editor de notas en Markdown. Plugins, graph view, vault local. | `brew install --cask obsidian` | free |
+| **[Notion](https://notion.so)** | Workspace todo-en-uno. Notas, docs, wikis, bases de datos, kanban. | `Download from notion.so` | freemium |
+| **[Zotero](https://www.zotero.org)** | Gestor de referencias bibliograficas. Papers, PDFs, citas. | `Download from zotero.org` | free |
 | **Conductor** | Observabilidad y monitoreo de infraestructura. | `Enterprise install` | paid |
 
 ### Utilidades
@@ -37,6 +39,9 @@
 | **[Macs Fan Control](https://crystalidea.com/macs-fan-control)** | Control manual de ventiladores y monitoreo de temperatura. | `brew install --cask macs-fan-control` | freemium |
 | **[1Password CLI](https://1password.com)** | Acceso a passwords desde terminal. Secrets management. | `brew install --cask 1password-cli` | paid |
 | **cmux** | Multiplexor de sesiones Claude Code en paralelo. | `brew install --cask cmux` | free |
+| **[Raycast](https://raycast.com)** | Launcher y productivity app. Reemplaza Spotlight con extensions, snippets, window management. | `Download from raycast.com` | freemium |
+| **[OnyX](https://titanium-software.fr/en/onyx.html)** | Utilidad de mantenimiento y optimizacion para macOS. Limpieza de cache, reparacion de permisos. | `Download from titanium-software.fr` | free |
+| **[Orca](https://stably.ai)** | App de generacion de imagenes con AI. Stably AI. | `Download from stably.ai` | freemium |
 | **[RightFont](https://rightfontapp.com)** | Gestor de fuentes para macOS. Preview, activacion, organizacion. | `Manual download` | freemium |
 
 ### Browsers
@@ -72,7 +77,6 @@
 | **[OpenAI Codex](https://github.com/openai/codex)** | CLI de OpenAI. Coding agent en terminal. | free |
 | **Kilo Code** | CLI de Kilo Code. Coding agent en terminal. | free |
 | **Qwen Code** | CLI de Qwen para coding. | free |
-| **Cubic Dev AI** | CLI de Cubic Dev AI para coding. | free |
 
 ### Browser & Automation
 
@@ -84,9 +88,6 @@
 
 | Tool | Descripcion | Costo |
 |------|-------------|-------|
-| **Mint** | CLI de Mint. Herramienta de desarrollo. | free |
-| **OpenClaw** | CLI de OpenClaw. Herramienta de desarrollo. | free |
-| **Puzld AI** | CLI de Puzld AI. Herramienta de desarrollo. | free |
 | **OP** | CLI de OP. Herramienta de desarrollo. | free |
 | **[asciinema](https://asciinema.org)** | Grabador de sesiones de terminal. Genera recordings reproducibles y compartibles. | free |
 | **[ImageMagick](https://imagemagick.org)** | Suite de procesamiento de imagenes desde CLI. Conversion, resize, composicion. | free |
@@ -117,7 +118,6 @@
 | Tool | Descripcion | Costo |
 |------|-------------|-------|
 | **[tmux](https://github.com/tmux/tmux)** | Multiplexor de terminal. Sesiones persistentes, splits. | free |
-| **[ripgrep](https://github.com/BurntSushi/ripgrep)** | Busqueda de texto ultra rapida. Reemplaza grep. | free |
 | **[fzf](https://github.com/junegunn/fzf)** | Fuzzy finder. Ctrl+R mejorado, busqueda de archivos. | free |
 | **[htop](https://htop.dev)** | Monitor de procesos interactivo. Mejor que top. | free |
 | **aitop** | Monitor del sistema con AI. Top-like con analisis inteligente. | free |
@@ -171,33 +171,17 @@
 | Skill | Comando | Descripcion |
 |-------|---------|-------------|
 | **/browser-automation** | `Built-in skill` | Browser automation CLI. Navegacion, forms, scraping, screenshots. |
-| **/cross-ai-debate** | `Built-in skill` | Debate adversarial entre Claude Code, Codex CLI y Gemini CLI. |
-| **/doc-sync** | `Built-in skill` | Auditoria y sincronizacion de CLAUDE.md y README.md. Detecta drift. |
 | **/dream** | `Built-in skill` | Consolidacion de memoria multi-fase. Merge updates, pruning. |
-| **/electron** | `Built-in skill` | Automatiza apps Electron (VS Code, Slack, Discord) via Chrome DevTools. |
-| **/explore-app** | `Built-in skill` | Exploracion sistematica de web apps. Reporte con screenshots. |
-| **/fastAPI-standards** | `Built-in skill` | Guia para construir/refactorizar pipelines FastAPI + Prefect + pgvector. |
-| **/generate-readme** | `Built-in skill` | Genera README preciso analizando el codigo fuente del proyecto. |
 | **/health** | `Built-in skill` | Diagnostico cuando Claude se siente lento o ignora reglas. Audita hooks y MCP. |
-| **/pipeline-review** | `Built-in skill` | Auditoria full-stack de codigo de pipelines. Agentes paralelos. |
 | **/pre-merge-review** | `Built-in skill` | Review pre-landing de PRs. SQL safety, trust boundaries, side effects. |
 | **/project-docs** | `Built-in skill` | Genera vambe.md y db.md como referencia de contexto para AI. |
 | **/refactor-analysis** | `Built-in skill` | Analiza tech debt antes de refactorizar. Identifica code smells. |
 | **/review-plan-engineering** | `Built-in skill` | Review de planes de ingenieria. Arquitectura, data flow, tests. |
-| **/setup-browser-cookies** | `Built-in skill` | Importa cookies de tu browser real al headless para testing autenticado. |
-| **/ship-pr** | `Built-in skill` | Workflow de PR: merge main, tests, review diff, bump VERSION, changelog, commit, push, crear PR. |
-| **/slack** | `Built-in skill` | Interactua con workspaces Slack via browser automation. |
-| **/test-and-fix** | `Built-in skill` | QA testing sistematico de web apps. Modos: diff-aware, full, quick, regression. |
-| **/vercel-sandbox** | `Built-in skill` | Browser automation en Vercel Sandbox microVMs. Chrome headless. |
-| **/weekly-retro** | `Built-in skill` | Retrospectiva semanal de ingenieria. Analiza commits, metricas por persona. |
 | **/panel** | `Built-in skill` | Panel de 3 lentes: simplificacion, arquitectura, producto. Multi-perspectiva. |
-| **/simplify** | `Built-in skill` | Revisa codigo cambiado para simplificar, mejorar calidad y eficiencia. |
-| **/loop** | `Built-in skill` | Ejecuta un prompt o slash command en intervalo recurrente. |
-| **/schedule** | `Built-in skill` | Crea agentes remotos que ejecutan en cron schedule. |
-| **/claude-api** | `Built-in skill` | Guia para construir apps con Claude API y Anthropic SDK. |
 | **/avoid-ai-writing** | `Built-in skill` | Detecta y reescribe patrones de escritura AI. Audita contenido para eliminar AI-isms. |
+| **/humanizer** | `Built-in skill` | Elimina patrones de escritura AI del texto. Basado en la guia de Wikipedia. |
+| **/usage** | `Built-in skill` | Muestra conteos de invocaciones de agentes, skills y plugins. |
 | **Sync Dotfiles** | `/sync-dotfiles` | Sincroniza config de la maquina al repo. Detecta herramientas nuevas, actualiza data.js y regenera docs. |
-| **Browser (headless)** | `/browser` | Headless browser para QA testing. Screenshots, navegacion, verificacion de estado. |
 
 ### Agents
 
@@ -233,28 +217,9 @@
 | Extension | ID | Descripcion | Costo |
 |-----------|-----|-------------|-------|
 | **Claude Code** | `ext-claude-code` | Integracion de Claude Code en el editor. | free |
-| **ESLint** | `ext-eslint` | Linting de JavaScript/TypeScript. | free |
-| **GitLens** | `ext-gitlens` | Git supercharged: blame, history, comparisons. | freemium |
-| **Prettier** | `ext-prettier` | Code formatter. JS, TS, CSS, HTML, JSON. | free |
-| **Git AI** | `ext-git-ai` | Integracion de git-ai en VS Code. | free |
 | **GitHub Copilot Chat** | `ext-copilot-chat` | Chat de GitHub Copilot en el editor. | freemium |
-| **Gitpod Theme** | `ext-gitpod-theme` | Color theme de Gitpod. | free |
-| **Material Theme Icons** | `ext-material-icons` | Iconos Material Design para archivos y carpetas. | free |
-| **Rainbow CSV** | `ext-rainbow-csv` | Colorea columnas de CSV/TSV para lectura facil. | free |
-| **Git Graph** | `ext-git-graph` | Visualizacion de grafos Git en VS Code. | free |
-| **Python Debugger** | `ext-python-debugger` | Debugger para Python. | free |
-| **Python** | `ext-python` | Soporte completo: IntelliSense, linting, formatting. | free |
-| **Python Pylance** | `ext-pylance` | Language server de Python con type checking avanzado. | free |
-| **Python Environments** | `ext-python-envs` | Gestor de entornos Python en VS Code. | free |
-| **Jupyter** | `ext-jupyter` | Soporte para notebooks Jupyter en el editor. | free |
-| **Jupyter Keymap** | `ext-jupyter-keymap` | Atajos de teclado de Jupyter en VS Code. | free |
-| **Jupyter Renderers** | `ext-jupyter-renderers` | Renderers adicionales para outputs de Jupyter. | free |
-| **Jupyter Cell Tags** | `ext-jupyter-cell-tags` | Tags para celdas de Jupyter notebooks. | free |
-| **Jupyter Slideshow** | `ext-jupyter-slideshow` | Slideshow mode para Jupyter notebooks. | free |
-| **Prettier ESLint** | `ext-prettier-eslint` | Formatea con Prettier y aplica ESLint fixes. | free |
-| **Markdown Preview Enhanced** | `ext-markdown-preview` | Preview avanzado de Markdown con soporte LaTeX, diagrams. | free |
 
 ---
 
-> **154 herramientas** en total. 142 free, 8 freemium, 4 paid.
+> **119 herramientas** en total. 105 free, 10 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.
