@@ -142,6 +142,7 @@ brew install \
   go \
   htop \
   imagemagick \
+  j178/tap/prek \
   jq \
   mas \
   mole \
@@ -155,7 +156,6 @@ brew install \
   sox \
   tectonic \
   tmux \
-  yvgude/lean-ctx/lean-ctx \
   zig \
   zsh-autosuggestions
 ```
@@ -166,10 +166,12 @@ brew install \
 brew install --cask \
   1password-cli \
   alt-tab \
+  background-music \
   betterdisplay \
   cmux \
   google-chrome \
   jordanbaird-ice \
+  meetingbar \
   obsidian \
   visual-studio-code
 ```
@@ -259,7 +261,6 @@ pnpm add -g \
   @google/gemini-cli \
   @kilocode/cli \
   @openai/codex \
-  @qwen-code/qwen-code \
   agent-browser \
   op \
   pnpm \
@@ -285,7 +286,6 @@ pip3 install \
 
 ```bash
 code --install-extension ext-claude-code
-code --install-extension ext-copilot-chat
 ```
 
 ---

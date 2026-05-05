@@ -39,6 +39,8 @@
 | **[Macs Fan Control](https://crystalidea.com/macs-fan-control)** | Control manual de ventiladores y monitoreo de temperatura. | `brew install --cask macs-fan-control` | freemium |
 | **[1Password CLI](https://1password.com)** | Acceso a passwords desde terminal. Secrets management. | `brew install --cask 1password-cli` | paid |
 | **cmux** | Multiplexor de sesiones Claude Code en paralelo. | `brew install --cask cmux` | free |
+| **[Background Music](https://github.com/kyleneideck/BackgroundMusic)** | Control de audio por app. Volumen independiente, auto-pause. | `brew install --cask background-music` | free |
+| **[MeetingBar](https://meetingbar.app)** | Proxima reunion en la menu bar. Un click para unirse. | `brew install --cask meetingbar` | free |
 | **[Raycast](https://raycast.com)** | Launcher y productivity app. Reemplaza Spotlight con extensions, snippets, window management. | `Download from raycast.com` | freemium |
 | **[OnyX](https://titanium-software.fr/en/onyx.html)** | Utilidad de mantenimiento y optimizacion para macOS. Limpieza de cache, reparacion de permisos. | `Download from titanium-software.fr` | free |
 | **[Orca](https://stably.ai)** | App de generacion de imagenes con AI. Stably AI. | `Download from stably.ai` | freemium |
@@ -76,7 +78,6 @@
 | **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** | CLI oficial de Google Gemini. Coding agent en terminal. | free |
 | **[OpenAI Codex](https://github.com/openai/codex)** | CLI de OpenAI. Coding agent en terminal. | free |
 | **Kilo Code** | CLI de Kilo Code. Coding agent en terminal. | free |
-| **Qwen Code** | CLI de Qwen para coding. | free |
 
 ### Browser & Automation
 
@@ -101,6 +102,7 @@
 | **[Zig](https://ziglang.org)** | Lenguaje de programacion de sistemas. Compilador y build system. | free |
 | **[Ruff](https://docs.astral.sh/ruff)** | Linter y formatter para Python. Ultra rapido, reemplaza flake8+isort+black. | free |
 | **[pre-commit](https://pre-commit.com)** | Framework de hooks para git. Ejecuta linters y checks antes de cada commit. | free |
+| **[prek](https://github.com/j178/prek)** | Wrapper de pre-commit mas rapido. Escrito en Go, cachea resultados. | free |
 | **[complexipy](https://github.com/rohaquinern/complexipy)** | Analizador de complejidad cognitiva para Python. Detecta funciones dificiles de mantener. | free |
 | **[code-review-graph](https://github.com/sebastianbreguel/code-review-graph)** | MCP server para busqueda semantica de codigo. Grafo de dependencias y analisis de impacto. | free |
 
@@ -133,7 +135,6 @@
 | **[Glow](https://github.com/charmbracelet/glow)** | Render de Markdown en la terminal con syntax highlighting y paginacion. | free |
 | **[mas](https://github.com/mas-cli/mas)** | CLI para Mac App Store. Instalar, actualizar y buscar apps desde la terminal. | free |
 | **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** | Descargador de video/audio de YouTube y +1000 sitios. Fork mejorado de youtube-dl. | free |
-| **[lean-ctx](https://github.com/yvgude/lean-ctx)** | Optimizador de contexto para LLMs. Comprime salida de comandos manteniendo informacion clave. | free |
 
 ## 3. Shell Setup
 
@@ -160,11 +161,11 @@
 | **skill-creator** | Crea, modifica y mide rendimiento de skills custom para Claude Code. | free |
 | **superpowers** | Superpowers: writing-plans, executing-plans, brainstorming, systematic-debugging. | free |
 | **claude-hud** | HUD (Heads-Up Display) para Claude Code. Status line con info en tiempo real. | free |
-| **feature-dev** | Asistente de desarrollo de features. Planificacion, implementacion, testing. | free |
-| **claude-subconscious** | Agente subconsciente de Letta AI. Memoria persistente entre sesiones. | free |
 | **[caveman](https://github.com/JuliusBrussee/caveman)** | Modo cavernicola. Comprime respuestas 50-75% eliminando relleno, articulos y filler. | free |
 | **[code-review](https://github.com/anthropics/claude-code)** | Plugin oficial de Anthropic para code review de PRs. | free |
-| **[compound-engineering](https://github.com/AustinKelsworthy/compound-engineering-plugin)** | Mega-plugin de Compound Engineering. Code review multi-agente, commits, PRs, debugging, planificacion, worktrees. | free |
+| **[compound-engineering](https://github.com/EveryInc/compound-engineering-plugin)** | Mega-plugin de Compound Engineering. Code review multi-agente, commits, PRs, debugging, planificacion, worktrees. | free |
+| **[codex](https://github.com/openai/codex-plugin-cc)** | Integracion con OpenAI Codex CLI. Permite delegar tareas a Codex desde Claude Code. | free |
+| **[claude-code-setup](https://github.com/anthropics/claude-code)** | Asistente de setup inicial de Claude Code. Genera CLAUDE.md, sugiere hooks y automatizaciones. | free |
 
 ### Skills
 
@@ -173,12 +174,7 @@
 | **/browser-automation** | `Built-in skill` | Browser automation CLI. Navegacion, forms, scraping, screenshots. |
 | **/dream** | `Built-in skill` | Consolidacion de memoria multi-fase. Merge updates, pruning. |
 | **/health** | `Built-in skill` | Diagnostico cuando Claude se siente lento o ignora reglas. Audita hooks y MCP. |
-| **/pre-merge-review** | `Built-in skill` | Review pre-landing de PRs. SQL safety, trust boundaries, side effects. |
-| **/project-docs** | `Built-in skill` | Genera vambe.md y db.md como referencia de contexto para AI. |
-| **/refactor-analysis** | `Built-in skill` | Analiza tech debt antes de refactorizar. Identifica code smells. |
-| **/review-plan-engineering** | `Built-in skill` | Review de planes de ingenieria. Arquitectura, data flow, tests. |
 | **/panel** | `Built-in skill` | Panel de 3 lentes: simplificacion, arquitectura, producto. Multi-perspectiva. |
-| **/avoid-ai-writing** | `Built-in skill` | Detecta y reescribe patrones de escritura AI. Audita contenido para eliminar AI-isms. |
 | **/humanizer** | `Built-in skill` | Elimina patrones de escritura AI del texto. Basado en la guia de Wikipedia. |
 | **/usage** | `Built-in skill` | Muestra conteos de invocaciones de agentes, skills y plugins. |
 | **Sync Dotfiles** | `/sync-dotfiles` | Sincroniza config de la maquina al repo. Detecta herramientas nuevas, actualiza data.js y regenera docs. |
@@ -193,20 +189,18 @@
 | **prompt-engineering** | Craft y optimizar prompts para LLMs. |
 | **data-science-analytics** | EDA, estadisticas, visualizacion, ML. |
 | **data-pipeline-engineer** | ETL/ELT, orchestration, ML workflows, FastAPI + data stores. |
-| **thesis-reviewer** | Review de tesis, deteccion de texto AI, escritura academica. |
 | **ceo-product-strategist** | Vision estrategica CEO, roadmap, impacto de producto. |
 | **andrej-karpathy** | Persona de Karpathy: implementaciones simples, first-principles, code review minimalista. |
 | **ops-impact-analyst** | ROI de features, metricas de negocio, reportes ejecutivos. |
 | **tw93** | Gatekeeper de Mole: minimalismo, safety-first, scope discipline. |
-| **manuel-ossa** | Perspectiva de scale-stage operator y customer-first product critique. |
+| **database-engineer** | Disenio de esquemas, optimizacion de queries, modelado relacional. |
+| **coo** | Perspectiva de scale-stage operator y customer-first product critique. |
 
 ### Commands
 
 | Nombre | Descripcion |
 |--------|-------------|
 | **/redesign-ui** | Analiza componentes UI y los redisena usando ui-designer y ux-designer en paralelo. |
-| **/python-review** | Revisa codigo Python para calidad, seguridad, type safety y mejores practicas. |
-| **/security-scan** | Escaneo de seguridad. Busca vulnerabilidades, secretos hardcodeados, dependencias riesgosas. |
 | **/lint** | Corre pre-commit suite completo: ruff, ty, isort, todos los hooks. |
 | **/test** | Corre pytest con detalles de fallos y coverage opcional. |
 
@@ -217,9 +211,8 @@
 | Extension | ID | Descripcion | Costo |
 |-----------|-----|-------------|-------|
 | **Claude Code** | `ext-claude-code` | Integracion de Claude Code en el editor. | free |
-| **GitHub Copilot Chat** | `ext-copilot-chat` | Chat de GitHub Copilot en el editor. | freemium |
 
 ---
 
-> **119 herramientas** en total. 105 free, 10 freemium, 4 paid.
+> **112 herramientas** en total. 99 free, 9 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.

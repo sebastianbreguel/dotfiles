@@ -3,7 +3,6 @@
     "allow": [],
     "deny": []
   },
-  "model": "claude-opus-4-5",
   "disabledMcpjsonServers": [
     "claude-ai-ClickUp",
     "claude-ai-Gmail",
@@ -68,6 +67,14 @@
           {
             "type": "command",
             "command": "uv run $HOME/.claude/tools/engram.py on-session-start"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"/Users/sebabreguel/.claude/hooks/context-mode-cache-heal.mjs\""
           }
         ]
       }
@@ -177,7 +184,7 @@
       }
     }
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "medium",
   "autoCompactWindow": 250000,
   "advisorModel": "opus",
   "autoDreamEnabled": false,

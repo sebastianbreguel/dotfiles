@@ -20,7 +20,7 @@
 
 # Python
 - `uv` only (no pip/python/python3). `ruff` (line 140, double quotes). `ty` typecheck.
-- Pre-commit: `uv run pre-commit run --all-files`. Classes > loose funcs para stateful logic.
+- Pre-commit: `prek run --all-files`. Classes > loose funcs para stateful logic.
 - `str | None` not `Optional[str]`. Tests: `uv run pytest`, mock LLM/external.
 
 # Think Before Code
