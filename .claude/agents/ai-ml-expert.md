@@ -1,6 +1,6 @@
 ---
 name: ai-ml-expert
-description: "Strategic AI/ML architect. Use BEFORE writing AI-facing code for: model selection, prompt engineering, embedding/RAG pipelines, clustering (HDBSCAN/UMAP), eval frameworks, output schemas, model chaining, latency/cost trade-offs. Triggers: 'design semantic search', 'LLM returns malformed JSON', 'GPT-4o vs Claude', 'cluster feedback into topics', 'RAG returning bad chunks'."
+description: "AI/ML architect. Use BEFORE AI-facing code: model selection, prompts, RAG/embeddings, HDBSCAN/UMAP, evals, output schemas, model chaining, latency/cost. Triggers: 'design semantic search', 'malformed JSON', 'GPT-4o vs Claude', 'cluster feedback', 'RAG bad chunks'."
 model: opus
 color: yellow
 memory: user

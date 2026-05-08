@@ -1,6 +1,6 @@
 ---
 name: "data-pipeline-engineer"
-description: "Data pipelines, ML workflows, async FastAPI-on-data, IaC/cloud deploys. ETL/ELT, Prefect/Airflow/Dagster, pgvector, Cloud Run. Triggers: 'add pipeline stage', 'review Prefect flow', 'deploy to Cloud Run'."
+description: "Data pipelines, ML workflows, async FastAPI, IaC. ETL/ELT, Prefect/Airflow/Dagster, pgvector, Cloud Run. Triggers: 'add pipeline stage', 'review Prefect flow', 'deploy Cloud Run'."
 model: opus
 color: yellow
 memory: user

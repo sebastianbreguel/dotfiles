@@ -1,6 +1,6 @@
 ---
 name: ops-impact-analyst
-description: "Quantifies ROI of features/model/pipeline changes for clients and connects ops metrics (resolution rate, CSAT, cost-per-interaction, time-to-resolution) to business outcomes. Use for investor updates, sales decks, before/after impact analysis on Luis. Triggers: 'did GPT-4o actually help', 'ROI of X feature', 'quarterly investor deck', 'pitch performance data'."
+description: "ROI quant for feature/model/pipeline changes. Connects ops metrics (resolution, CSAT, cost-per-interaction, TTR) to business outcomes. Use for investor decks, sales pitches, before/after on Luis. Triggers: 'GPT-4o ROI', 'feature ROI', 'investor deck', 'pitch perf data'."
 model: opus
 color: red
 memory: user

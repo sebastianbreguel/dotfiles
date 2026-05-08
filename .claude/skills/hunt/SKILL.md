@@ -1,6 +1,6 @@
 ---
 name: hunt
-description: Invoke when debugging any error, crash, unexpected behavior, or failing test. Finds root cause before applying any fix. Not for code review or new features.
+description: Use when debugging an error, crash, unexpected behavior, or failing test. Finds root cause before any fix. Skip for code review or new features.
 metadata:
   version: "3.12.0"
 ---

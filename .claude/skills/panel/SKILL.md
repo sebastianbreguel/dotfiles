@@ -1,6 +1,6 @@
 ---
 name: panel
-description: "Three-lens evaluation panel that gives multi-perspective feedback on any decision — technical, product, or strategic. Applies three complementary lenses: Simplification (strip to essentials), Architecture (is the structure right?), and Product (does it earn its place?). Use this skill whenever the user wants a second opinion, multi-angle feedback, or needs to stress-test a decision before committing. Trigger on: '/panel', 'panel review', 'get perspectives on', 'what would the panel think', any request for multi-angle evaluation of code, design, architecture, product, strategy, or business decisions. Also trigger when the user seems stuck between two options or wants validation before a big decision."
+description: "Three-lens eval: Simplification, Architecture, Product. Stress-test decisions, multi-angle feedback before committing. Triggers: '/panel', 'panel review', 'get perspectives on', stuck between options, big-decision validation."
 ---
 
 # Iconic Panel
@@ -13,9 +13,9 @@ The panel presents perspectives as abstract lenses, not as named individuals. Ea
 
 | Lens | Focus | Question it asks | Powered by |
 |------|-------|-----------------|------------|
-| **Simplificación** | Compression, essentials, first-order terms | "What's the simplest version that works?" | `andrej-karpathy` |
+| **Simplificación** | Compression, essentials, first-order terms | "What's the simplest version that works?" | `tw93` |
 | **Arquitectura** | Structure, premises, first principles | "Is this even the right formulation?" | `tech-lead` |
-| **Producto** | Scope, user value, discipline | "Does this earn its place?" | `tw93` |
+| **Producto** | Scope, user value, discipline | "Does this earn its place?" | `andrej-karpathy` |
 
 ## Mode Detection
 
@@ -64,9 +64,9 @@ Write a context brief that gives each lens everything it needs. Include: what it
 Launch ALL THREE in a SINGLE message using the Agent tool. One call per lens. All in one message — this is what makes them parallel.
 
 Each agent uses its `subagent_type` which loads the personality profile automatically:
-- `andrej-karpathy` for Simplificación
+- `tw93` for Simplificación
 - `tech-lead` for Arquitectura
-- `tw93` for Producto
+- `andrej-karpathy` for Producto
 
 **Prompt to each agent:**
 ```

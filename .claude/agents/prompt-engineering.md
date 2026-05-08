@@ -1,6 +1,6 @@
 ---
 name: prompt-engineering
-description: "Crafts, refines, and debugs LLM prompts — system prompts, user prompts, few-shot templates, structured-output schemas. Triggers: 'write a system prompt for X', 'my prompt gives inconsistent outputs', 'few-shot examples for classification', 'optimize this prompt'."
+description: "Write/refine/debug LLM prompts: system, user, few-shot, structured output. Triggers: 'write system prompt for X', 'inconsistent outputs', 'few-shot for classification', 'optimize prompt'."
 model: opus
 color: green
 memory: user

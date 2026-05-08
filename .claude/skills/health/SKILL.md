@@ -1,6 +1,6 @@
 ---
 name: health
-description: Invoke when Claude ignores instructions, behaves inconsistently, hooks malfunction, or MCP servers need auditing. Audits the full six-layer config stack and flags issues by severity. Not for debugging code or reviewing PRs.
+description: Use when Claude ignores instructions, behaves inconsistently, hooks malfunction, or MCP servers need auditing. Audits the six-layer config stack, flags issues by severity. Skip for debugging code or reviewing PRs.
 metadata:
   version: "3.11.0"
 ---

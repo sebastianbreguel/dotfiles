@@ -1,6 +1,6 @@
 ---
 name: design
-description: Invoke when building any UI, component, page, or visual interface. Produces distinctive design with a committed aesthetic, not generic defaults. Handles screenshot-driven iteration when the user sends an image with a complaint. Not for backend logic or data pipelines.
+description: Use for building any UI, component, page, or visual interface. Outputs distinctive design with committed aesthetic over generic defaults. Handles screenshot-driven iteration on user-sent images with complaints. Skip for backend or data pipelines.
 metadata:
   version: "3.12.0"
 ---

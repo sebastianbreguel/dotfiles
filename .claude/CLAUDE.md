@@ -14,6 +14,7 @@
 
 - NEVER add Co-Authored-By lines to git commits
 - NEVER add "Generated with Claude Code" or similar attribution lines in PRs, commits, or any output
+- NEVER commit/push plan docs (`docs/plans/**`, `*plan*.md` from /ce-plan, brainstorms). Local only, gitignore if needed. Plans = scratch, never upstream.
 
 # Verification
 - Pre-"done": run test/lint si existen. Else: verify files parse.
@@ -26,6 +27,14 @@
 # Think Before Code
 - Non-trivial: research → analysis + tradeoffs → align → code. No large files pre-validation.
 - One-shot scripts: `uv run python -c '...'` o `/tmp/`, nunca commit.
+
+# Coding Principles
+- "Right amount, done well" > completeness. Solo lo pedido, nada más.
+- No archivos extra: no helpers/abstractions/docs/plans sin pedido explícito.
+- No features extra: bug fix = bug fix, no refactor aledaño, no error handling especulativo.
+- Cut before add: feature falla gate (¿problema real? ¿más simple? ¿safe default?) → no entra.
+- Destructivo → confirmar, default conservador.
+- Craft > velocidad: AI baja fricción, taste sube de valor.
 
 # Review
 - `tech-lead` = final reviewer en plans/arch/non-trivial ANTES de user. Blocks → iterar → re-review.

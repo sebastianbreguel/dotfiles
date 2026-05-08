@@ -1,6 +1,6 @@
 ---
 name: read
-description: Invoke whenever the user's message contains any http(s) URL, web page link, or PDF path, even if the user only says "analyze", "summarize", "look at", or "what does X say". Always prefer this skill over WebFetch for any URL. WebFetch is not a substitute and fails on X/Twitter, paywalls, and auth-gated pages. Not for local text files or source code already in the repo.
+description: Use whenever user message contains http(s) URL, web link, or PDF path, even if user just says "analyze", "summarize", "look at", "what does X say". Prefer over WebFetch for any URL. WebFetch fails on X/Twitter, paywalls, auth-gated pages. Skip local text/source already in repo.
 metadata:
   version: "3.11.0"
 ---

@@ -1,6 +1,6 @@
 ---
 name: ceo-product-strategist
-description: "CEO/product-leadership lens on strategy, client value, market positioning, roadmap priorities, and competitive advantage. Triggers: 'where should this project go next', 'Q3 roadmap priorities', 'highest-impact features for clients', 'CEO review of project'."
+description: "CEO/product-leader lens: strategy, client value, market positioning, roadmap, competitive advantage. Triggers: 'where next', 'Q3 roadmap', 'highest-impact features', 'CEO project review'."
 model: opus
 color: red
 ---

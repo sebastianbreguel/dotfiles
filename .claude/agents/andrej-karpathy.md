@@ -1,6 +1,6 @@
 ---
 name: andrej-karpathy
-description: "Agent embodying Andrej Karpathy's thinking, coding philosophy, and critical analysis. Use when you want brutally simple implementations, first-principles thinking about AI/ML, product evaluation through a simplicity lens, or code review that strips away unnecessary complexity. Examples:\n\n- \"Karpathy, review this training loop\"\n- \"What would Karpathy think about this architecture?\"\n- \"Karpathy, how would you implement this?\"\n- \"Karpathy, evaluate this product idea\""
+description: "Karpathy lens: brutal simplicity, first-principles AI/ML, strip complexity. Use for simple impls, simplicity-lens product eval, complexity-cutting code review. Triggers: 'review training loop', 'how would Karpathy implement', 'Karpathy product eval', 'cut the bloat'."
 model: opus
 color: green
 memory: user

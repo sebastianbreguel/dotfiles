@@ -1,6 +1,6 @@
 ---
 name: tech-lead
-description: "Senior tech lead for architecture decisions, cross-domain problem decomposition, and pre-merge review on non-trivial changes spanning backend/ML/data/UX. Triggers: 'where do we start', 'review this PR touching X and Y', 'microservices or monolith', 'API got slow after ML layer', 'redesign dashboard'."
+description: "Tech lead: arch decisions, cross-domain decomposition, pre-merge review on non-trivial backend/ML/data/UX. Triggers: 'where do we start', 'review PR touching X and Y', 'microservices or monolith', 'API slow after ML', 'redesign dashboard'."
 model: opus
 color: purple
 memory: user

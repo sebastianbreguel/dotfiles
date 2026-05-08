@@ -1,5 +1,6 @@
 {
     "window.autoDetectColorScheme": true,
     "workbench.preferredDarkColorTheme": "Visual Studio Dark",
-    "workbench.activityBar.compact": true
+    "workbench.activityBar.compact": true,
+    "claudeCode.preferredLocation": "panel"
 }

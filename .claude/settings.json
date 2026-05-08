@@ -122,7 +122,6 @@
     "skill-creator@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": false,
     "caveman@caveman": true,
-    "codex@openai-codex": true,
     "vercel-plugin@vercel": false,
     "posthog@claude-plugins-official": false,
     "compound-engineering@compound-engineering-plugin": true,
@@ -184,7 +183,7 @@
       }
     }
   },
-  "effortLevel": "medium",
+  "effortLevel": "xhigh",
   "autoCompactWindow": 250000,
   "advisorModel": "opus",
   "autoDreamEnabled": false,

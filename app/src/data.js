@@ -338,44 +338,6 @@ export const DATA = {
           ]
         },
         {
-          "id": "background-music",
-          "name": "Background Music",
-          "desc": "Control de audio por app. Volumen independiente, auto-pause.",
-          "install": "brew install --cask background-music",
-          "site": "github.com/kyleneideck/BackgroundMusic",
-          "tags": [
-            "audio",
-            "volume",
-            "control"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para bajar el volumen de Slack sin tocar Spotify. Control de audio por app que macOS deberia tener nativo.",
-          "related": []
-        },
-        {
-          "id": "meetingbar",
-          "name": "MeetingBar",
-          "desc": "Proxima reunion en la menu bar. Un click para unirse.",
-          "install": "brew install --cask meetingbar",
-          "site": "meetingbar.app",
-          "tags": [
-            "calendar",
-            "meetings",
-            "menubar"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Ver la proxima reunion en la barra y unirme con un click. No mas buscar el link en el calendario.",
-          "related": [
-            "Ice"
-          ]
-        },
-        {
           "id": "raycast",
           "name": "Raycast",
           "desc": "Launcher y productivity app. Reemplaza Spotlight con extensions, snippets, window management.",
@@ -1158,6 +1120,62 @@ export const DATA = {
           "note": "Lo probé porque la combinacion de AI + monitoreo me parecio curiosa. Util cuando queres que te explique por que algo esta lento.",
           "related": [
             "htop"
+          ]
+        },
+        {
+          "id": "awscli",
+          "name": "AWS CLI",
+          "desc": "CLI oficial de AWS. Manejo de servicios desde terminal.",
+          "install": "brew install awscli",
+          "site": "aws.amazon.com/cli",
+          "tags": [
+            "cloud",
+            "aws"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": true,
+          "note": "Para tocar S3, ECR y Lambda desde scripts. Lo uso para deploys y debugging de infra puntual.",
+          "related": []
+        },
+        {
+          "id": "pipx",
+          "name": "pipx",
+          "desc": "Instalador de apps Python en venvs aisladas.",
+          "install": "brew install pipx",
+          "site": "pipx.pypa.io",
+          "tags": [
+            "python",
+            "cli"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Para CLIs Python que necesitan estar globales sin contaminar el system Python. uv tool me cubre la mayoria, pero pipx queda para casos que uv no soporta.",
+          "related": [
+            "uv"
+          ]
+        },
+        {
+          "id": "python-3-12",
+          "name": "Python 3.12",
+          "desc": "Runtime Python 3.12 instalado via Homebrew.",
+          "install": "brew install python@3.12",
+          "site": "python.org",
+          "tags": [
+            "python",
+            "runtime"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Version pinneada para proyectos que aun no migran a 3.13. uv usa esta cuando lo pido explicito.",
+          "related": [
+            "uv",
+            "pipx"
           ]
         },
         {

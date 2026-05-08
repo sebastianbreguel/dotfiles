@@ -1,0 +1,259 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Index
+    - button "About $whoami" [ref=e6] [cursor=pointer]:
+      - generic [ref=e7]: About
+      - generic [ref=e8]: $whoami
+    - button "All tools 112" [ref=e9] [cursor=pointer]:
+      - generic [ref=e10]: All tools
+      - generic [ref=e11]: "112"
+    - button "Mac Apps 31" [ref=e13] [cursor=pointer]:
+      - generic [ref=e14]: Mac Apps
+      - generic [ref=e15]: "31"
+    - button "CLI Tools 41" [ref=e16] [cursor=pointer]:
+      - generic [ref=e17]: CLI Tools
+      - generic [ref=e18]: "41"
+    - button "Shell Setup 4" [ref=e19] [cursor=pointer]:
+      - generic [ref=e20]: Shell Setup
+      - generic [ref=e21]: "4"
+    - button "Claude Code 35" [ref=e22] [cursor=pointer]:
+      - generic [ref=e23]: Claude Code
+      - generic [ref=e24]: "35"
+    - button "VS Code Extensions 1" [ref=e25] [cursor=pointer]:
+      - generic [ref=e26]: VS Code Extensions
+      - generic [ref=e27]: "1"
+    - generic [ref=e29]:
+      - generic [ref=e30]: dotfiles v2.1
+      - generic [ref=e31]: updated 2026-04-17
+      - generic [ref=e32]: maintained by @seba
+  - generic [ref=e33]:
+    - banner [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e37]: dotfiles
+        - generic [ref=e38]: sebabreguel-setup.vercel.app
+      - generic [ref=e39]:
+        - button "catalog" [ref=e40] [cursor=pointer]
+        - button "terminal" [ref=e41] [cursor=pointer]
+      - generic [ref=e42]:
+        - img [ref=e43]
+        - textbox "Search tools..." [ref=e46]
+        - generic [ref=e47]: /
+    - main [ref=e48]:
+      - generic [ref=e49]:
+        - generic [ref=e51]:
+          - heading "Mac Apps" [level=1] [ref=e52]
+          - generic [ref=e53]: "31"
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e57]: Desarrollo
+            - generic [ref=e58]: ·
+            - generic [ref=e59]: "10"
+          - generic [ref=e61]:
+            - generic [ref=e62] [cursor=pointer]:
+              - generic [ref=e64]:
+                - generic [ref=e65]: Claude Desktop
+                - generic [ref=e67]: Freemium
+              - generic [ref=e68]: App de escritorio de Claude. Chat + Claude Code integrado.
+              - generic [ref=e69]: La uso para tareas de chat rapido y proyectos que no requieren la CLI. Tener Claude nativo en el escritorio cambia el workflow.
+              - generic [ref=e70]:
+                - generic [ref=e71]: ai
+                - generic [ref=e72]: chat
+                - generic [ref=e73]: claude
+              - generic [ref=e74]: $ brew install --cask claude
+            - generic [ref=e75] [cursor=pointer]:
+              - generic [ref=e76]:
+                - generic [ref=e77]: Docker Desktop
+                - generic [ref=e79]: Free
+              - generic [ref=e80]: Contenedores para ejecutar apps aisladas y dev environments.
+            - generic [ref=e81] [cursor=pointer]:
+              - generic [ref=e82]:
+                - generic [ref=e83]: DataGrip
+                - generic [ref=e85]: Paid
+              - generic [ref=e86]: IDE de JetBrains para bases de datos. SQL, PostgreSQL, Redis.
+            - generic [ref=e87] [cursor=pointer]:
+              - generic [ref=e88]:
+                - generic [ref=e89]: Postman
+                - generic [ref=e91]: Free
+              - generic [ref=e92]: Testing y documentacion de APIs. Collections, environments.
+            - generic [ref=e93] [cursor=pointer]:
+              - generic [ref=e94]:
+                - generic [ref=e95]: Visual Studio Code
+                - generic [ref=e97]: Free
+              - generic [ref=e98]: Editor de codigo open source de Microsoft. Extensions marketplace.
+            - generic [ref=e99] [cursor=pointer]:
+              - generic [ref=e100]:
+                - generic [ref=e101]: Xcode
+                - generic [ref=e103]: Free
+              - generic [ref=e104]: IDE de Apple para desarrollo iOS/macOS.
+            - generic [ref=e105] [cursor=pointer]:
+              - generic [ref=e106]:
+                - generic [ref=e107]: Obsidian
+                - generic [ref=e109]: Free
+              - generic [ref=e110]: Editor de notas en Markdown. Plugins, graph view, vault local.
+            - generic [ref=e111] [cursor=pointer]:
+              - generic [ref=e112]:
+                - generic [ref=e113]: Notion
+                - generic [ref=e115]: Freemium
+              - generic [ref=e116]: Workspace todo-en-uno. Notas, docs, wikis, bases de datos, kanban.
+            - generic [ref=e117] [cursor=pointer]:
+              - generic [ref=e118]:
+                - generic [ref=e119]: Zotero
+                - generic [ref=e121]: Free
+              - generic [ref=e122]: Gestor de referencias bibliograficas. Papers, PDFs, citas.
+            - generic [ref=e123] [cursor=pointer]:
+              - generic [ref=e124]:
+                - generic [ref=e125]: Conductor
+                - generic [ref=e127]: Paid
+              - generic [ref=e128]: Observabilidad y monitoreo de infraestructura.
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e131]: Utilidades
+            - generic [ref=e132]: ·
+            - generic [ref=e133]: "14"
+          - generic [ref=e135]:
+            - generic [ref=e136] [cursor=pointer]:
+              - generic [ref=e138]:
+                - generic [ref=e139]: AltTab
+                - generic [ref=e141]: Free
+              - generic [ref=e142]: Window switcher estilo Windows con preview de ventanas.
+              - generic [ref=e143]: El switcher nativo de Mac es una basura para multitasking serio. AltTab te da preview real de cada ventana como en Windows.
+              - generic [ref=e144]:
+                - generic [ref=e145]: windows
+                - generic [ref=e146]: productivity
+              - generic [ref=e147]: $ brew install --cask alt-tab
+            - generic [ref=e148] [cursor=pointer]:
+              - generic [ref=e149]:
+                - generic [ref=e150]: Rectangle
+                - generic [ref=e152]: Free
+              - generic [ref=e153]: Window management con atajos de teclado. Snapping y splits.
+            - generic [ref=e154] [cursor=pointer]:
+              - generic [ref=e155]:
+                - generic [ref=e156]: BetterDisplay
+                - generic [ref=e158]: Freemium
+              - generic [ref=e159]: Control avanzado de monitores. Resoluciones custom, brightness.
+            - generic [ref=e160] [cursor=pointer]:
+              - generic [ref=e161]:
+                - generic [ref=e162]: Ice
+                - generic [ref=e164]: Free
+              - generic [ref=e165]: Menu bar manager. Oculta iconos para mantener la barra limpia.
+            - generic [ref=e166] [cursor=pointer]:
+              - generic [ref=e167]:
+                - generic [ref=e168]: Stats
+                - generic [ref=e170]: Free
+              - generic [ref=e171]: Monitor del sistema en la menu bar. CPU, RAM, disco, red.
+            - generic [ref=e172] [cursor=pointer]:
+              - generic [ref=e173]:
+                - generic [ref=e174]: Macs Fan Control
+                - generic [ref=e176]: Freemium
+              - generic [ref=e177]: Control manual de ventiladores y monitoreo de temperatura.
+            - generic [ref=e178] [cursor=pointer]:
+              - generic [ref=e179]:
+                - generic [ref=e180]: 1Password CLI
+                - generic [ref=e182]: Paid
+              - generic [ref=e183]: Acceso a passwords desde terminal. Secrets management.
+            - generic [ref=e184] [cursor=pointer]:
+              - generic [ref=e185]:
+                - generic [ref=e186]: cmux
+                - generic [ref=e188]: Free
+              - generic [ref=e189]: Multiplexor de sesiones Claude Code en paralelo.
+            - generic [ref=e190] [cursor=pointer]:
+              - generic [ref=e191]:
+                - generic [ref=e192]: Background Music
+                - generic [ref=e194]: Free
+              - generic [ref=e195]: Control de audio por app. Volumen independiente, auto-pause.
+            - generic [ref=e196] [cursor=pointer]:
+              - generic [ref=e197]:
+                - generic [ref=e198]: MeetingBar
+                - generic [ref=e200]: Free
+              - generic [ref=e201]: Proxima reunion en la menu bar. Un click para unirse.
+            - generic [ref=e202] [cursor=pointer]:
+              - generic [ref=e203]:
+                - generic [ref=e204]: Raycast
+                - generic [ref=e206]: Freemium
+              - generic [ref=e207]: Launcher y productivity app. Reemplaza Spotlight con extensions, snippets, window management.
+            - generic [ref=e208] [cursor=pointer]:
+              - generic [ref=e209]:
+                - generic [ref=e210]: OnyX
+                - generic [ref=e212]: Free
+              - generic [ref=e213]: Utilidad de mantenimiento y optimizacion para macOS. Limpieza de cache, reparacion de permisos.
+            - generic [ref=e214] [cursor=pointer]:
+              - generic [ref=e215]:
+                - generic [ref=e216]: Orca
+                - generic [ref=e218]: Freemium
+              - generic [ref=e219]: App de generacion de imagenes con AI. Stably AI.
+            - generic [ref=e220] [cursor=pointer]:
+              - generic [ref=e221]:
+                - generic [ref=e222]: RightFont
+                - generic [ref=e224]: Freemium
+              - generic [ref=e225]: Gestor de fuentes para macOS. Preview, activacion, organizacion.
+        - generic [ref=e226]:
+          - generic [ref=e227]:
+            - generic [ref=e228]: Browsers
+            - generic [ref=e229]: ·
+            - generic [ref=e230]: "02"
+          - generic [ref=e232]:
+            - generic [ref=e233] [cursor=pointer]:
+              - generic [ref=e235]:
+                - generic [ref=e236]: Brave Browser
+                - generic [ref=e238]: Free
+              - generic [ref=e239]: Browser con bloqueo de ads y trackers integrado.
+              - generic [ref=e240]: Mi browser principal. Sin ads nativos y mucho mas rapido que Chrome en sitios pesados. La privacidad es un bonus.
+              - generic [ref=e241]:
+                - generic [ref=e242]: browser
+                - generic [ref=e243]: privacy
+              - generic [ref=e244]: $ brew install --cask brave-browser
+            - generic [ref=e245] [cursor=pointer]:
+              - generic [ref=e246]:
+                - generic [ref=e247]: Google Chrome
+                - generic [ref=e249]: Free
+              - generic [ref=e250]: Browser de Google. Sync, extensions, DevTools.
+        - generic [ref=e251]:
+          - generic [ref=e252]:
+            - generic [ref=e253]: Comunicacion
+            - generic [ref=e254]: ·
+            - generic [ref=e255]: "03"
+          - generic [ref=e257]:
+            - generic [ref=e258] [cursor=pointer]:
+              - generic [ref=e260]:
+                - generic [ref=e261]: Slack
+                - generic [ref=e263]: Free
+              - generic [ref=e264]: Mensajeria para equipos. Canales, threads, integraciones.
+              - generic [ref=e265]: El estandar de facto en equipos tech. No me gusta mucho pero todos estan ahi, asi que no hay opcion.
+              - generic [ref=e266]:
+                - generic [ref=e267]: communication
+                - generic [ref=e268]: team
+              - generic [ref=e269]: $ brew install --cask slack
+            - generic [ref=e270] [cursor=pointer]:
+              - generic [ref=e271]:
+                - generic [ref=e272]: Beeper
+                - generic [ref=e274]: Free
+              - generic [ref=e275]: Mensajeria unificada. iMessage, WhatsApp, Telegram, Discord en una app.
+            - generic [ref=e276] [cursor=pointer]:
+              - generic [ref=e277]:
+                - generic [ref=e278]: Spotify
+                - generic [ref=e280]: Freemium
+              - generic [ref=e281]: Streaming de musica y podcasts.
+        - generic [ref=e282]:
+          - generic [ref=e283]:
+            - generic [ref=e284]: Seguridad
+            - generic [ref=e285]: ·
+            - generic [ref=e286]: "02"
+          - generic [ref=e288]:
+            - generic [ref=e289] [cursor=pointer]:
+              - generic [ref=e291]:
+                - generic [ref=e292]: Cloudflare WARP
+                - generic [ref=e294]: Free
+              - generic [ref=e295]: VPN y DNS seguro. Encripta trafico de red.
+              - generic [ref=e296]: DNS rapido y encriptado sin la complejidad de una VPN corporativa. Lo activo en redes publicas sin pensarlo dos veces.
+              - generic [ref=e297]:
+                - generic [ref=e298]: vpn
+                - generic [ref=e299]: security
+                - generic [ref=e300]: dns
+              - generic [ref=e301]: $ brew install --cask cloudflare-warp
+            - generic [ref=e302] [cursor=pointer]:
+              - generic [ref=e303]:
+                - generic [ref=e304]: Drata Agent
+                - generic [ref=e306]: Paid
+              - generic [ref=e307]: Agente de compliance (SOC2, ISO). Monitorea configuracion de seguridad.
+  - button "Tweaks (Cmd/Ctrl+Shift+T)" [ref=e308]:
+    - img [ref=e309]

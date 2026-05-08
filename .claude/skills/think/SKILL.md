@@ -1,6 +1,6 @@
 ---
 name: think
-description: Invoke before writing any code for a new feature, design, or architecture decision. Turns rough ideas into approved plans with validated structure. Not for bug fixes or small edits.
+description: Use before writing code for a new feature, design, or architecture decision. Turns rough ideas into approved plans with validated structure. Skip for bug fixes or small edits.
 metadata:
   version: "3.12.0"
 ---

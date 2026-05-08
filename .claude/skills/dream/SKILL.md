@@ -1,6 +1,6 @@
 ---
 name: dream
-description: "Perform a multi-phase memory consolidation pass — orienting on existing memories, gathering recent signal from logs and transcripts, merging updates into topic files, and pruning the index. Use when asked to 'dream', 'consolidate memory', 'clean up memories', 'prune memories', or 'memory maintenance'. Also trigger when memories feel stale or disorganized."
+description: "Memory consolidation pass: orient on existing memories, gather signal from logs/transcripts, merge updates into topic files, prune index. Use on 'dream', 'consolidate memory', 'clean up memories', 'prune memories', 'memory maintenance', or when memories feel stale."
 ---
 # Dream: Memory Consolidation
 

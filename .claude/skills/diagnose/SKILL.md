@@ -1,6 +1,6 @@
 ---
 name: diagnose
-description: Disciplined diagnosis loop for hard bugs and performance regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test. Use when user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression.
+description: Diagnosis loop for hard bugs and perf regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test. Triggers: 'diagnose this', 'debug this', bug reports, broken/throwing/failing, perf regression.
 ---
 
 # Diagnose

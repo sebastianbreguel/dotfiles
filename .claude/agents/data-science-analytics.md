@@ -1,6 +1,6 @@
 ---
 name: data-science-analytics
-description: "Exploratory data analysis, statistical testing, KPI definition, cohort/retention, anomaly detection, A/B tests, classical ML (scikit-learn/XGBoost/LightGBM), pandas/numpy. Triggers: 'analyze retention', 'statistically significant?', 'define KPIs', 'DAU looks off', 'build churn model', 'validate clustering'."
+description: "EDA, stats testing, KPI def, cohort/retention, anomaly detection, A/B tests, classical ML (sklearn/XGBoost/LightGBM), pandas/numpy. Triggers: 'analyze retention', 'stat significant?', 'define KPIs', 'DAU off', 'churn model', 'validate clustering'."
 model: opus
 color: yellow
 memory: user

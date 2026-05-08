@@ -1,6 +1,6 @@
 ---
 name: check
-description: Invoke after any implementation task completes or before merging. Reviews the diff, auto-fixes safe issues, runs specialist security and architecture reviewers on large diffs. Also handles issue/PR triage when the user mentions issues, PRs, or batch review. Not for exploring ideas or debugging.
+description: Use after implementation completes or before merging. Reviews diff, auto-fixes safe issues, runs specialist security/architecture reviewers on large diffs. Also handles issue/PR triage. Skip for exploring ideas or debugging.
 metadata:
   version: "3.12.0"
 ---

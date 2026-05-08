@@ -1,6 +1,6 @@
 ---
 name: patterns
-description: "Explore detected workflow patterns, review skill suggestions, and manage the patterns wiki. Use when asked to 'show patterns', 'what patterns', 'suggest skills', 'pattern report', or '/patterns'. Also trigger when the user asks about their workflow habits or wants to understand recurring behaviors across sessions."
+description: "Explore detected workflow patterns, review skill suggestions, manage patterns wiki. Use on 'show patterns', 'what patterns', 'suggest skills', 'pattern report', '/patterns', or when user asks about workflow habits/recurring behaviors across sessions."
 ---
 # Patterns: Workflow Pattern Explorer
 

@@ -1,6 +1,6 @@
 ---
 name: context-md
-description: Build or update a project's CONTEXT.md — the ubiquitous-language glossary that lets the agent and user share one vocabulary. Use when user wants to define domain language, build a glossary, set up ubiquitous language, audit terminology drift, or fix verbose/confused agent output traceable to vocabulary mismatch. Triggers: "build a CONTEXT.md", "ubiquitous language", "shared language", "domain glossary", "audit terms".
+description: Build or update project CONTEXT.md (ubiquitous-language glossary). Use to define domain language, build glossary, audit terminology drift, or fix verbose agent output from vocab mismatch. Triggers "build a CONTEXT.md", "ubiquitous language", "shared language", "domain glossary", "audit terms".
 ---
 
 <what-to-do>

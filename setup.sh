@@ -35,7 +35,7 @@ fi
 # 2. CLI packages
 echo "[2/9] Installing CLI packages..."
 if $IS_MAC; then
-  brew install aitop asciinema bats-core deno ffmpeg fzf gh git-filter-repo glow go htop imagemagick jq libpq mas mole ncdu nvm nvtop pam-reattach pango pgvector pkgconf poppler postgresql@15 prek redis rtk shellcheck sox tbb tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
+  brew install aitop asciinema awscli bats-core deno ffmpeg fzf gh git-filter-repo glow go htop imagemagick jq libpq mas mole ncdu nvm nvtop pam-reattach pango pgvector pipx pkgconf poppler postgresql@15 prek python@3.12 redis rtk shellcheck sox tbb tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
 else
   sudo apt-get update -y
   sudo apt-get install -y \
@@ -53,7 +53,7 @@ fi
 # 3. GUI apps (macOS only)
 if $IS_MAC; then
   echo "[3/9] Installing Homebrew casks..."
-  brew install --cask 1password-cli alt-tab background-music basictex betterdisplay cmux codex font-meslo-lg-nerd-font gemini jordanbaird-ice meetingbar 2>/dev/null || true
+  brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font gemini jordanbaird-ice 2>/dev/null || true
 else
   echo "[3/9] Skipping GUI casks (Linux)."
 fi

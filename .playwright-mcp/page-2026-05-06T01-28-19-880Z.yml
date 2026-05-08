@@ -1,0 +1,93 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Index
+    - button "About $whoami" [ref=e6] [cursor=pointer]:
+      - generic [ref=e7]: About
+      - generic [ref=e8]: $whoami
+    - button "All tools 112" [ref=e9] [cursor=pointer]:
+      - generic [ref=e10]: All tools
+      - generic [ref=e11]: "112"
+    - button "Mac Apps 31" [ref=e13] [cursor=pointer]:
+      - generic [ref=e14]: Mac Apps
+      - generic [ref=e15]: "31"
+    - button "CLI Tools 41" [ref=e16] [cursor=pointer]:
+      - generic [ref=e17]: CLI Tools
+      - generic [ref=e18]: "41"
+    - button "Shell Setup 4" [ref=e19] [cursor=pointer]:
+      - generic [ref=e20]: Shell Setup
+      - generic [ref=e21]: "4"
+    - button "Claude Code 35" [ref=e22] [cursor=pointer]:
+      - generic [ref=e23]: Claude Code
+      - generic [ref=e24]: "35"
+    - button "VS Code Extensions 1" [ref=e25] [cursor=pointer]:
+      - generic [ref=e26]: VS Code Extensions
+      - generic [ref=e27]: "1"
+    - generic [ref=e29]:
+      - generic [ref=e30]: dotfiles v2.1
+      - generic [ref=e31]: updated 2026-04-17
+      - generic [ref=e32]: maintained by @seba
+  - generic [ref=e33]:
+    - banner [ref=e34]:
+      - button "Open menu" [ref=e35]:
+        - img [ref=e36]
+      - generic [ref=e40]: dotfiles
+      - generic [ref=e41]:
+        - img
+        - textbox "Search tools..." [ref=e44]
+    - main [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - img [ref=e49]
+          - generic [ref=e64]:
+            - generic [ref=e65]: About · maintainer
+            - heading "Seba Breguel" [level=1] [ref=e66]
+            - generic [ref=e67]: software engineer · full-stack, leaning AI
+        - generic [ref=e68]:
+          - generic [ref=e69]: Bio
+          - paragraph [ref=e70]: I build software that leans on AI as a collaborator rather than a crutch. Most days that means shipping product with Claude Code open in one pane, a terminal in another, and a running bet with myself over how small the diff can be.
+          - paragraph [ref=e71]:
+            - text: I care about tools that get out of the way, configs that travel across machines without drama, and the specific kind of joy that comes from a clean
+            - code [ref=e72]: git status
+            - text: . This page is the long-form version of my
+            - code [ref=e73]: ~/dotfiles
+            - text: ": what I reach for, and why."
+          - paragraph [ref=e74]: Nothing here is permanent. Every tool on the list survived a two-week trial on my machine. Some made it years. Some got cut last weekend.
+        - generic [ref=e75]:
+          - generic [ref=e76]: Daily drivers
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - generic [ref=e79]: Claude Desktop
+              - generic [ref=e80]: mac apps
+            - generic [ref=e81]:
+              - generic [ref=e82]: Docker Desktop
+              - generic [ref=e83]: mac apps
+            - generic [ref=e84]:
+              - generic [ref=e85]: DataGrip
+              - generic [ref=e86]: mac apps
+            - generic [ref=e87]:
+              - generic [ref=e88]: Postman
+              - generic [ref=e89]: mac apps
+            - generic [ref=e90]:
+              - generic [ref=e91]: Visual Studio Code
+              - generic [ref=e92]: mac apps
+            - generic [ref=e93]:
+              - generic [ref=e94]: Xcode
+              - generic [ref=e95]: mac apps
+        - generic [ref=e96]:
+          - generic [ref=e97]: Meta
+          - generic [ref=e98]:
+            - generic [ref=e99]: tools tracked
+            - generic [ref=e100]: "112"
+            - generic [ref=e101]: last updated
+            - generic [ref=e102]: 2026-04-17
+            - generic [ref=e103]: machine
+            - generic [ref=e104]: macbook pro · m3 max · 36gb
+            - generic [ref=e105]: shell
+            - generic [ref=e106]: zsh + zinit + starship
+            - generic [ref=e107]: editor
+            - generic [ref=e108]: "vs code + claude code (fallback: nvim)"
+            - generic [ref=e109]: source
+            - link "github.com/sebastianbreguel/dotfiles ↗" [ref=e111] [cursor=pointer]:
+              - /url: https://github.com/sebastianbreguel/dotfiles
+  - button "Tweaks (Cmd/Ctrl+Shift+T)" [ref=e112]:
+    - img [ref=e113]

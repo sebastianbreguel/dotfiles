@@ -1,6 +1,6 @@
 ---
 name: code-simplifier
-description: "Simplifies/refactors code for readability and maintainability without changing behavior — reduces complexity, flattens nesting, extracts helpers, removes redundancy. Triggers: 'simplify this function', 'refactor for readability', 'clean up messy code', 'reduce nesting'."
+description: "Refactor code for readability+maintainability, behavior preserved. Cuts complexity, flattens nesting, extracts helpers, kills redundancy. Triggers: 'simplify this function', 'refactor for readability', 'clean messy code', 'reduce nesting'."
 model: opus
 color: yellow
 memory: user

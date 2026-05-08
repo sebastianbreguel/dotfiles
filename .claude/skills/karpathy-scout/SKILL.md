@@ -1,6 +1,6 @@
 ---
 name: karpathy-scout
-description: "Analyze the current project (cwd) through Andrej Karpathy's lens — compression > addition, dependencies bad bad bad, first-order terms, calculator test — and produce a ranked table of contribution opportunities biased ~70/30 toward deletion/simplification over feature addition. Each row carries four scores: Karpathy (philosophy alignment), Maintainer (likelihood the project owner accepts it), Impact (High/Medium/Low via get_impact_radius), Effort (S/M/L/XL). Indexes code with code-review-graph + serena before pulling git/gh signals. Use whenever the user wants to know what to ship next on their own repo, what to delete, what bloat to compress, or what feels off about the codebase. Triggers: 'karpathy scout', 'what should I cut', 'what would karpathy delete here', 'find bloat in this project', 'simplify proposals', 'compress this repo', 'first-order proposals', 'review my project karpathy'."
+description: "Scout project via Karpathy lens, 70/30 bias to delete/compress over add. Outputs ranked opportunity table: Karpathy fit, maintainer likelihood, impact (get_impact_radius), effort. Uses code-review-graph + serena. Triggers: 'karpathy scout', 'what to cut', 'find bloat', 'compress repo', 'simplify proposals'."
 ---
 
 # karpathy-scout
