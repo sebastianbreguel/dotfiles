@@ -43,10 +43,8 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Aliases
-alias claude-mem='bun "$HOME/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+alias cc='claude --dangerously-skip-permissions'
 
-# NPM global bin (added by Qwen Code installer)
-export PATH="$HOME/.npm-global/bin:$PATH"
+# Taskforce.sh private npm registry — token lives in ~/.secrets (gitignored)
+[ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
 
-# Taskforce.sh private npm registry
-export NPM_TASKFORCESH_TOKEN="${NPM_TASKFORCESH_TOKEN:-REPLACE_ME}"

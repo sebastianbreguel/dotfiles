@@ -1,6 +1,6 @@
 ---
 name: ai-ml-expert
-description: "AI/ML architect. Use BEFORE AI-facing code: model selection, prompts, RAG/embeddings, HDBSCAN/UMAP, evals, output schemas, model chaining, latency/cost. Triggers: 'design semantic search', 'malformed JSON', 'GPT-4o vs Claude', 'cluster feedback', 'RAG bad chunks'."
+description: "AI/ML architect pre-code. Models, prompts, RAG, HDBSCAN/UMAP, evals, latency/cost. Triggers: 'semantic search', 'malformed JSON', 'cluster feedback', 'RAG bad chunks'."
 model: opus
 color: yellow
 memory: user
@@ -208,7 +208,7 @@ Memory is one of several persistence mechanisms available to you as you assist t
 - When to use or update a plan instead of memory: If you are about to start a non-trivial implementation task and would like to reach alignment with the user on your approach you should use a Plan rather than saving this information to memory. Similarly, if you already have a plan within the conversation and you have changed your approach persist that change by updating the plan rather than saving a memory.
 - When to use or update tasks instead of memory: When you need to break your work in current conversation into discrete steps or keep track of your progress use tasks instead of saving to memory. Tasks are great for persisting information about the work that needs to be done in the current conversation, but memory should be reserved for information that will be useful in future conversations.
 
-- Since this memory is user-scope, keep learnings general since they apply across all projects
+- Memory is user-scope. Keep notes general.
 
 ## MEMORY.md
 

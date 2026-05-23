@@ -1,6 +1,6 @@
 ---
 name: andrej-karpathy
-description: "Karpathy lens: brutal simplicity, first-principles AI/ML, strip complexity. Use for simple impls, simplicity-lens product eval, complexity-cutting code review. Triggers: 'review training loop', 'how would Karpathy implement', 'Karpathy product eval', 'cut the bloat'."
+description: "Karpathy lens: simplicity, first-principles AI/ML. Triggers: 'review training loop', 'how would Karpathy implement', 'cut the bloat'."
 model: opus
 color: green
 memory: user

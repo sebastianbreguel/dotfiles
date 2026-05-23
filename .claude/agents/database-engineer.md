@@ -1,6 +1,6 @@
 ---
 name: "database-engineer"
-description: "Schema design, query opt, relational modeling (1:1/1:N/M:N/polymorphic/self-ref), indexes, migrations, SQL/NoSQL. Triggers: 'design schema', 'optimize query', 'model relationship', 'plan migration'."
+description: "Schema design, query opt, relational modeling, indexes, migrations, SQL/NoSQL. Triggers: 'design schema', 'optimize query', 'plan migration'."
 model: opus
 color: blue
 memory: user
@@ -271,7 +271,7 @@ Memory is one of several persistence mechanisms available to you as you assist t
 - When to use or update a plan instead of memory: If you are about to start a non-trivial implementation task and would like to reach alignment with the user on your approach you should use a Plan rather than saving this information to memory. Similarly, if you already have a plan within the conversation and you have changed your approach persist that change by updating the plan rather than saving a memory.
 - When to use or update tasks instead of memory: When you need to break your work in current conversation into discrete steps or keep track of your progress use tasks instead of saving to memory. Tasks are great for persisting information about the work that needs to be done in the current conversation, but memory should be reserved for information that will be useful in future conversations.
 
-- Since this memory is user-scope, keep learnings general since they apply across all projects
+- Memory is user-scope. Keep notes general.
 
 ## MEMORY.md
 

@@ -356,57 +356,24 @@ export const DATA = {
           "related": []
         },
         {
-          "id": "onyx",
-          "name": "OnyX",
-          "desc": "Utilidad de mantenimiento y optimizacion para macOS. Limpieza de cache, reparacion de permisos.",
-          "install": "Download from titanium-software.fr",
-          "site": "titanium-software.fr/en/onyx.html",
+          "id": "basictex",
+          "name": "BasicTeX",
+          "desc": "Distribucion minima de TeX/LaTeX para macOS.",
+          "install": "brew install --cask basictex",
+          "site": "tug.org/mactex/morepackages.html",
           "tags": [
-            "maintenance",
-            "optimization",
-            "macos"
+            "latex",
+            "tex",
+            "documents"
           ],
           "badges": [
             "Free"
           ],
-          "featured": true,
-          "note": "Para limpiar caches, reparar permisos y hacer mantenimiento general de macOS. Lo corro cada par de meses cuando el Mac se siente lento.",
-          "related": []
-        },
-        {
-          "id": "orca",
-          "name": "Orca",
-          "desc": "App de generacion de imagenes con AI. Stably AI.",
-          "install": "Download from stably.ai",
-          "site": "stably.ai",
-          "tags": [
-            "ai",
-            "images",
-            "generation"
-          ],
-          "badges": [
-            "Freemium"
-          ],
-          "featured": true,
-          "note": "Para generar imagenes con AI local. Util para mockups rapidos y assets de prototipado sin depender de servicios web.",
-          "related": []
-        },
-        {
-          "id": "rightfont",
-          "name": "RightFont",
-          "desc": "Gestor de fuentes para macOS. Preview, activacion, organizacion.",
-          "install": "Manual download",
-          "site": "rightfontapp.com",
-          "tags": [
-            "fonts",
-            "design"
-          ],
-          "badges": [
-            "Freemium"
-          ],
-          "featured": true,
-          "note": "Tengo cientos de fuentes instaladas y sin un gestor decente es un caos. RightFont me deja activarlas on-demand sin relentizar el sistema.",
-          "related": []
+          "featured": false,
+          "note": "Lo necesito para compilar docs LaTeX sin instalar MacTeX entero. Funciona con tectonic cuando falta algun paquete.",
+          "related": [
+            "tectonic"
+          ]
         }
       ],
       "Browsers": [
@@ -550,27 +517,6 @@ export const DATA = {
     "groups": {
       "AI Coding Agents": [
         {
-          "id": "claude-code-cli",
-          "name": "Claude Code",
-          "desc": "CLI de Claude Code. Coding agent en terminal.",
-          "install": "pnpm install -g @anthropic-ai/claude-code",
-          "site": "docs.anthropic.com/en/docs/claude-code",
-          "tags": [
-            "ai",
-            "coding",
-            "claude"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "El mejor coding agent que existe hoy. Lo uso para casi todo: refactors, debugging, PRs. Ha reemplazado el 70% de mi tiempo de coding manual.",
-          "related": [
-            "Gemini CLI",
-            "OpenAI Codex"
-          ]
-        },
-        {
           "id": "gemini-cli",
           "name": "Gemini CLI",
           "desc": "CLI oficial de Google Gemini. Coding agent en terminal.",
@@ -595,7 +541,7 @@ export const DATA = {
           "id": "codex-cli",
           "name": "OpenAI Codex",
           "desc": "CLI de OpenAI. Coding agent en terminal.",
-          "install": "pnpm install -g @openai/codex",
+          "install": "brew install --cask codex",
           "site": "github.com/openai/codex",
           "tags": [
             "ai",
@@ -629,6 +575,26 @@ export const DATA = {
           "related": [
             "Claude Code"
           ]
+        },
+        {
+          "id": "agentmemory",
+          "name": "Agent Memory",
+          "desc": "CLI para gestionar memoria persistente de coding agents.",
+          "install": "npm install -g @agentmemory/agentmemory",
+          "site": "github.com/agentmemory/agentmemory",
+          "tags": [
+            "ai",
+            "memory",
+            "agents"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Agrega memoria persistente cross-session a Claude Code y otros agents. Util cuando quiero que el agent recuerde entre conversaciones.",
+          "related": [
+            "Claude Code"
+          ]
         }
       ],
       "Browser & Automation": [
@@ -650,21 +616,6 @@ export const DATA = {
         }
       ],
       "Dev Tools": [
-        {
-          "id": "op-cli",
-          "name": "OP",
-          "desc": "CLI de OP. Herramienta de desarrollo.",
-          "install": "pnpm install -g op",
-          "tags": [
-            "dev"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Herramienta de dev para operaciones especificas del stack. Lo uso en scripts de automatizacion internos.",
-          "related": []
-        },
         {
           "id": "asciinema",
           "name": "asciinema",
@@ -968,6 +919,118 @@ export const DATA = {
             "RTK (Rust Token Killer)",
             "Claude Code"
           ]
+        },
+        {
+          "id": "pgvector",
+          "name": "pgvector",
+          "desc": "Extension de PostgreSQL para vectores y busqueda semantica.",
+          "install": "brew install pgvector",
+          "site": "github.com/pgvector/pgvector",
+          "tags": [
+            "postgres",
+            "vectors",
+            "ai"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": true,
+          "note": "Para embeddings en Postgres sin levantar otra DB. Lo uso en pipelines RAG y busqueda semantica.",
+          "related": [
+            "postgresql"
+          ]
+        },
+        {
+          "id": "idb-companion",
+          "name": "idb-companion",
+          "desc": "Daemon de Facebook IDB para automatizar simuladores iOS desde CLI.",
+          "install": "brew install facebook/fb/idb-companion",
+          "site": "fbidb.io",
+          "tags": [
+            "ios",
+            "mobile",
+            "testing"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Companion del CLI fb-idb. Permite controlar simuladores y devices iOS desde scripts. Lo uso con pipx fb-idb.",
+          "related": []
+        },
+        {
+          "id": "maturin",
+          "name": "maturin",
+          "desc": "Build tool para Python + Rust. Compila PyO3 a wheels.",
+          "install": "uv tool install maturin",
+          "site": "github.com/PyO3/maturin",
+          "tags": [
+            "python",
+            "rust",
+            "build"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Para compilar extensiones Rust de Python. Lo uso cuando un proyecto mezcla PyO3 y necesito wheels locales.",
+          "related": []
+        },
+        {
+          "id": "vulture",
+          "name": "vulture",
+          "desc": "Detector de codigo Python muerto. Encuentra funciones y variables sin usar.",
+          "install": "uv tool install vulture",
+          "site": "github.com/jendrikseipp/vulture",
+          "tags": [
+            "python",
+            "lint",
+            "cleanup"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Para limpiar codebases Python. Reporta dead code que ruff no agarra. Lo corro antes de refactors grandes.",
+          "related": [
+            "ruff"
+          ]
+        },
+        {
+          "id": "pake-cli",
+          "name": "Pake",
+          "desc": "Convierte cualquier web en app de escritorio liviana via Tauri/Rust.",
+          "install": "pnpm install -g pake-cli",
+          "site": "github.com/tw93/Pake",
+          "tags": [
+            "desktop",
+            "webview",
+            "tauri"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Empaquetar webs como apps nativas sin Electron. Bundles de ~5MB en vez de 200MB.",
+          "related": []
+        },
+        {
+          "id": "defuddle",
+          "name": "defuddle",
+          "desc": "Extrae contenido limpio de paginas web. Convierte HTML a markdown legible.",
+          "install": "npm install -g defuddle",
+          "site": "github.com/kepano/defuddle",
+          "tags": [
+            "scraping",
+            "markdown",
+            "extraction"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Para limpiar HTML antes de feedearlo a LLMs. Mejor que readability en algunos casos.",
+          "related": []
         }
       ],
       "Package Managers & Deploy": [
@@ -1472,23 +1535,43 @@ export const DATA = {
           ]
         },
         {
-          "id": "fzf-shell",
-          "name": "fzf (shell integration)",
-          "desc": "Fuzzy finder integrado en la shell. Ctrl+R mejorado.",
-          "install": "brew install fzf",
-          "site": "github.com/junegunn/fzf",
+          "id": "font-meslo-nerd",
+          "name": "Meslo LG Nerd Font",
+          "desc": "Fuente patched con iconos para terminal y editores.",
+          "install": "brew install --cask font-meslo-lg-nerd-font",
+          "site": "github.com/ryanoasis/nerd-fonts",
           "tags": [
-            "shell",
-            "search",
-            "fuzzy"
+            "font",
+            "terminal",
+            "nerdfont"
           ],
           "badges": [
             "Free"
           ],
-          "featured": true,
-          "note": "Con la integracion en shell, Ctrl+R se convierte en un buscador fuzzy del historial. Nunca mas escribo comandos largos de memoria.",
+          "featured": false,
+          "note": "Requerida por powerlevel10k para que los iconos del prompt se rendericen. Sin esto la shell se ve rota.",
           "related": [
-            "Oh My Zsh"
+            "powerlevel10k"
+          ]
+        },
+        {
+          "id": "zsh-brew",
+          "name": "zsh (brew)",
+          "desc": "Z shell instalado via Homebrew. Mas nuevo que el del sistema.",
+          "install": "brew install zsh",
+          "site": "zsh.sourceforge.io",
+          "tags": [
+            "shell",
+            "zsh"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Uso el zsh de brew para tener version actualizada. macOS trae uno mas viejo. Combinar con oh-my-zsh + powerlevel10k.",
+          "related": [
+            "oh-my-zsh",
+            "powerlevel10k"
           ]
         }
       ]

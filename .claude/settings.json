@@ -1,75 +1,15 @@
 {
   "permissions": {
     "allow": [],
-    "deny": []
+    "deny": [
+      "Bash(homedir-marker *)"
+    ]
   },
-  "disabledMcpjsonServers": [
-    "claude-ai-ClickUp",
-    "claude-ai-Gmail",
-    "claude-ai-Slack",
-    "claude-ai-Google_Calendar",
-    "claude-ai-PostHog"
-  ],
+  "enabledPlugins": {
+    "context-mode@context-mode": true
+  },
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$HOME/.claude/hooks/rtk-rewrite.sh"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "ROOT=$(git rev-parse --show-toplevel 2>/dev/null); if [ -n \"$ROOT\" ] && [ -f \"$ROOT/.pre-commit-config.yaml\" ] && command -v uv >/dev/null 2>&1; then (cd \"$ROOT\" && uv run pre-commit run --all-files) >&2 || { echo \"pre-commit failed \u2014 fix the issues, stage them, then retry the commit\" >&2; exit 2; }; fi",
-            "if": "Bash(git commit*)",
-            "timeout": 180,
-            "statusMessage": "Running pre-commit before commit..."
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$HOME/.claude/hooks/auto-format.sh"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$HOME/.claude/hooks/precompact-save.sh"
-          },
-          {
-            "type": "command",
-            "command": "uv run $HOME/.claude/tools/engram.py on-precompact"
-          }
-        ]
-      }
-    ],
     "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run $HOME/.claude/tools/engram.py on-session-start"
-          }
-        ]
-      },
       {
         "hooks": [
           {
@@ -78,115 +18,6 @@
           }
         ]
       }
-    ],
-    "UserPromptSubmit": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run $HOME/.claude/tools/engram.py on-user-prompt"
-          },
-          {
-            "type": "command",
-            "command": "printf '%s\\n' 'MANDATORY: Respond in caveman mode ALWAYS (skill caveman:caveman, full intensity). NO exceptions. Drop articles/filler/hedging. Fragments only. Tech terms exact. Code blocks unchanged. Applies to EVERY response including questions, confirms, warnings, summaries.'"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$HOME/.claude/hooks/session-end-hyperframes.sh"
-          }
-        ]
-      }
     ]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bash -c 'export COLUMNS=300; plugin_dir=$(ls -d \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\"/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | awk -F/ '\"'\"'{ print $(NF-1) \"\\t\" $(0) }'\"'\"' | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1 | cut -f2-); exec \"$HOME/.bun/bin/bun\" --env-file /dev/null \"${plugin_dir}src/index.ts\"'"
-  },
-  "enabledPlugins": {
-    "claude-hud@claude-hud": true,
-    "context-mode@context-mode": true,
-    "superpowers@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": false,
-    "caveman@caveman": true,
-    "vercel-plugin@vercel": false,
-    "posthog@claude-plugins-official": false,
-    "compound-engineering@compound-engineering-plugin": true,
-    "claude-code-setup@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "claude-hud": {
-      "source": {
-        "source": "github",
-        "repo": "jarrodwatts/claude-hud"
-      }
-    },
-    "context-mode": {
-      "source": {
-        "source": "github",
-        "repo": "mksglu/context-mode"
-      }
-    },
-    "claude-code-plugins": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-code"
-      }
-    },
-    "socraticode": {
-      "source": {
-        "source": "github",
-        "repo": "giancarloerra/socraticode"
-      }
-    },
-    "caveman": {
-      "source": {
-        "source": "github",
-        "repo": "JuliusBrussee/caveman"
-      }
-    },
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
-      }
-    },
-    "figma-to-react": {
-      "source": {
-        "source": "github",
-        "repo": "gbasin/figma-to-react"
-      }
-    },
-    "karpathy-skills": {
-      "source": {
-        "source": "github",
-        "repo": "forrestchang/andrej-karpathy-skills"
-      }
-    },
-    "compound-engineering-plugin": {
-      "source": {
-        "source": "github",
-        "repo": "EveryInc/compound-engineering-plugin"
-      }
-    }
-  },
-  "effortLevel": "xhigh",
-  "autoCompactWindow": 250000,
-  "advisorModel": "opus",
-  "autoDreamEnabled": false,
-  "skipDangerousModePermissionPrompt": true,
-  "voiceEnabled": true
+  }
 }

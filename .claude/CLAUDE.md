@@ -1,10 +1,18 @@
 @RTK.md
 
 # Response Style
-- Caveman full desde msg 1 (skill `caveman:caveman`). Drop articles/filler/hedging. Fragments OK. Tech terms exact. Code blocks unchanged.
-- Drop caveman: security warnings, irreversible confirms, multi-step seqs, user confused. Resume after.
+- Concise. Drop filler/hedging. Tech terms exact. Code blocks unchanged.
 - Code/commits/PRs: normal prose.
-- "stop caveman" / "normal mode" → revert.
+
+# Audience: Junior Software Engineer
+- User = junior SWE. Hablar en términos que un junior entendería.
+- Jerga avanzada (CQRS, expand/contract, idempotency, eventual consistency, RLS, partitioned unique constraint, NOT VALID/VALIDATE, bitemporal, materialized view, etc.) → primera mención = breve glosa inline ("expand/contract = agregar cols nuevas sin tocar viejas, después borrar"). Re-uso posterior OK sin glosa.
+- Acrónimos (FK, PK, ORM, DLQ, RLS, FTS, CDC, MV) → expandir 1ra vez.
+- Patrones: dar nombre + 1-line qué hace + cuándo usar. No asumir conocimiento previo.
+- Explicar **por qué** + tradeoff, no solo qué. Junior aprende razonamiento.
+- Cuando pida decisión: ofrecer 2-3 opciones con pros/cons en lenguaje claro. Recomendar una.
+- SQL/migrations/Alembic/async/pgvector/asyncpg: mostrar código exacto + comentar líneas no-obvias.
+- Si user dice "no entendí X" o "explicame más" → bajar a fundamentos, no asumir gap.
 
 # Security
 - NEVER hardcode secrets. Use env vars + `.env`. Verify `.env` in `.gitignore`.
