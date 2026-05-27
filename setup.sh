@@ -35,7 +35,7 @@ fi
 # 2. CLI packages
 echo "[2/9] Installing CLI packages..."
 if $IS_MAC; then
-  brew install aitop asciinema awscli bats-core deno ffmpeg fzf gh git-filter-repo glow go htop idb-companion imagemagick jq libpq mas mole ncdu nvm nvtop pam-reattach pango pgvector pipx pkgconf poppler postgresql@15 prek python@3.12 redis rtk shellcheck sox tbb tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
+  brew install aitop asciinema awscli bats-core deno engram ffmpeg fzf gh git-filter-repo glow go htop idb-companion imagemagick jq libpq mas mole ncdu nvm nvtop pam-reattach pango pgvector pipx pkgconf poppler postgresql@15 prek python@3.12 redis rtk shellcheck sox tbb tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
 else
   sudo apt-get update -y
   sudo apt-get install -y \

@@ -23,22 +23,66 @@ const ROOT = join(__dirname, "..");
 const dataPath = join(ROOT, "app", "src", "data.js");
 const dataSrc = readFileSync(dataPath, "utf-8");
 
-// Extract CATEGORIES and items from the ES module
-const categoriesMatch = dataSrc.match(
-  /export\s+const\s+CATEGORIES\s*=\s*(\{[\s\S]*?\n\};)/
-);
-const itemsMatch = dataSrc.match(
-  /export\s+const\s+items\s*=\s*(\[[\s\S]*\]);?\s*$/
+// Extract DATA object from the ES module (new nested format)
+const dataMatch = dataSrc.match(
+  /export\s+const\s+DATA\s*=\s*(\{[\s\S]*?\n\};)/
 );
 
-if (!categoriesMatch || !itemsMatch) {
+if (!dataMatch) {
   console.error("Failed to parse data.js exports");
   process.exit(1);
 }
 
-// eval with no exports
-const CATEGORIES = new Function(`return ${categoriesMatch[1]}`)();
-const items = new Function(`return ${itemsMatch[1]}`)();
+const DATA = new Function(`return ${dataMatch[1]}`)();
+
+// Derive CATEGORIES and items from DATA to keep the rest of the script working
+function deriveInstallMethod(install) {
+  if (!install) return "manual";
+  if (install.includes("--cask")) return "brew";
+  if (install.startsWith("brew install")) return "brew";
+  if (install.includes("pnpm install") || install.includes("pnpm add")) return "pnpm";
+  if (install.includes("npm install")) return "npm";
+  if (install.includes("uv tool install")) return "uv";
+  if (install.includes("uv pip install") || install.includes("pip install")) return "pip";
+  if (install.includes("code --install-extension")) return "marketplace";
+  return "manual";
+}
+
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+const CATEGORIES = {};
+const items = [];
+
+for (const [catName, catObj] of Object.entries(DATA)) {
+  const catKey = catObj.catKey;
+  const subcategories = {};
+  for (const groupName of Object.keys(catObj.groups)) {
+    subcategories[slugify(groupName)] = groupName;
+  }
+  CATEGORIES[catKey] = { label: catName, subcategories };
+
+  for (const [groupName, tools] of Object.entries(catObj.groups)) {
+    for (const tool of tools) {
+      items.push({
+        id: tool.id,
+        name: tool.name,
+        description: tool.desc || "",
+        install: tool.install || "",
+        installMethod: deriveInstallMethod(tool.install),
+        cost: (tool.badges && tool.badges[0]) || "Free",
+        url: tool.site ? (tool.site.startsWith("http") ? tool.site : `https://${tool.site}`) : "",
+        tags: tool.tags || [],
+        category: catKey,
+        subcategory: slugify(groupName),
+        featured: tool.featured || false,
+        note: tool.note || "",
+        related: tool.related || [],
+      });
+    }
+  }
+}
 
 // ---------------------------------------------------------------------------
 // 1b. Schema validation — warn on missing/invalid fields

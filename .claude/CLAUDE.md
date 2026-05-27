@@ -58,3 +58,27 @@
 
 # MCP Routing
 - Real code work (refactors, multi-file, symbol lookups, impact) → load `@rules/mcp-routing.md`. Skip trivia.
+
+# Engram — Persistent Memory
+Engram = persistent memory via MCP (SQLite + FTS5). Tools prefixed with `mem_`.
+
+## When to save (mem_save)
+Call IMMEDIATELY after:
+- Bug fix completed
+- Architecture or design decision made
+- Non-obvious codebase discovery
+- Config change or environment setup
+- Pattern established (naming, structure, convention)
+- User preference or constraint learned
+
+Format: title = "Verb + what", short and searchable (e.g. "Fixed N+1 in UserList", "Chose Zustand over Redux"). type = `bugfix` | `decision` | `architecture` | `discovery` | `pattern` | `config` | `preference`. scope = `project` (default) | `personal`.
+
+## When to search
+- **Reactive**: user says "remember", "recall", "what did we do", "how did we solve" → `mem_context` first (fast), then `mem_search` if not found, then `mem_get_observation` for full content.
+- **Proactive**: starting work that might overlap with past sessions, or topic with no context → search engram before starting.
+
+## Session close (mandatory)
+Before ending session or saying "done", call `mem_session_summary` with: Goal, Decisions, Discoveries, Accomplished, Next Steps, Relevant Files.
+
+## Post-compaction
+On compaction or context reset: 1) `mem_session_summary` with compacted content, 2) `mem_context` to recover prior context, 3) only then continue working.

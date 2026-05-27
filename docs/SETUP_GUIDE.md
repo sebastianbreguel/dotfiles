@@ -132,10 +132,13 @@ npm install -g pnpm@10.30.3
 brew install \
   aitop \
   asciinema \
+  awscli \
   bats-core \
   deno \
+  facebook/fb/idb-companion \
   ffmpeg \
   fzf \
+  gentleman-programming/tap/engram \
   gh \
   git-filter-repo \
   glow \
@@ -144,12 +147,17 @@ brew install \
   imagemagick \
   j178/tap/prek \
   jq \
+  libpq \
   mas \
   mole \
   ncdu \
   nvm \
   nvtop \
+  pam-reattach \
+  pgvector \
+  pipx \
   postgresql@15 \
+  python@3.12 \
   redis \
   rtk \
   shellcheck \
@@ -157,6 +165,7 @@ brew install \
   tectonic \
   tmux \
   zig \
+  zsh \
   zsh-autosuggestions
 ```
 
@@ -166,13 +175,25 @@ brew install \
 brew install --cask \
   1password-cli \
   alt-tab \
-  background-music \
+  basictex \
   betterdisplay \
+  brave-browser \
+  claude \
+  cloudflare-warp \
   cmux \
+  codex \
+  datagrip \
+  docker \
+  font-meslo-lg-nerd-font \
   google-chrome \
   jordanbaird-ice \
-  meetingbar \
+  macs-fan-control \
   obsidian \
+  postman \
+  rectangle \
+  slack \
+  spotify \
+  stats \
   visual-studio-code
 ```
 
@@ -257,12 +278,12 @@ Host github.com
 
 ```bash
 pnpm add -g \
-  @anthropic-ai/claude-code \
+  @agentmemory/agentmemory \
   @google/gemini-cli \
   @kilocode/cli \
-  @openai/codex \
   agent-browser \
-  op \
+  defuddle \
+  pake-cli \
   pnpm \
   vercel
 ```

@@ -513,7 +513,7 @@ export const DATA = {
   "CLI Tools": {
     "slug": "cli-tools",
     "catKey": "cli",
-    "count": 41,
+    "count": 44,
     "groups": {
       "AI Coding Agents": [
         {
@@ -1031,6 +1031,43 @@ export const DATA = {
           "featured": false,
           "note": "Para limpiar HTML antes de feedearlo a LLMs. Mejor que readability en algunos casos.",
           "related": []
+        },
+        {
+          "id": "engram",
+          "name": "Engram",
+          "desc": "Memoria persistente para Claude Code. Guarda decisiones, bugs, descubrimientos entre sesiones.",
+          "install": "brew install gentleman-programming/tap/engram",
+          "site": "github.com/gentleman-programming/engram",
+          "tags": [
+            "ai",
+            "memory",
+            "claude"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": true,
+          "note": "Memoria que sobrevive entre sesiones de Claude Code. Guarda decisiones y contexto sin tener que repetir todo.",
+          "related": []
+        },
+        {
+          "id": "libpq",
+          "name": "libpq",
+          "desc": "Libreria cliente de PostgreSQL. Provee psql y utilidades de conexion.",
+          "install": "brew install libpq",
+          "site": "postgresql.org/docs/current/libpq.html",
+          "tags": [
+            "database",
+            "postgresql"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Necesario para conectar a Postgres desde la terminal. Trae psql sin instalar el server completo.",
+          "related": [
+            "postgresql"
+          ]
         }
       ],
       "Package Managers & Deploy": [
@@ -1127,7 +1164,29 @@ export const DATA = {
           ],
           "featured": true,
           "note": "No abro terminal sin tmux. Splits + sesiones persistentes = productividad. Si se cae la SSH, la sesion sigue viva.",
-          "related": []
+          "related": [
+            "pam-reattach"
+          ]
+        },
+        {
+          "id": "pam-reattach",
+          "name": "pam-reattach",
+          "desc": "Modulo PAM que permite Touch ID para sudo dentro de tmux/screen.",
+          "install": "brew install pam-reattach",
+          "site": "github.com/fabianishere/pam_reattach",
+          "tags": [
+            "security",
+            "tmux",
+            "touchid"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Sin esto, Touch ID no funciona para sudo dentro de tmux. Un fix chiquito que ahorra tipear el password 50 veces al dia.",
+          "related": [
+            "tmux"
+          ]
         },
         {
           "id": "fzf",
