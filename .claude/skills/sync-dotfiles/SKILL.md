@@ -1,6 +1,6 @@
 ---
 name: sync-dotfiles
-description: Sync the current machine's configuration into the dotfiles repo and update the React showcase page. Use this skill whenever the user says "sync dotfiles", "update dotfiles", "sync config", "actualizar dotfiles", "sincronizar config", "update the repo with my current setup", or anything about pulling their current machine state into the dotfiles repo. Also trigger when the user mentions updating the toolkit page, adding new tools to the page, or keeping the dotfiles repo in sync with what's actually installed.
+description: Sync the current machine's configuration into the dotfiles repo and update the React showcase page. Use this skill whenever the user says "sync dotfiles", "update dotfiles", "sync config", "actualizar dotfiles", "sincronizar config", "update the repo with my current setup", or anything about pulling their current machine state into the dotfiles repo. Also trigger when the user mentions updating the toolkit page, adding new tools to the page, syncing Claude Code or Codex config (AGENTS.md, codex agents/skills/hooks), or keeping the dotfiles repo in sync with what's actually installed.
 ---
 
 # Sync Dotfiles
@@ -19,12 +19,13 @@ Every sync is a clean mirror of the machine. The repo should reflect **exactly**
 
 ## Overview
 
-There are three layers to sync:
+There are four layers to sync:
 1. **Config files** — copy actual dotfiles from the machine into the repo (overwrite)
 2. **Installed tools** — detect what's installed, rebuild `data.js` (add new + remove missing), update `setup.sh` + generated docs
 3. **Claude Code config** — clean repo dirs then copy fresh from machine
+4. **Codex config** — clean repo dirs then copy fresh portable Codex config (`AGENTS.md`, agents, skills, hooks, tools, rules)
 
-Run all three layers every time. Show a summary at the end.
+Run all four layers every time. Show a summary at the end.
 
 ## Step 1: Sync Config Files
 
@@ -178,7 +179,86 @@ done
 
 **Important**: Don't copy `~/.claude/settings.local.json` — that's per-project. Don't copy marketplace plugins (they live in `~/.claude/plugins/marketplaces/`). Don't copy the `memory/` directory.
 
-## Step 4: Regenerate Docs
+## Step 4: Sync Codex Config — Clean + Copy
+
+Codex (the CLI) keeps its config in `~/.codex/`, mixed with a lot of runtime state. **Only the portable config gets synced** — everything else is machine-local junk or secrets and must NEVER be copied.
+
+Same **delete-first-then-copy** discipline as Step 3 so removed agents/skills don't linger.
+
+### What to sync (portable config)
+
+| Source (machine) | Destination (repo) |
+|---|---|
+| `~/.codex/AGENTS.md` | `AGENTS.md` (repo root — Codex's equivalent of CLAUDE.md) |
+| `~/.codex/config.toml` | `.codex/config.toml` (**secret-scan first**, see below) |
+| `~/.codex/hooks.json` | `.codex/hooks.json` |
+| `~/.codex/agents/*.toml` | `.codex/agents/` |
+| `~/.codex/skills/*/` | `.codex/skills/` |
+| `~/.codex/rules/` | `.codex/rules/` |
+| `~/.codex/tools/` | `.codex/tools/` (hook scripts referenced by `hooks.json`, e.g. `wherewasi.py`) |
+| `~/.codex/engram-instructions.md` | `.codex/engram-instructions.md` |
+| `~/.codex/engram-compact-prompt.md` | `.codex/engram-compact-prompt.md` |
+
+### What to NEVER sync (runtime state + secrets)
+
+These are machine-local or contain credentials — exclude them all:
+
+- **Secrets**: `auth.json` (OAuth tokens), `.codex-global-state.json*`
+- **Databases**: `*.sqlite`, `*.sqlite-shm`, `*.sqlite-wal` (goals, logs, memories, state)
+- **History/sessions**: `history.jsonl`, `session_index.jsonl`, `sessions/`, `external_agent_session_imports.json`, `log/`, `logs*`
+- **Caches/temp**: `cache/`, `models_cache.json`, `.tmp/`, `tmp/`, `shell_snapshots/`
+- **Other runtime**: `plugins/`, `vendor_imports/`, `computer-use/`, `process_manager/`, `ambient-suggestions/`, `memories/`, `context-mode/`, `chrome-native-hosts-v2.json`, `installation_id`, `version.json`, `.personality_migration`, `*.bak*`
+
+### config.toml secret scan (mandatory)
+
+`config.toml` may reference env vars by **name** (e.g. `"AGENTMEMORY_SECRET"` inside an `env_vars = [...]` array) — those are safe (just names, values come from the environment). But before copying, scan for **inline** secret values and strip/skip if found:
+
+```bash
+grep -inE '(token|secret|password|api[_-]?key|bearer)\s*=\s*["'\'']' ~/.codex/config.toml
+```
+
+If that matches an actual assigned value (not an array of names), do NOT copy that line — flag it in the summary so the user can move it to an env var.
+
+### Commands
+
+```bash
+# AGENTS.md (repo root) + engram prompt files
+cp ~/.codex/AGENTS.md AGENTS.md 2>/dev/null
+cp ~/.codex/engram-instructions.md .codex/engram-instructions.md 2>/dev/null
+cp ~/.codex/engram-compact-prompt.md .codex/engram-compact-prompt.md 2>/dev/null
+
+# config.toml (AFTER secret scan above) + hooks.json
+cp ~/.codex/config.toml .codex/config.toml
+cp ~/.codex/hooks.json .codex/hooks.json 2>/dev/null
+
+# Remove the stale .codex/hooks/ dir — it was wrongly copied from ~/.claude/hooks
+# in an earlier manual sync. Codex's real hook scripts live in ~/.codex/tools/.
+rm -rf .codex/hooks
+
+# Agents — delete repo dir contents, then copy fresh
+rm -f .codex/agents/*.toml
+mkdir -p .codex/agents
+cp ~/.codex/agents/*.toml .codex/agents/ 2>/dev/null
+
+# Skills — delete repo dir, then copy fresh
+rm -rf .codex/skills
+mkdir -p .codex/skills
+cp -r ~/.codex/skills/* .codex/skills/ 2>/dev/null
+
+# Rules — delete repo dir, then copy fresh
+rm -rf .codex/rules
+mkdir -p .codex/rules
+cp -r ~/.codex/rules/* .codex/rules/ 2>/dev/null
+
+# Tools — delete repo dir, then copy fresh (hook scripts)
+rm -rf .codex/tools
+mkdir -p .codex/tools
+cp -r ~/.codex/tools/* .codex/tools/ 2>/dev/null
+```
+
+**Do NOT sync `~/.agents/skills/`** — that's a large shared skill store (mostly marketplace-installed). This skill leaves it untouched, same as it skips Claude marketplace plugins.
+
+## Step 5: Regenerate Docs
 
 After updating `data.js`, run the generator:
 
@@ -188,7 +268,7 @@ node scripts/generate-docs.js
 
 This regenerates `TOOLKIT.md` and updates setup guide sections automatically. Never edit those files by hand.
 
-## Step 5: Summary
+## Step 6: Summary
 
 After syncing, print a clear summary:
 
@@ -221,6 +301,14 @@ After syncing, print a clear summary:
 - 3 commands (no change)
 - settings.json updated
 
+### Codex config synced
+- AGENTS.md updated
+- config.toml updated (no inline secrets found)
+- 18 agents (.toml)
+- 2 skills
+- hooks.json + tools/ synced (stale .codex/hooks/ removed)
+- rules/ synced
+
 ### Docs regenerated
 - TOOLKIT.md ✓
 - docs/SETUP_GUIDE.md ✓
@@ -245,3 +333,4 @@ Ask the user to review the changes before committing. Use `git diff` to show wha
 - It's a **destructive pull** operation (machine → repo): what's on the machine wins, what's not gets deleted
 - For pushing (repo → machine), use `setup.sh`
 - The only things preserved during cleanup: this skill itself (`sync-dotfiles`), git-managed skill dirs, and marketplace plugins
+- Codex sync only mirrors **portable** config from `~/.codex/` (AGENTS.md, agents, skills, hooks.json, tools, rules, config.toml). Runtime state, databases, sessions, and `auth.json` are never copied. The shared `~/.agents/skills/` store is left untouched.

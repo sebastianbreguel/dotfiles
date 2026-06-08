@@ -577,21 +577,21 @@ export const DATA = {
           ]
         },
         {
-          "id": "agentmemory",
-          "name": "Agent Memory",
-          "desc": "CLI para gestionar memoria persistente de coding agents.",
-          "install": "npm install -g @agentmemory/agentmemory",
-          "site": "github.com/agentmemory/agentmemory",
+          "id": "pi-coding-agent",
+          "name": "Pi Coding Agent",
+          "desc": "CLI coding agent de Earendil. Agente de terminal alternativo.",
+          "install": "pnpm install -g @earendil-works/pi-coding-agent",
+          "site": "www.npmjs.com/package/@earendil-works/pi-coding-agent",
           "tags": [
             "ai",
-            "memory",
+            "coding",
             "agents"
           ],
           "badges": [
             "Free"
           ],
           "featured": false,
-          "note": "Agrega memoria persistente cross-session a Claude Code y otros agents. Util cuando quiero que el agent recuerde entre conversaciones.",
+          "note": "Lo tengo instalado para probar agentes de coding fuera del set principal. Util para comparar enfoques distintos en terminal.",
           "related": [
             "Claude Code"
           ]
@@ -2312,7 +2312,7 @@ export const DATA = {
   "VS Code Extensions": {
     "slug": "vscode-extensions",
     "catKey": "extensions",
-    "count": 1,
+    "count": 3,
     "groups": {
       "Extensions": [
         {
@@ -2332,6 +2332,46 @@ export const DATA = {
           "note": "Para usar Claude Code directamente dentro del editor sin cambiar de ventana. La integracion con el diff view es excelente.",
           "related": [
             "Claude Code"
+          ]
+        },
+        {
+          "id": "ext-edit-csv",
+          "name": "Edit CSV",
+          "desc": "Editar archivos CSV en una tabla dentro del editor.",
+          "install": "code --install-extension janisdd.vscode-edit-csv",
+          "site": "marketplace.visualstudio.com/items?itemName=janisdd.vscode-edit-csv",
+          "tags": [
+            "vscode",
+            "csv",
+            "data"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Para editar CSVs como si fueran una hoja de calculo sin salir del editor. Comodo cuando reviso datasets chicos.",
+          "related": [
+            "Rainbow CSV"
+          ]
+        },
+        {
+          "id": "ext-rainbow-csv",
+          "name": "Rainbow CSV",
+          "desc": "Colorea columnas de archivos CSV/TSV y permite queries tipo SQL sobre ellos.",
+          "install": "code --install-extension mechatroner.rainbow-csv",
+          "site": "marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv",
+          "tags": [
+            "vscode",
+            "csv",
+            "data"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Hace los CSV legibles de un vistazo coloreando cada columna. Lo uso siempre que abro datos crudos.",
+          "related": [
+            "Edit CSV"
           ]
         }
       ]

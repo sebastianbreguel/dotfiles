@@ -1,7 +1,7 @@
 ---
 name: health
-description: "Runs a budget-aware Agent Health audit for Codex, Claude Code, agent instructions, verifier surfaces, and AI maintainability when agents ignore instructions, hooks/MCP fail, validation is missing, or AI-written code is hard to maintain. Flags issues by severity. Not for debugging code or reviewing PRs."
-when_to_use: "检查claude, 检查codex, Codex 配置, AGENTS.md, config.toml, agent instructions, 健康度, 配置检查, 配置对不对, AI coding 腐化, 代码变烂, 维护性, 上下文混乱, 验证缺失, 验证命令失真, Claude ignoring instructions, check config, settings not working, audit config"
+description: "Audits agent health: configs, instructions, hooks/MCP, verifier surfaces, AI maintainability. Flags by severity. Not for debugging or PR review."
+when_to_use: "audit config, agents ignoring instructions, hooks/MCP failing, settings not working, health check"
 metadata:
   version: "3.24.0"
 ---

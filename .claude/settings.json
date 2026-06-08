@@ -12,6 +12,43 @@
           {
             "type": "command",
             "command": "\"/Users/sebabreguel/.claude/hooks/context-mode-cache-heal.mjs\""
+          },
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/tools/wherewasi.py on-session-start"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/tools/wherewasi.py on-precompact"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/tools/wherewasi.py on-user-prompt"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/tools/wherewasi.py on-session-end"
           }
         ]
       }
@@ -19,18 +56,22 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash -c 'export COLUMNS=300; plugin_dir=$(ls -d \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\"/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | awk -F/ '\"'\"'{ print $(NF-1) \"\\t\" $(0)\n}'\"'\"' | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1 | cut -f2-); exec \"$HOME/.bun/bin/bun\" --env-file /dev/null \"${plugin_dir}src/index.ts\"'"
+    "command": "bash \"$HOME/.claude/claude-hud-context-threshold.sh\""
   },
   "enabledPlugins": {
     "context-mode@context-mode": true,
     "claude-hud@claude-hud": true,
     "compound-engineering@compound-engineering-plugin": true,
-    "engram@engram": true,
     "superpowers@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
-    "complexity-optimizer@complexity-optimizer": true
+    "complexity-optimizer@complexity-optimizer": true,
+    "posthog@claude-plugins-official": true,
+    "engram@engram": true,
+    "code-simplifier@claude-plugins-official": true,
+    "coding-tutor@compound-engineering-plugin": true,
+    "figma@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "engram": {
@@ -44,8 +85,15 @@
         "source": "github",
         "repo": "sebastianbreguel/agent-complexity-optimizer"
       }
+    },
+    "compound-engineering-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "EveryInc/compound-engineering-plugin"
+      }
     }
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "medium",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true
 }

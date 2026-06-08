@@ -278,7 +278,7 @@ Host github.com
 
 ```bash
 pnpm add -g \
-  @agentmemory/agentmemory \
+  @earendil-works/pi-coding-agent \
   @google/gemini-cli \
   @kilocode/cli \
   agent-browser \
@@ -307,6 +307,8 @@ pip3 install \
 
 ```bash
 code --install-extension ext-claude-code
+code --install-extension ext-edit-csv
+code --install-extension ext-rainbow-csv
 ```
 
 ---

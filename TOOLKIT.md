@@ -73,7 +73,7 @@
 | **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** | CLI oficial de Google Gemini. Coding agent en terminal. | Free |
 | **[OpenAI Codex](https://github.com/openai/codex)** | CLI de OpenAI. Coding agent en terminal. | Free |
 | **Kilo Code** | CLI de Kilo Code. Coding agent en terminal. | Free |
-| **[Agent Memory](https://github.com/agentmemory/agentmemory)** | CLI para gestionar memoria persistente de coding agents. | Free |
+| **[Pi Coding Agent](https://www.npmjs.com/package/@earendil-works/pi-coding-agent)** | CLI coding agent de Earendil. Agente de terminal alternativo. | Free |
 
 ### Browser & Automation
 
@@ -219,8 +219,10 @@
 | Extension | ID | Descripcion | Costo |
 |-----------|-----|-------------|-------|
 | **Claude Code** | `ext-claude-code` | Integracion de Claude Code en el editor. | Free |
+| **[Edit CSV](https://marketplace.visualstudio.com/items?itemName=janisdd.vscode-edit-csv)** | `ext-edit-csv` | Editar archivos CSV en una tabla dentro del editor. | Free |
+| **[Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)** | `ext-rainbow-csv` | Colorea columnas de archivos CSV/TSV y permite queries tipo SQL sobre ellos. | Free |
 
 ---
 
-> **120 herramientas** en total. 109 free, 7 freemium, 4 paid.
+> **122 herramientas** en total. 111 free, 7 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.

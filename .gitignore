@@ -1,2 +1,8 @@
 .vercel
 .env*.local
+
+# Shared agent skill store — excluded from dotfiles sync
+.agents/
+
+# Stray personal docs
+*.pdf

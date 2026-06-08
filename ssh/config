@@ -1,6 +1,6 @@
 
 Host macmini
-  HostName devss-mac-mini
+  HostName devss-mac-mini.local
   User devs
   Port 22
 

@@ -35,7 +35,7 @@ fi
 # 2. CLI packages
 echo "[2/9] Installing CLI packages..."
 if $IS_MAC; then
-  brew install aitop asciinema awscli bats-core deno engram ffmpeg fzf gh git-filter-repo glow go htop idb-companion imagemagick jq libpq mas mole ncdu nvm nvtop pam-reattach pango pgvector pipx pkgconf poppler postgresql@15 prek python@3.12 redis rtk shellcheck sox tbb tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
+  brew install aitop asciinema awscli bats-core deno gentleman-programming/tap/engram ffmpeg fzf gh git-filter-repo glow go htop facebook/fb/idb-companion imagemagick jq libpq mas mole ncdu nvm nvtop pam-reattach pango pgvector pipx pkgconf poppler postgresql@15 j178/tap/prek python@3.12 redis rtk shellcheck sox tbb tectonic tmux zig zsh zsh-autosuggestions 2>/dev/null || true
 else
   sudo apt-get update -y
   sudo apt-get install -y \
@@ -53,7 +53,7 @@ fi
 # 3. GUI apps (macOS only)
 if $IS_MAC; then
   echo "[3/9] Installing Homebrew casks..."
-  brew install --cask 1password-cli alt-tab basictex betterdisplay cmux codex font-meslo-lg-nerd-font jordanbaird-ice 2>/dev/null || true
+  brew install --cask 1password-cli alt-tab basictex betterdisplay brave-browser claude cloudflare-warp cmux codex datagrip docker font-meslo-lg-nerd-font google-chrome jordanbaird-ice macs-fan-control obsidian postman rectangle slack spotify stats visual-studio-code 2>/dev/null || true
 else
   echo "[3/9] Skipping GUI casks (Linux)."
 fi
@@ -104,7 +104,7 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 mkdir -p "$PNPM_HOME"
 export PATH="$PNPM_HOME:$PATH"
 pnpm setup 2>/dev/null || true
-pnpm install -g @agentmemory/agentmemory @earendil-works/pi-coding-agent @google/gemini-cli @kilocode/cli agent-browser defuddle pake-cli vercel 2>/dev/null || true
+pnpm install -g @earendil-works/pi-coding-agent @google/gemini-cli @kilocode/cli agent-browser defuddle pake-cli vercel 2>/dev/null || true
 
 # 8. Python packages
 echo "[8/9] Installing Python packages..."
@@ -180,6 +180,8 @@ echo "[+] Installing VS Code extensions..."
 if command -v code &>/dev/null; then
   EXTENSIONS=(
     anthropic.claude-code
+    janisdd.vscode-edit-csv
+    mechatroner.rainbow-csv
   )
   for ext in "${EXTENSIONS[@]}"; do
     code --install-extension "$ext" --force 2>/dev/null || true
