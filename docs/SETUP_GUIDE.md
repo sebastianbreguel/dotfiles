@@ -130,17 +130,17 @@ npm install -g pnpm@10.30.3
 
 ```bash
 brew install \
-  aitop \
   asciinema \
   awscli \
   bats-core \
+  cmake \
   deno \
-  facebook/fb/idb-companion \
   ffmpeg \
   fzf \
   gentleman-programming/tap/engram \
   gh \
   git-filter-repo \
+  glances \
   glow \
   go \
   htop \
@@ -148,22 +148,30 @@ brew install \
   j178/tap/prek \
   jq \
   libpq \
+  llvm \
   mas \
   mole \
   ncdu \
+  ninja \
   nvm \
   nvtop \
   pam-reattach \
+  pango \
   pgvector \
   pipx \
+  poppler \
   postgresql@15 \
   python@3.12 \
+  rbenv \
   redis \
   rtk \
   shellcheck \
   sox \
+  tbb \
   tectonic \
   tmux \
+  vhs \
+  watch \
   zig \
   zsh \
   zsh-autosuggestions
@@ -178,7 +186,6 @@ brew install --cask \
   basictex \
   betterdisplay \
   brave-browser \
-  claude \
   cloudflare-warp \
   cmux \
   codex \
@@ -192,6 +199,7 @@ brew install --cask \
   postman \
   rectangle \
   slack \
+  softfocus \
   spotify \
   stats \
   visual-studio-code

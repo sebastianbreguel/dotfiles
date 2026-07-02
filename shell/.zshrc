@@ -48,3 +48,6 @@ alias cc='claude --dangerously-skip-permissions'
 # Taskforce.sh private npm registry — token lives in ~/.secrets (gitignored)
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
 
+
+# rbenv (Ruby version manager)
+eval "$(rbenv init - zsh)"

@@ -37,14 +37,6 @@
             "command": "SUPERSET_AGENT_ID=codex \"/Users/sebabreguel/.superset/hooks/notify.sh\""
           }
         ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 /Users/sebabreguel/.codex/tools/wherewasi.py on-session-start"
-          }
-        ]
       }
     ],
     "PreCompact": [
@@ -53,14 +45,6 @@
           {
             "type": "command",
             "command": "context-mode hook codex precompact"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 /Users/sebabreguel/.codex/tools/wherewasi.py on-precompact"
           }
         ]
       }
@@ -79,14 +63,6 @@
           {
             "type": "command",
             "command": "SUPERSET_AGENT_ID=codex \"/Users/sebabreguel/.superset/hooks/notify.sh\""
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 /Users/sebabreguel/.codex/tools/wherewasi.py on-user-prompt"
           }
         ]
       }

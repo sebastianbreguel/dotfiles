@@ -6,29 +6,9 @@ export const DATA = {
   "Mac Apps": {
     "slug": "mac-apps",
     "catKey": "apps",
-    "count": 31,
+    "count": 27,
     "groups": {
       "Desarrollo": [
-        {
-          "id": "claude-desktop",
-          "name": "Claude Desktop",
-          "desc": "App de escritorio de Claude. Chat + Claude Code integrado.",
-          "install": "brew install --cask claude",
-          "site": "claude.ai",
-          "tags": [
-            "ai",
-            "chat",
-            "claude"
-          ],
-          "badges": [
-            "Freemium"
-          ],
-          "featured": true,
-          "note": "La uso para tareas de chat rapido y proyectos que no requieren la CLI. Tener Claude nativo en el escritorio cambia el workflow.",
-          "related": [
-            "Claude Code"
-          ]
-        },
         {
           "id": "docker",
           "name": "Docker Desktop",
@@ -374,6 +354,24 @@ export const DATA = {
           "related": [
             "tectonic"
           ]
+        },
+        {
+          "id": "softfocus",
+          "name": "SoftFocus",
+          "desc": "Atenua y desenfoca las ventanas inactivas para enfocarte en la activa.",
+          "install": "brew install --cask softfocus",
+          "site": "github.com/waydabber/SoftFocus",
+          "tags": [
+            "focus",
+            "productivity",
+            "menubar"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Lo uso para no distraerme con las ventanas de fondo cuando estoy programando.",
+          "related": []
         }
       ],
       "Browsers": [
@@ -513,7 +511,7 @@ export const DATA = {
   "CLI Tools": {
     "slug": "cli-tools",
     "catKey": "cli",
-    "count": 44,
+    "count": 60,
     "groups": {
       "AI Coding Agents": [
         {
@@ -941,24 +939,6 @@ export const DATA = {
           ]
         },
         {
-          "id": "idb-companion",
-          "name": "idb-companion",
-          "desc": "Daemon de Facebook IDB para automatizar simuladores iOS desde CLI.",
-          "install": "brew install facebook/fb/idb-companion",
-          "site": "fbidb.io",
-          "tags": [
-            "ios",
-            "mobile",
-            "testing"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": false,
-          "note": "Companion del CLI fb-idb. Permite controlar simuladores y devices iOS desde scripts. Lo uso con pipx fb-idb.",
-          "related": []
-        },
-        {
           "id": "maturin",
           "name": "maturin",
           "desc": "Build tool para Python + Rust. Compila PyO3 a wheels.",
@@ -1068,6 +1048,126 @@ export const DATA = {
           "related": [
             "postgresql"
           ]
+        },
+        {
+          "id": "cmake",
+          "name": "CMake",
+          "desc": "Sistema de build multiplataforma para C/C++.",
+          "install": "brew install cmake",
+          "site": "cmake.org",
+          "tags": [
+            "build",
+            "c++"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Lo necesito para compilar dependencias nativas de C/C++.",
+          "related": []
+        },
+        {
+          "id": "ninja",
+          "name": "Ninja",
+          "desc": "Build system minimalista y rapido, backend comun de CMake.",
+          "install": "brew install ninja",
+          "site": "ninja-build.org",
+          "tags": [
+            "build",
+            "c++"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Backend de builds de CMake: compila mucho mas rapido que make.",
+          "related": []
+        },
+        {
+          "id": "llvm",
+          "name": "LLVM",
+          "desc": "Toolchain de compiladores: clang, lld, herramientas de analisis.",
+          "install": "brew install llvm",
+          "site": "llvm.org",
+          "tags": [
+            "compiler",
+            "c++"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Toolchain para compilar proyectos nativos que piden clang moderno.",
+          "related": []
+        },
+        {
+          "id": "rbenv",
+          "name": "rbenv",
+          "desc": "Manejador de versiones de Ruby por proyecto.",
+          "install": "brew install rbenv",
+          "site": "github.com/rbenv/rbenv",
+          "tags": [
+            "ruby",
+            "version-manager"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Para tener versiones de Ruby por proyecto sin tocar el Ruby del sistema.",
+          "related": []
+        },
+        {
+          "id": "pango",
+          "name": "pango",
+          "desc": "Libreria de renderizado de texto (dependencia de herramientas graficas).",
+          "install": "brew install pango",
+          "site": "pango.gnome.org",
+          "tags": [
+            "library",
+            "text"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Dependencia de tooling grafico; instalada explicitamente para builds.",
+          "related": []
+        },
+        {
+          "id": "poppler",
+          "name": "poppler",
+          "desc": "Libreria y utilidades para PDFs (pdftotext, pdfinfo).",
+          "install": "brew install poppler",
+          "site": "poppler.freedesktop.org",
+          "tags": [
+            "pdf",
+            "library"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Por pdftotext/pdfinfo: extraer texto y metadata de PDFs desde la terminal.",
+          "related": []
+        },
+        {
+          "id": "tbb",
+          "name": "tbb",
+          "desc": "Libreria de paralelismo de Intel (oneTBB) para C++.",
+          "install": "brew install tbb",
+          "site": "github.com/uxlfoundation/oneTBB",
+          "tags": [
+            "library",
+            "c++",
+            "parallel"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Dependencia de builds nativos que usan paralelismo con oneTBB.",
+          "related": []
         }
       ],
       "Package Managers & Deploy": [
@@ -1222,26 +1322,7 @@ export const DATA = {
           "featured": true,
           "note": "Para ver que proceso esta comiendo CPU sin salir de la terminal. Mucho mas legible que top.",
           "related": [
-            "Stats",
-            "aitop"
-          ]
-        },
-        {
-          "id": "aitop",
-          "name": "aitop",
-          "desc": "Monitor del sistema con AI. Top-like con analisis inteligente.",
-          "install": "brew install aitop",
-          "tags": [
-            "monitoring",
-            "ai"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Lo probé porque la combinacion de AI + monitoreo me parecio curiosa. Util cuando queres que te explique por que algo esta lento.",
-          "related": [
-            "htop"
+            "Stats"
           ]
         },
         {
@@ -1521,6 +1602,58 @@ export const DATA = {
           "related": [
             "ffmpeg"
           ]
+        },
+        {
+          "id": "glances",
+          "name": "glances",
+          "desc": "Monitor de sistema en terminal: CPU, RAM, disco, red en una vista.",
+          "install": "brew install glances",
+          "site": "nicolargo.github.io/glances",
+          "tags": [
+            "monitoring",
+            "terminal"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Alternativa a htop con mas info en una sola pantalla.",
+          "related": []
+        },
+        {
+          "id": "vhs",
+          "name": "vhs",
+          "desc": "Graba demos de terminal como GIF/video desde un script.",
+          "install": "brew install vhs",
+          "site": "github.com/charmbracelet/vhs",
+          "tags": [
+            "terminal",
+            "recording",
+            "demo"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Para grabar demos de CLIs reproducibles: escribis un script y sale el GIF.",
+          "related": []
+        },
+        {
+          "id": "watch",
+          "name": "watch",
+          "desc": "Re-ejecuta un comando cada N segundos y muestra el output.",
+          "install": "brew install watch",
+          "site": "gitlab.com/procps-ng/procps",
+          "tags": [
+            "terminal",
+            "monitoring"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "note": "Para mirar como cambia el output de un comando en vivo (watch kubectl get pods).",
+          "related": []
         }
       ]
     }
@@ -1528,7 +1661,7 @@ export const DATA = {
   "Shell Setup": {
     "slug": "shell-setup",
     "catKey": "shell",
-    "count": 4,
+    "count": 5,
     "groups": {
       "Shell": [
         {

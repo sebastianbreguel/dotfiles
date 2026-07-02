@@ -5,6 +5,7 @@
       "Bash(homedir-marker *)"
     ]
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "SessionStart": [
       {
@@ -12,43 +13,6 @@
           {
             "type": "command",
             "command": "\"/Users/sebabreguel/.claude/hooks/context-mode-cache-heal.mjs\""
-          },
-          {
-            "type": "command",
-            "command": "python3 $HOME/.claude/tools/wherewasi.py on-session-start"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 $HOME/.claude/tools/wherewasi.py on-precompact"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 $HOME/.claude/tools/wherewasi.py on-user-prompt"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 $HOME/.claude/tools/wherewasi.py on-session-end"
           }
         ]
       }
@@ -65,13 +29,17 @@
     "superpowers@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": false,
     "complexity-optimizer@complexity-optimizer": true,
-    "posthog@claude-plugins-official": true,
     "engram@engram": true,
     "code-simplifier@claude-plugins-official": true,
     "coding-tutor@compound-engineering-plugin": true,
-    "figma@claude-plugins-official": true
+    "figma@claude-plugins-official": false,
+    "posthog@claude-plugins-official": true,
+    "datadog@claude-plugins-official": true,
+    "serena@claude-plugins-official": true,
+    "ponytail@ponytail": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "engram": {
@@ -91,9 +59,16 @@
         "source": "github",
         "repo": "EveryInc/compound-engineering-plugin"
       }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
     }
   },
-  "effortLevel": "medium",
+  "effortLevel": "low",
   "tui": "fullscreen",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true
 }

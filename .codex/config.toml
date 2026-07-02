@@ -7,6 +7,7 @@ notify = [
 
 model_instructions_file = "/Users/sebabreguel/.codex/engram-instructions.md"
 experimental_compact_prompt_file = "/Users/sebabreguel/.codex/engram-compact-prompt.md"
+service_tier = "default"
 [features]
 hooks = true
 js_repl = false
@@ -107,26 +108,32 @@ approval_mode = "approve"
 [mcp_servers.code-review-graph.tools.get_minimal_context_tool]
 approval_mode = "approve"
 
+[mcp_servers.code-review-graph.tools.cross_repo_search_tool]
+approval_mode = "approve"
+
+[mcp_servers.code-review-graph.tools.refactor_tool]
+approval_mode = "approve"
+
 [mcp_servers.posthog]
 url = "https://mcp.posthog.com/mcp"
 
 [mcp_servers.node_repl]
 args = []
-command = "/Applications/Codex.app/Contents/Resources/node_repl"
+command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
-NODE_REPL_NODE_MODULE_DIRS = ""
-NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/node"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/sebabreguel/.codex"
 CODEX_HOME = "/Users/sebabreguel/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "2de792ebdf729e85542c94275f6654821dddce546d9c7374c915f2297529e313"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "59e7bb81812ddd5f102e1d580335166e552c91686b5726218a985b59b4f89ca1"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.602.40724"
+BROWSER_USE_CODEX_APP_VERSION = "26.623.42026"
 CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
 
 [mcp_servers.agentmemory]
@@ -139,6 +146,12 @@ env_vars = [
     "AGENTMEMORY_URL",
     "AGENTMEMORY_SECRET",
 ]
+
+[mcp_servers.agentmemory.tools.memory_recall]
+approval_mode = "approve"
+
+[mcp_servers.agentmemory.tools.memory_save]
+approval_mode = "approve"
 
 [projects."/Users/sebabreguel/vambe/vambe-datascience"]
 trust_level = "trusted"
@@ -183,6 +196,24 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/sebabreguel/vambe/reportes_2"]
+trust_level = "trusted"
+
+[projects."/Users/sebabreguel/vambe/datascience_front/vambe-turborepo-frontend"]
+trust_level = "trusted"
+
+[projects."/Users/sebabreguel/vambe/datascience_front"]
+trust_level = "trusted"
+
+[projects."/Users/sebabreguel/vambe/datascience_front/vambe-datascience"]
+trust_level = "trusted"
+
+[projects."/Users/sebabreguel/vambe/fastapi-llm-practices"]
+trust_level = "trusted"
+
+[projects."/Users/sebabreguel/vambe/datascience_front/vambeai-backend"]
+trust_level = "trusted"
+
+[projects."/Users/sebabreguel/personal/agent-complexity-optimizer"]
 trust_level = "trusted"
 
 [plugins."github@openai-curated"]
@@ -233,9 +264,6 @@ enabled = true
 [plugins."superpowers@local-codex-equivalents"]
 enabled = true
 
-[plugins."browser@openai-bundled"]
-enabled = true
-
 [plugins."documents@openai-primary-runtime"]
 enabled = true
 
@@ -275,6 +303,9 @@ enabled = true
 [plugins."engram@engram"]
 enabled = true
 
+[plugins."browser@openai-bundled"]
+enabled = true
+
 [notice]
 fast_default_opt_out = true
 
@@ -282,7 +313,7 @@ fast_default_opt_out = true
 "gpt-5.3-codex" = "gpt-5.4"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-06-08T18:11:15Z"
+last_updated = "2026-06-30T15:32:56Z"
 source_type = "local"
 source = "/Users/sebabreguel/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
@@ -291,8 +322,8 @@ source_type = "local"
 source = "/Users/sebabreguel"
 
 [marketplaces.context-mode]
-last_updated = "2026-06-08T18:08:57Z"
-last_revision = "be5db6142aea4f0d97657f69027ef1a950e6d45f"
+last_updated = "2026-06-28T21:32:16Z"
+last_revision = "99dee708b4bee735bfe0d0ecb1161fcb8928e84e"
 source_type = "git"
 source = "https://github.com/mksglu/context-mode.git"
 
@@ -302,28 +333,32 @@ source_type = "local"
 source = "/Users/sebabreguel/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
 [marketplaces.claude-plugins-official]
-last_updated = "2026-06-08T19:00:42Z"
-last_revision = "bbbff6ab54f0d4b62dad2df25536ed05a418b3ff"
+last_updated = "2026-06-30T15:32:56Z"
+last_revision = "7d0e5f5aae1643db011e905b561fca81776388a6"
 source_type = "git"
 source = "https://github.com/anthropics/claude-plugins-official.git"
 
 [marketplaces.complexity-optimizer]
-last_updated = "2026-06-08T18:13:21Z"
-last_revision = "a5ed602833be95103122dc30ca6be2ba84edd00e"
+last_updated = "2026-06-12T20:57:56Z"
+last_revision = "2408046488fcc90cb78457d7ad9751023252a715"
 source_type = "git"
 source = "https://github.com/sebastianbreguel/agent-complexity-optimizer.git"
 
 [marketplaces.compound-engineering-plugin]
-last_updated = "2026-06-08T18:13:19Z"
-last_revision = "b6250490bec4c0488d68ad66d72bd99f6edb95fd"
+last_updated = "2026-06-28T21:32:02Z"
+last_revision = "afc5e010e69a135e726ae9713781db5af11203cc"
 source_type = "git"
 source = "https://github.com/EveryInc/compound-engineering-plugin.git"
 
 [marketplaces.engram]
-last_updated = "2026-06-08T18:13:25Z"
-last_revision = "07445ba99eac95083d7c6d56c5d795bb68e90834"
+last_updated = "2026-06-26T22:23:02Z"
+last_revision = "44faeee1fb4fabdee4ba9619df55af485f3d06eb"
 source_type = "git"
 source = "https://github.com/Gentleman-Programming/engram.git"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "git-branch", "pull-request-number", "branch-changes", "context-remaining", "context-used", "five-hour-limit", "weekly-limit"]
+status_line_use_colors = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
@@ -364,13 +399,13 @@ trusted_hash = "sha256:3ec18d0662925991ca425a1b7fdecedf3ecab45be650b704679942ce3
 trusted_hash = "sha256:beed684628a247d87d8221efc55c3c5c3f11e85a914cc7143f1f7acd80033b32"
 
 [hooks.state."engram@engram:hooks/hooks.json:session_start:0:0"]
-trusted_hash = "sha256:41becba63359bbd00ffb4f88cc72bbe4c7f1b0746f085e89c59f6fc8e0e617e3"
+trusted_hash = "sha256:bdb2a1878177bdb9d54fde9daa46cc0feb129e3f0a5821991c7b841330a165c8"
 
 [hooks.state."engram@engram:hooks/hooks.json:session_start:1:0"]
-trusted_hash = "sha256:a8ae6f51abd26bf7c9da36d436c7dc0f61d3e12cbc9b1c2c60b6142fda5f0643"
+trusted_hash = "sha256:b26535465d8516982d54e5f7c994af19d3a442d994e4e90b66faec44ee6abcf2"
 
 [hooks.state."engram@engram:hooks/hooks.json:user_prompt_submit:0:0"]
-trusted_hash = "sha256:252957810031f1c6ef01af9352522cb3dac22f72120887cc5b60fc3edea2cbc1"
+trusted_hash = "sha256:e987a24eede3cf93edc4831f536edfcc6b3065854e9a1771cb55864294fb7f82"
 
 [hooks.state."posthog@claude-plugins-official:hooks/hooks.json:pre_tool_use:0:0"]
 trusted_hash = "sha256:3dc55a922b47b9418381076dbfc51fbe2a5bdbe2f86469022c5df91eed9c5c52"
@@ -388,10 +423,22 @@ trusted_hash = "sha256:bd794fcdf738bc56e2ed3a72aa5428eb59f6a1c32d8d942ed52be28a8
 trusted_hash = "sha256:d80e98c7531bb861aa0efad3506aeb624ce2761c91590ee39bba14303564c9f2"
 
 [hooks.state."engram@engram:hooks/hooks.json:subagent_stop:0:0"]
-trusted_hash = "sha256:9f4d071808171751fb25199417bd5fc7c0041b649d22116c4c9b7f928d42069e"
+trusted_hash = "sha256:ede5873106284c398a418e7380489ae4c6cb9ce9f7251cc6f2b2e4e3afeb902a"
 
 [hooks.state."engram@engram:hooks/hooks.json:stop:0:0"]
-trusted_hash = "sha256:e5e2f0406828c2965e098fe13b5c673a38d1d469393ba5ae4fe3e8b308a18759"
+trusted_hash = "sha256:796833078d2d77fad3c2592459147f29c2322407e261374a875c656b2f16c465"
+
+[hooks.state."/Users/sebabreguel/vambe/datascience_front/vambe-datascience/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:3ec18d0662925991ca425a1b7fdecedf3ecab45be650b704679942ce3abd9248"
+
+[hooks.state."/Users/sebabreguel/vambe/datascience_front/vambe-datascience/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:beed684628a247d87d8221efc55c3c5c3f11e85a914cc7143f1f7acd80033b32"
+
+[hooks.state."superpowers@claude-plugins-official:hooks/hooks-codex.json:session_start:0:0"]
+trusted_hash = "sha256:687e7af87f0cb59b1bcc71d368e097304b45d84999c90dc97358a22811691a3f"
+
+[desktop]
+followUpQueueMode = "queue"
 
 [desktop.open-in-target-preferences]
 global = "vscode"

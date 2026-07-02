@@ -16,7 +16,6 @@
 
 | App | Descripcion | Instalacion | Costo |
 |-----|-------------|-------------|-------|
-| **[Claude Desktop](https://claude.ai)** | App de escritorio de Claude. Chat + Claude Code integrado. | `brew install --cask claude` | Freemium |
 | **[Docker Desktop](https://docker.com)** | Contenedores para ejecutar apps aisladas y dev environments. | `brew install --cask docker` | Free |
 | **[DataGrip](https://www.jetbrains.com/datagrip)** | IDE de JetBrains para bases de datos. SQL, PostgreSQL, Redis. | `brew install --cask datagrip` | Paid |
 | **[Postman](https://postman.com)** | Testing y documentacion de APIs. Collections, environments. | `brew install --cask postman` | Free |
@@ -41,6 +40,7 @@
 | **cmux** | Multiplexor de sesiones Claude Code en paralelo. | `brew install --cask cmux` | Free |
 | **[Raycast](https://raycast.com)** | Launcher y productivity app. Reemplaza Spotlight con extensions, snippets, window management. | `Download from raycast.com` | Freemium |
 | **[BasicTeX](https://tug.org/mactex/morepackages.html)** | Distribucion minima de TeX/LaTeX para macOS. | `brew install --cask basictex` | Free |
+| **[SoftFocus](https://github.com/waydabber/SoftFocus)** | Atenua y desenfoca las ventanas inactivas para enfocarte en la activa. | `brew install --cask softfocus` | Free |
 
 ### Browsers
 
@@ -101,13 +101,19 @@
 | **[complexipy](https://github.com/rohaquinern/complexipy)** | Analizador de complejidad cognitiva para Python. Detecta funciones dificiles de mantener. | Free |
 | **[code-review-graph](https://github.com/sebastianbreguel/code-review-graph)** | MCP server para busqueda semantica de codigo. Grafo de dependencias y analisis de impacto. | Free |
 | **[pgvector](https://github.com/pgvector/pgvector)** | Extension de PostgreSQL para vectores y busqueda semantica. | Free |
-| **[idb-companion](https://fbidb.io)** | Daemon de Facebook IDB para automatizar simuladores iOS desde CLI. | Free |
 | **[maturin](https://github.com/PyO3/maturin)** | Build tool para Python + Rust. Compila PyO3 a wheels. | Free |
 | **[vulture](https://github.com/jendrikseipp/vulture)** | Detector de codigo Python muerto. Encuentra funciones y variables sin usar. | Free |
 | **[Pake](https://github.com/tw93/Pake)** | Convierte cualquier web en app de escritorio liviana via Tauri/Rust. | Free |
 | **[defuddle](https://github.com/kepano/defuddle)** | Extrae contenido limpio de paginas web. Convierte HTML a markdown legible. | Free |
 | **[Engram](https://github.com/gentleman-programming/engram)** | Memoria persistente para Claude Code. Guarda decisiones, bugs, descubrimientos entre sesiones. | Free |
 | **[libpq](https://postgresql.org/docs/current/libpq.html)** | Libreria cliente de PostgreSQL. Provee psql y utilidades de conexion. | Free |
+| **[CMake](https://cmake.org)** | Sistema de build multiplataforma para C/C++. | Free |
+| **[Ninja](https://ninja-build.org)** | Build system minimalista y rapido, backend comun de CMake. | Free |
+| **[LLVM](https://llvm.org)** | Toolchain de compiladores: clang, lld, herramientas de analisis. | Free |
+| **[rbenv](https://github.com/rbenv/rbenv)** | Manejador de versiones de Ruby por proyecto. | Free |
+| **[pango](https://pango.gnome.org)** | Libreria de renderizado de texto (dependencia de herramientas graficas). | Free |
+| **[poppler](https://poppler.freedesktop.org)** | Libreria y utilidades para PDFs (pdftotext, pdfinfo). | Free |
+| **[tbb](https://github.com/uxlfoundation/oneTBB)** | Libreria de paralelismo de Intel (oneTBB) para C++. | Free |
 
 ### Package Managers & Deploy
 
@@ -126,7 +132,6 @@
 | **[pam-reattach](https://github.com/fabianishere/pam_reattach)** | Modulo PAM que permite Touch ID para sudo dentro de tmux/screen. | Free |
 | **[fzf](https://github.com/junegunn/fzf)** | Fuzzy finder. Ctrl+R mejorado, busqueda de archivos. | Free |
 | **[htop](https://htop.dev)** | Monitor de procesos interactivo. Mejor que top. | Free |
-| **aitop** | Monitor del sistema con AI. Top-like con analisis inteligente. | Free |
 | **[AWS CLI](https://aws.amazon.com/cli)** | CLI oficial de AWS. Manejo de servicios desde terminal. | Free |
 | **[pipx](https://pipx.pypa.io)** | Instalador de apps Python en venvs aisladas. | Free |
 | **[Python 3.12](https://python.org)** | Runtime Python 3.12 instalado via Homebrew. | Free |
@@ -142,6 +147,9 @@
 | **[Glow](https://github.com/charmbracelet/glow)** | Render de Markdown en la terminal con syntax highlighting y paginacion. | Free |
 | **[mas](https://github.com/mas-cli/mas)** | CLI para Mac App Store. Instalar, actualizar y buscar apps desde la terminal. | Free |
 | **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** | Descargador de video/audio de YouTube y +1000 sitios. Fork mejorado de youtube-dl. | Free |
+| **[glances](https://nicolargo.github.io/glances)** | Monitor de sistema en terminal: CPU, RAM, disco, red en una vista. | Free |
+| **[vhs](https://github.com/charmbracelet/vhs)** | Graba demos de terminal como GIF/video desde un script. | Free |
+| **[watch](https://gitlab.com/procps-ng/procps)** | Re-ejecuta un comando cada N segundos y muestra el output. | Free |
 
 ## 3. Shell Setup
 
@@ -224,5 +232,5 @@
 
 ---
 
-> **122 herramientas** en total. 111 free, 7 freemium, 4 paid.
+> **130 herramientas** en total. 120 free, 6 freemium, 4 paid.
 > Generado automaticamente desde `data.js` — no editar manualmente.
