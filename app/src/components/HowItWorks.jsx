@@ -78,7 +78,7 @@ function LayerPanel({ layer }) {
   return (
     <div
       className="px-[22px] py-5 bg-surface rounded relative z-10"
-      style={{ border: `1px solid ${layer.color}`, animation: "fadeInUp 220ms ease-out" }}
+      style={{ border: `1px solid ${layer.color}` }}
     >
       <div className="font-mono text-[10px] tracking-wider uppercase mb-1.5" style={{ color: layer.color }}>
         Layer · {layer.tag}

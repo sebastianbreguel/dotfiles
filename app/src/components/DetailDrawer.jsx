@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ALL_TOOLS } from '../data';
-import { Badge, Tag, Icon } from './Primitives';
+import { ArrowIcon, Badge, CheckIcon, CloseIcon, CopyIcon, Tag } from './Primitives';
 
 function FieldLabel({ children }) {
   return (
@@ -36,13 +36,12 @@ export default function DetailDrawer({ tool, onClose, onItemClick }) {
       <div
         onClick={onClose}
         className="fixed inset-0 z-40 bg-black/50"
-        style={{ backdropFilter: "blur(2px)", animation: "fadeIn 160ms ease-out" }}
+        style={{ backdropFilter: "blur(2px)" }}
       />
       <aside
         className="fixed top-0 right-0 bottom-0 w-[480px] max-w-[90vw] bg-surface border-l z-50 flex flex-col"
         style={{
           borderColor: "var(--border-hi)",
-          animation: "slideIn 220ms cubic-bezier(0.2, 0.9, 0.3, 1)",
           boxShadow: "-30px 0 60px rgba(0,0,0,0.4)",
         }}
       >
@@ -66,7 +65,7 @@ export default function DetailDrawer({ tool, onClose, onItemClick }) {
             onClick={onClose}
             className="bg-transparent border border-border w-7 h-7 rounded-[3px] text-text-dim cursor-pointer grid place-items-center"
           >
-            <Icon.Close />
+            <CloseIcon />
           </button>
         </div>
 
@@ -96,7 +95,7 @@ export default function DetailDrawer({ tool, onClose, onItemClick }) {
                   className="border-0 border-l border-border bg-transparent px-3.5 py-2.5 cursor-pointer flex items-center gap-1.5 font-mono text-[11px] transition-colors"
                   style={{ color: copied ? "oklch(0.82 0.14 150)" : "var(--text-dim)" }}
                 >
-                  {copied ? <><Icon.Check /> copied</> : <><Icon.Copy /> copy</>}
+                  {copied ? <><CheckIcon /> copied</> : <><CopyIcon /> copy</>}
                 </button>
               </div>
             </>
@@ -115,7 +114,7 @@ export default function DetailDrawer({ tool, onClose, onItemClick }) {
                   borderBottom: "1px solid oklch(from var(--accent) l c h / 0.4)",
                 }}
               >
-                {tool.site} <Icon.Arrow />
+                {tool.site} <ArrowIcon />
               </a>
             </>
           )}

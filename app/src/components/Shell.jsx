@@ -1,5 +1,5 @@
 import { DATA, CATEGORIES, ALL_TOOLS } from '../data';
-import { Icon } from './Primitives';
+import { CloseIcon, SearchIcon } from './Primitives';
 
 const ACTIVE_BG = "oklch(from var(--accent) 0.22 0.05 h)";
 
@@ -107,7 +107,7 @@ export function TopBar({ query, setQuery, view, setView, onMenuClick, showViewTo
       <div className="flex-1" />
 
       <div className="flex items-center gap-2 px-3 py-1.5 bg-surface border border-border rounded-[3px] w-40 sm:w-[280px] text-text-dim">
-        <Icon.Search />
+        <SearchIcon />
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -146,7 +146,7 @@ export function TweaksPanel({ accent, setAccent, onClose }) {
           onClick={onClose}
           className="bg-transparent border border-border w-[22px] h-[22px] rounded-[3px] text-text-dim cursor-pointer grid place-items-center"
         >
-          <Icon.Close />
+          <CloseIcon />
         </button>
       </div>
       <div className="text-[11px] text-text-muted mb-2">Accent color</div>

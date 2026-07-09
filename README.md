@@ -15,7 +15,6 @@ dotfiles/
   gh/             GitHub CLI config
   .claude/        25 agentes, 24 skills, hooks, commands, settings
   app/            Pagina React con todo el catalogo (Vite + React 19)
-  animations/     Videos Manim del ecosistema Claude Code
   scripts/        Generador de docs desde data.js
   setup.sh        Setup automatizado de Mac nuevo
   TOOLKIT.md      Catalogo completo en markdown (generado)
@@ -78,10 +77,10 @@ Flags utiles:
 
 ### La Pagina (`app/`)
 
-React app con busqueda, categorias, dark mode, y un panel de detalle con el "por que" de cada herramienta. La seccion "How It Works" tiene videos animados (Manim) que explican como funciona el ecosistema de Claude Code.
+React app con busqueda, categorias, dark mode, y un panel de detalle con el "por que" de cada herramienta. La seccion "How It Works" explica las capas del ecosistema de Claude Code sin depender de videos generados.
 
 ```bash
-cd app && pnpm install && pnpm dev
+cd app && npm install && npm run dev
 ```
 
 ### Single Source of Truth
