@@ -35,7 +35,7 @@ fi
 # 2. CLI packages
 echo "[2/9] Installing CLI packages..."
 if $IS_MAC; then
-  brew install asciinema awscli bats-core cmake deno gentleman-programming/tap/engram ffmpeg fzf gh git-filter-repo glances glow go htop imagemagick jq libpq llvm mas mole ncdu ninja nvm nvtop pam-reattach pango pgvector pipx poppler postgresql@15 j178/tap/prek python@3.12 rbenv redis rtk shellcheck sox tbb tectonic tmux vhs watch zig zsh zsh-autosuggestions 2>/dev/null || true
+  brew install asciinema awscli bats-core cmake deno gentleman-programming/tap/engram ffmpeg fzf gh git-filter-repo glances glow go htop imagemagick jq libpq llama.cpp lld@21 llvm mas mole ncdu ninja nvm nvtop pam-reattach pango pgvector pipx poppler postgresql@15 j178/tap/prek python@3.12 rbenv redis ripgrep shellcheck sox tbb tectonic tmux unbound vhs watch zig zsh zsh-autosuggestions 2>/dev/null || true
 else
   sudo apt-get update -y
   sudo apt-get install -y \
@@ -53,7 +53,7 @@ fi
 # 3. GUI apps (macOS only)
 if $IS_MAC; then
   echo "[3/9] Installing Homebrew casks..."
-  brew install --cask 1password-cli alt-tab basictex betterdisplay brave-browser cloudflare-warp cmux codex datagrip docker font-meslo-lg-nerd-font google-chrome jordanbaird-ice macs-fan-control obsidian postman rectangle slack softfocus spotify stats visual-studio-code 2>/dev/null || true
+  brew install --cask 1password-cli alt-tab basictex betterdisplay brave-browser cloudflare-warp cmux codex datagrip docker font-meslo-lg-nerd-font google-chrome jordanbaird-ice macs-fan-control obsidian poke-token-bar postman rectangle session-manager-plugin slack softfocus spotify stats visual-studio-code 2>/dev/null || true
 else
   echo "[3/9] Skipping GUI casks (Linux)."
 fi
@@ -104,11 +104,11 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 mkdir -p "$PNPM_HOME"
 export PATH="$PNPM_HOME:$PATH"
 pnpm setup 2>/dev/null || true
-pnpm install -g @earendil-works/pi-coding-agent @google/gemini-cli @kilocode/cli agent-browser defuddle pake-cli vercel 2>/dev/null || true
+pnpm install -g @earendil-works/pi-coding-agent @google/gemini-cli @kilocode/cli defuddle pake-cli prime-agent vercel 2>/dev/null || true
 
 # 8. Python packages
 echo "[8/9] Installing Python packages..."
-uv tool install code-review-graph complexipy maturin pre-commit ruff vulture yt-dlp 2>/dev/null || true
+uv tool install complexipy maturin pre-commit ruff vulture yt-dlp 2>/dev/null || true
 
 # 8b. Python packages
 echo "[8b/9] Installing Python packages..."

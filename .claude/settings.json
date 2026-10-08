@@ -2,10 +2,46 @@
   "permissions": {
     "allow": [],
     "deny": [
-      "Bash(homedir-marker *)"
-    ]
+      "Bash(homedir-marker *)",
+      "Read(**/.env)",
+      "Read(**/*.env)",
+      "Bash(cat *.env*)",
+      "Bash(head *.env*)",
+      "Bash(sed *.env*)",
+      "Bash(grep *.env*)",
+      "Bash(source *.env*)",
+      "Bash(export $(*.env*))",
+      "Bash(psql *)",
+      "Bash(psql:*)",
+      "Bash(pgcli *)",
+      "Bash(mysql *)",
+      "Bash(mongosh *)",
+      "Bash(mongo *)",
+      "Bash(printenv*)",
+      "Bash(env)",
+      "Bash(echo $*_URL*)",
+      "Bash(echo $*KEY*)",
+      "Bash(echo $*SECRET*)",
+      "Bash(echo $*PASSWORD*)",
+      "Bash(*postgres*)",
+      "Bash(*postgresql://*)",
+      "Bash(*pg_dump*)",
+      "Bash(*pg_restore*)",
+      "Bash(*psycopg*)",
+      "Bash(*PGPASSWORD*)",
+      "Bash(*PGHOST*)"
+    ],
+    "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "opus[1m]",
+  "skillOverrides": {
+    "brainstorming": "off",
+    "diagnose": "off",
+    "zoom-out": "off",
+    "learn": "off",
+    "postgres": "off",
+    "write-a-skill": "off"
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -13,6 +49,10 @@
           {
             "type": "command",
             "command": "\"/Users/sebabreguel/.claude/hooks/context-mode-cache-heal.mjs\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"/Users/sebabreguel/.claude/hooks/vambe-shared-memory-link.sh\""
           }
         ]
       }
@@ -23,37 +63,21 @@
     "command": "bash \"$HOME/.claude/claude-hud-context-threshold.sh\""
   },
   "enabledPlugins": {
-    "context-mode@context-mode": true,
     "claude-hud@claude-hud": true,
-    "compound-engineering@compound-engineering-plugin": true,
-    "superpowers@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
+    "context7@claude-plugins-official": false,
+    "skill-creator@claude-plugins-official": false,
     "frontend-design@claude-plugins-official": false,
-    "complexity-optimizer@complexity-optimizer": true,
-    "engram@engram": true,
-    "code-simplifier@claude-plugins-official": true,
-    "coding-tutor@compound-engineering-plugin": true,
-    "figma@claude-plugins-official": false,
-    "posthog@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": false,
+    "coding-tutor@compound-engineering-plugin": false,
+    "posthog@claude-plugins-official": false,
     "datadog@claude-plugins-official": true,
     "serena@claude-plugins-official": true,
-    "ponytail@ponytail": true,
-    "swift-lsp@claude-plugins-official": true
+    "figma@claude-plugins-official": false,
+    "context-mode@context-mode": true,
+    "codex@openai-codex": true,
+    "complexity-optimizer@complexity-optimizer": true
   },
   "extraKnownMarketplaces": {
-    "engram": {
-      "source": {
-        "source": "github",
-        "repo": "Gentleman-Programming/engram"
-      }
-    },
-    "complexity-optimizer": {
-      "source": {
-        "source": "github",
-        "repo": "sebastianbreguel/agent-complexity-optimizer"
-      }
-    },
     "compound-engineering-plugin": {
       "source": {
         "source": "github",
@@ -65,10 +89,51 @@
         "source": "github",
         "repo": "DietrichGebert/ponytail"
       }
+    },
+    "context-mode": {
+      "source": {
+        "source": "github",
+        "repo": "mksglu/context-mode"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "fast-jev-compaction": {
+      "source": {
+        "source": "github",
+        "repo": "tamaratran/fast-jev-compaction"
+      }
+    },
+    "complexity-optimizer": {
+      "source": {
+        "source": "github",
+        "repo": "sebastianbreguel/agent-complexity-optimizer"
+      }
     }
   },
+  "outputStyle": "Attention-kind",
   "effortLevel": "low",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "medium"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
   "skipDangerousModePermissionPrompt": true,
-  "skipWorkflowUsageWarning": true
+  "skipWorkflowUsageWarning": true,
+  "voiceEnabled": true
 }

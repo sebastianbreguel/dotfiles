@@ -148,6 +148,8 @@ brew install \
   j178/tap/prek \
   jq \
   libpq \
+  llama.cpp \
+  lld@21 \
   llvm \
   mas \
   mole \
@@ -164,12 +166,13 @@ brew install \
   python@3.12 \
   rbenv \
   redis \
-  rtk \
+  ripgrep \
   shellcheck \
   sox \
   tbb \
   tectonic \
   tmux \
+  unbound \
   vhs \
   watch \
   zig \
@@ -196,8 +199,10 @@ brew install --cask \
   jordanbaird-ice \
   macs-fan-control \
   obsidian \
+  poke-token-bar \
   postman \
   rectangle \
+  session-manager-plugin \
   slack \
   softfocus \
   spotify \
@@ -289,10 +294,10 @@ pnpm add -g \
   @earendil-works/pi-coding-agent \
   @google/gemini-cli \
   @kilocode/cli \
-  agent-browser \
   defuddle \
   pake-cli \
   pnpm \
+  prime-agent \
   vercel
 ```
 

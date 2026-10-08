@@ -43,11 +43,15 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Aliases
-alias cc='claude --dangerously-skip-permissions'
+alias cc='claude'
 
-# Taskforce.sh private npm registry — token lives in ~/.secrets (gitignored)
-[ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
+# Taskforce.sh private npm registry
+# NPM_TASKFORCESH_TOKEN: set in ~/.zshrc.local (never commit tokens)
 
 
 # rbenv (Ruby version manager)
 eval "$(rbenv init - zsh)"
+
+
+# bun completions
+[ -s "/Users/sebabreguel/.bun/_bun" ] && source "/Users/sebabreguel/.bun/_bun"

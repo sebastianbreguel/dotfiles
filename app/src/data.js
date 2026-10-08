@@ -6,7 +6,7 @@ export const DATA = {
   "Mac Apps": {
     "slug": "mac-apps",
     "catKey": "apps",
-    "count": 27,
+    "count": 26,
     "groups": {
       "Desarrollo": [
         {
@@ -112,26 +112,6 @@ export const DATA = {
           "featured": true,
           "note": "Mi segundo cerebro. Todo lo que aprendo va ahi. El graph view de links entre notas es adictivo y util de verdad.",
           "related": []
-        },
-        {
-          "id": "notion",
-          "name": "Notion",
-          "desc": "Workspace todo-en-uno. Notas, docs, wikis, bases de datos, kanban.",
-          "install": "Download from notion.so",
-          "site": "notion.so",
-          "tags": [
-            "notes",
-            "workspace",
-            "docs"
-          ],
-          "badges": [
-            "Freemium"
-          ],
-          "featured": true,
-          "note": "Para documentacion compartida del equipo. Obsidian es personal, Notion es el espacio colaborativo donde todos escriben.",
-          "related": [
-            "Obsidian"
-          ]
         },
         {
           "id": "zotero",
@@ -318,24 +298,6 @@ export const DATA = {
           ]
         },
         {
-          "id": "raycast",
-          "name": "Raycast",
-          "desc": "Launcher y productivity app. Reemplaza Spotlight con extensions, snippets, window management.",
-          "install": "Download from raycast.com",
-          "site": "raycast.com",
-          "tags": [
-            "launcher",
-            "productivity",
-            "automation"
-          ],
-          "badges": [
-            "Freemium"
-          ],
-          "featured": true,
-          "note": "Spotlight con esteroides. Extensions para todo: clipboard history, snippets, window management. Una vez que lo usas no hay vuelta atras.",
-          "related": []
-        },
-        {
           "id": "basictex",
           "name": "BasicTeX",
           "desc": "Distribucion minima de TeX/LaTeX para macOS.",
@@ -372,6 +334,24 @@ export const DATA = {
           "featured": false,
           "note": "Lo uso para no distraerme con las ventanas de fondo cuando estoy programando.",
           "related": []
+        },
+        {
+          "site": "github.com/chattymin/poke",
+          "tags": [
+            "menubar",
+            "claude",
+            "tokens"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "poke-token-bar",
+          "name": "Poke Token Bar",
+          "desc": "Menu bar app que muestra uso de tokens de Claude.",
+          "install": "brew install --cask poke-token-bar",
+          "note": "Para ver de un vistazo cuanto token budget me queda en la sesion de Claude sin salir de lo que estoy haciendo."
         }
       ],
       "Browsers": [
@@ -511,7 +491,7 @@ export const DATA = {
   "CLI Tools": {
     "slug": "cli-tools",
     "catKey": "cli",
-    "count": 60,
+    "count": 63,
     "groups": {
       "AI Coding Agents": [
         {
@@ -593,24 +573,24 @@ export const DATA = {
           "related": [
             "Claude Code"
           ]
-        }
-      ],
-      "Browser & Automation": [
+        },
         {
-          "id": "agent-browser",
-          "name": "agent-browser",
-          "desc": "Browser automation CLI para AI agents.",
-          "install": "pnpm install -g agent-browser",
+          "site": "npmjs.com/package/prime-agent",
           "tags": [
-            "browser",
-            "automation"
+            "ai",
+            "coding",
+            "agent"
           ],
           "badges": [
             "Free"
           ],
-          "featured": true,
-          "note": "Para automatizar flujos web desde agentes AI sin levantar Playwright manual. Se integra directo con Claude Code.",
-          "related": []
+          "featured": false,
+          "related": [],
+          "id": "prime-agent",
+          "name": "Prime Agent",
+          "desc": "Coding agent de terminal, alternativa open a Claude Code.",
+          "install": "npm install -g prime-agent",
+          "note": "Otro coding agent para comparar contra Claude Code y Codex en tareas puntuales."
         }
       ],
       "Dev Tools": [
@@ -897,28 +877,6 @@ export const DATA = {
           ]
         },
         {
-          "id": "code-review-graph",
-          "name": "code-review-graph",
-          "desc": "MCP server para busqueda semantica de codigo. Grafo de dependencias y analisis de impacto.",
-          "install": "uv tool install code-review-graph",
-          "site": "github.com/sebastianbreguel/code-review-graph",
-          "tags": [
-            "mcp",
-            "code-review",
-            "semantic-search",
-            "graph"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Mi proyecto. Busca codigo por semantica en vez de grep. get_impact_radius > 10 greps. Ahorra ~70% tokens.",
-          "related": [
-            "RTK (Rust Token Killer)",
-            "Claude Code"
-          ]
-        },
-        {
           "id": "pgvector",
           "name": "pgvector",
           "desc": "Extension de PostgreSQL para vectores y busqueda semantica.",
@@ -1168,6 +1126,99 @@ export const DATA = {
           "featured": false,
           "note": "Dependencia de builds nativos que usan paralelismo con oneTBB.",
           "related": []
+        },
+        {
+          "site": "github.com/BurntSushi/ripgrep",
+          "tags": [
+            "search",
+            "rust",
+            "cli"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "ripgrep",
+          "name": "ripgrep",
+          "desc": "Grep ultrarapido escrito en Rust. El `rg` que usan todos los editores.",
+          "install": "brew install ripgrep",
+          "note": "Busqueda en codebases grandes. Ordenes de magnitud mas rapido que grep y respeta .gitignore por default."
+        },
+        {
+          "site": "github.com/ggml-org/llama.cpp",
+          "tags": [
+            "llm",
+            "local",
+            "inference"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "llama-cpp",
+          "name": "llama.cpp",
+          "desc": "Inferencia de LLMs local en C/C++. Corre modelos GGUF en la Mac.",
+          "install": "brew install llama.cpp",
+          "note": "Para correr modelos locales sin depender de APIs. Util para experimentar con modelos chicos en la Mac."
+        },
+        {
+          "site": "lld.llvm.org",
+          "tags": [
+            "llvm",
+            "linker",
+            "build"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [
+            "LLVM"
+          ],
+          "id": "lld",
+          "name": "lld",
+          "desc": "Linker de LLVM, mucho mas rapido que el linker del sistema.",
+          "install": "brew install lld@21",
+          "note": "Acelera builds de proyectos nativos (Rust, C++). Lo instale como parte del toolchain de LLVM."
+        },
+        {
+          "site": "nlnetlabs.nl/projects/unbound",
+          "tags": [
+            "dns",
+            "network"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "unbound",
+          "name": "Unbound",
+          "desc": "DNS resolver local con validacion DNSSEC y cache.",
+          "install": "brew install unbound",
+          "note": "Resolver DNS local con cache. Lo uso para debugging de red y resolucion mas rapida."
+        },
+        {
+          "site": "docs.aws.amazon.com/systems-manager",
+          "tags": [
+            "aws",
+            "ssm",
+            "devops"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [
+            "AWS CLI"
+          ],
+          "id": "session-manager-plugin",
+          "name": "AWS Session Manager Plugin",
+          "desc": "Plugin de AWS CLI para abrir sesiones SSM a instancias EC2 sin SSH.",
+          "install": "brew install --cask session-manager-plugin",
+          "note": "Para entrar a instancias EC2 via SSM sin manejar llaves SSH. Acompana a awscli."
         }
       ],
       "Package Managers & Deploy": [
@@ -1487,27 +1538,6 @@ export const DATA = {
           ]
         },
         {
-          "id": "rtk",
-          "name": "RTK (Rust Token Killer)",
-          "desc": "Proxy CLI que ahorra 60-90% de tokens en operaciones de dev.",
-          "install": "brew install rtk",
-          "site": "github.com/nicholasgasior/rtk",
-          "tags": [
-            "cli",
-            "tokens",
-            "proxy",
-            "optimization"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Reduce drasticamente el consumo de tokens en Claude Code. Se interpone como proxy en git, ls, etc. Imprescindible.",
-          "related": [
-            "Claude Code"
-          ]
-        },
-        {
           "id": "sox",
           "name": "sox",
           "desc": "Procesamiento de audio en linea de comandos. Grabacion, conversion, efectos.",
@@ -1772,7 +1802,7 @@ export const DATA = {
   "Claude Code": {
     "slug": "claude-code",
     "catKey": "claude-code",
-    "count": 35,
+    "count": 43,
     "groups": {
       "Plugins": [
         {
@@ -1866,9 +1896,7 @@ export const DATA = {
           ],
           "featured": true,
           "note": "Le da ojos a Claude Code. Puede navegar, clickear y hacer screenshots sin que yo escriba una linea de Playwright.",
-          "related": [
-            "agent-browser"
-          ]
+          "related": []
         },
         {
           "id": "plugin-skill-creator",
@@ -1924,28 +1952,6 @@ export const DATA = {
           "featured": true,
           "note": "Ver tokens usados, costo de la sesion y status de herramientas en tiempo real. Antes lo corre a ciegas, ahora tengo datos.",
           "related": []
-        },
-        {
-          "id": "plugin-caveman",
-          "name": "caveman",
-          "desc": "Modo cavernicola. Comprime respuestas 50-75% eliminando relleno, articulos y filler.",
-          "install": "Claude Code marketplace (github:JuliusBrussee/caveman)",
-          "site": "github.com/JuliusBrussee/caveman",
-          "tags": [
-            "claude",
-            "tokens",
-            "compression"
-          ],
-          "badges": [
-            "Free",
-            "Marketplace"
-          ],
-          "featured": true,
-          "note": "Ahorra 50-75% de tokens en respuestas. Sin filler, sin articulos, solo sustancia. Parte clave del stack de optimizacion.",
-          "related": [
-            "RTK (Rust Token Killer)",
-            "context-mode"
-          ]
         },
         {
           "id": "plugin-code-review",
@@ -2032,28 +2038,213 @@ export const DATA = {
           "related": [
             "superpowers"
           ]
-        }
-      ],
-      "Skills": [
+        },
         {
-          "id": "skill-browser-automation",
-          "name": "/browser-automation",
-          "desc": "Browser automation CLI. Navegacion, forms, scraping, screenshots.",
-          "install": "Built-in skill",
+          "site": "",
           "tags": [
-            "claude",
-            "browser",
-            "automation"
+            "claude-code",
+            "plugin"
           ],
           "badges": [
             "Free"
           ],
-          "featured": true,
-          "note": "Para automatizar cualquier tarea web sin escribir Playwright manual. Lo construi para scraping y testing de flujos de usuario.",
-          "related": [
-            "agent-browser"
-          ]
+          "featured": false,
+          "related": [],
+          "id": "plugin-serena",
+          "name": "Serena",
+          "desc": "Lenguaje de simbolos para codigo: find_symbol, references, rename via LSP.",
+          "install": "Claude Code marketplace",
+          "note": "Navegacion semantica de codigo. En vez de grep, busco simbolos y referencias exactas."
         },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-datadog",
+          "name": "Datadog",
+          "desc": "MCP de Datadog: logs, metricas, traces, monitors desde Claude.",
+          "install": "Claude Code marketplace",
+          "note": "Para investigar incidentes de prod sin salir de la terminal."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-posthog",
+          "name": "PostHog",
+          "desc": "MCP de PostHog: analytics, feature flags, errores, insights.",
+          "install": "Claude Code marketplace",
+          "note": "Consulto analytics y errores de producto directo desde Claude."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-figma",
+          "name": "Figma",
+          "desc": "MCP de Figma para leer disenos desde Claude.",
+          "install": "Claude Code marketplace",
+          "note": "Para implementar UI contra el diseno real de Figma."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-feature-dev",
+          "name": "Feature Dev",
+          "desc": "Workflow guiado para desarrollar features completas.",
+          "install": "Claude Code marketplace",
+          "note": "Workflow estructurado cuando la feature es grande."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-slack",
+          "name": "Slack",
+          "desc": "MCP de Slack: leer y buscar mensajes del workspace.",
+          "install": "Claude Code marketplace",
+          "note": "Contexto organizacional: decisiones que viven en Slack y no en docs."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-coding-tutor",
+          "name": "Coding Tutor",
+          "desc": "Tutor de programacion paso a paso.",
+          "install": "Claude Code marketplace",
+          "note": "Para aprender conceptos nuevos con scaffolding en vez de respuestas directas."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-complexity-optimizer",
+          "name": "Complexity Optimizer",
+          "desc": "Encuentra y arregla bottlenecks de performance y algoritmos ineficientes.",
+          "install": "Claude Code marketplace",
+          "note": "Audita O(n^2), N+1 queries y awaits secuenciales antes de que lleguen a prod."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-understand-anything",
+          "name": "Understand Anything",
+          "desc": "Explica cualquier codebase o concepto desde cero.",
+          "install": "Claude Code marketplace",
+          "note": "Para onboardearme rapido en repos que no conozco."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-vercel",
+          "name": "Vercel",
+          "desc": "Plugin oficial de Vercel: deploys y proyectos desde Claude.",
+          "install": "Claude Code marketplace",
+          "note": "Manejo deploys de Vercel sin abrir el dashboard."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-engram",
+          "name": "Engram",
+          "desc": "Memoria persistente para Claude Code via SQLite + FTS5.",
+          "install": "Claude Code marketplace",
+          "note": "Guarda decisiones, bugs y descubrimientos entre sesiones. La memoria que Claude no tiene por default."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "plugin"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "plugin-ponytail",
+          "name": "Ponytail",
+          "desc": "Fuerza la solucion mas lazy que funciona: YAGNI, stdlib antes que deps.",
+          "install": "Claude Code marketplace",
+          "note": "El contrapeso al over-engineering. Review de \"que podemos borrar\"."
+        }
+      ],
+      "Skills": [
         {
           "id": "skill-dream",
           "name": "/dream",
@@ -2068,73 +2259,6 @@ export const DATA = {
           ],
           "featured": true,
           "note": "Para consolidar y podar la memoria de Claude entre sesiones largas. Como un GC para el contexto acumulado.",
-          "related": []
-        },
-        {
-          "id": "skill-health",
-          "name": "/health",
-          "desc": "Diagnostico cuando Claude se siente lento o ignora reglas. Audita hooks y MCP.",
-          "install": "Built-in skill",
-          "tags": [
-            "claude",
-            "diagnostics"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Lo construi para cuando Claude empieza a portarse raro. Diagnostica hooks, MCPs y configuracion en un solo comando.",
-          "related": []
-        },
-        {
-          "id": "skill-panel",
-          "name": "/panel",
-          "desc": "Panel de 3 lentes: simplificacion, arquitectura, producto. Multi-perspectiva.",
-          "install": "Built-in skill",
-          "tags": [
-            "claude",
-            "review",
-            "decision"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para evaluar decisiones desde 3 angulos antes de comprometerse. Simplifica, revisa estructura, y valida producto en una sola pasada.",
-          "related": []
-        },
-        {
-          "id": "skill-humanizer",
-          "name": "/humanizer",
-          "desc": "Elimina patrones de escritura AI del texto. Basado en la guia de Wikipedia.",
-          "install": "Built-in skill",
-          "tags": [
-            "claude",
-            "writing",
-            "quality"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para que el texto no suene a robot. Detecta y corrige el lenguaje inflado tipico de AI antes de publicar cualquier cosa.",
-          "related": []
-        },
-        {
-          "id": "skill-usage",
-          "name": "/usage",
-          "desc": "Muestra conteos de invocaciones de agentes, skills y plugins.",
-          "install": "Built-in skill",
-          "tags": [
-            "claude",
-            "analytics",
-            "usage"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para saber que herramientas uso mas y cuales estan juntando polvo. Datos reales sobre mi workflow con Claude.",
           "related": []
         },
         {
@@ -2154,6 +2278,227 @@ export const DATA = {
           "featured": true,
           "note": "El inverso de setup.sh. Mantiene el repo actualizado con lo que realmente esta instalado. Single source of truth.",
           "related": []
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-brand-format",
+          "name": "brand-format",
+          "desc": "Aplica branding de Vambe a PPTX, DOCX, XLSX y HTML.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Presentaciones y docs con identidad visual de la empresa sin armar templates a mano."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-codebase-design",
+          "name": "codebase-design",
+          "desc": "Vocabulario compartido para disenar modulos profundos.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Para decidir donde va un seam y como hacer codigo mas testeable."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-domain-modeling",
+          "name": "domain-modeling",
+          "desc": "Construye el modelo de dominio: glosario y ADRs.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Mantiene la terminologia del proyecto consistente y las decisiones documentadas."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-generate-github-coder-profile",
+          "name": "generate-github-coder-profile",
+          "desc": "Genera un perfil de coder a partir de la actividad de GitHub.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Para armar un resumen de mi actividad y estilo de contribucion."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-grilling",
+          "name": "grilling",
+          "desc": "Interroga sin piedad un plan o decision para stress-testearla.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Antes de comprometerme con un diseno, lo hago defender cada rama de la decision."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-handoff",
+          "name": "handoff",
+          "desc": "Prepara un handoff privado para continuar una tarea en otro agente.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Para pasar trabajo entre Claude Code y Codex sin perder contexto."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-hunt",
+          "name": "hunt",
+          "desc": "Encuentra la causa raiz de errores y regresiones antes de cualquier fix.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Debugging sistematico: primero entender por que se rompio, despues arreglar."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-improve-codebase-architecture",
+          "name": "improve-codebase-architecture",
+          "desc": "Encuentra oportunidades de consolidacion de modulos acoplados.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Refactors guiados por el modelo de dominio, no por intuicion."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-pr-checkpoint",
+          "name": "pr-checkpoint",
+          "desc": "Revisa el diff contra mis reglas antes de push o PR.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Mi checklist personal automatizado: atrapa los errores que ya cometi antes."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-query-perf-review",
+          "name": "query-perf-review",
+          "desc": "Revisa cambios de performance de queries ClickHouse y Postgres.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Aprende de errores pasados de queries lentas y los aplica al review."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-retro",
+          "name": "retro",
+          "desc": "Retrospectiva de la sesion de trabajo.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Para cerrar sesiones largas extrayendo lecciones antes de que se pierdan."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-synced",
+          "name": "synced",
+          "desc": "Skills sincronizadas entre maquinas.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Punto de sync de skills compartidas."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "skill"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "skill-writing-for-agents",
+          "name": "writing-for-agents",
+          "desc": "Escribir docs e instrucciones optimizadas para agentes.",
+          "install": "Custom skill (~/.claude/skills)",
+          "note": "Para que CLAUDE.md y skills sean precisas y no ambiguas para el modelo."
         }
       ],
       "Agents": [
@@ -2192,252 +2537,40 @@ export const DATA = {
           "related": []
         },
         {
-          "id": "agent-ai-ml-expert",
-          "name": "ai-ml-expert",
-          "desc": "Prompts, RAG, embeddings, model selection.",
-          "install": "Auto-dispatched by Claude Code",
+          "site": "",
           "tags": [
-            "claude",
+            "claude-code",
             "agent",
-            "ai",
+            "planning"
+          ],
+          "badges": [
+            "Free"
+          ],
+          "featured": false,
+          "related": [],
+          "id": "agent-planner",
+          "name": "planner",
+          "desc": "Disena el plan de implementacion antes de escribir codigo, anclado al codigo real.",
+          "install": "Custom agent (~/.claude/agents)",
+          "note": "Nunca edita codigo: produce un plan markdown + un HTML visual. Lo invoco para toda tarea no trivial."
+        },
+        {
+          "site": "",
+          "tags": [
+            "claude-code",
+            "agent",
             "ml"
           ],
           "badges": [
             "Free"
           ],
-          "featured": true,
-          "note": "Para decisiones de arquitectura AI/ML: que modelo usar, como estructurar un RAG, que estrategia de embeddings. Mi experto interno.",
-          "related": [
-            "prompt-engineering"
-          ]
-        },
-        {
-          "id": "agent-prompt-engineering",
-          "name": "prompt-engineering",
-          "desc": "Craft y optimizar prompts para LLMs.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "prompts"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para iterar en prompts de manera sistematica. Analiza por que un prompt falla y sugiere variantes con razonamiento.",
-          "related": [
-            "ai-ml-expert"
-          ]
-        },
-        {
-          "id": "agent-data-science",
-          "name": "data-science-analytics",
-          "desc": "EDA, estadisticas, visualizacion, ML.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "data"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para analisis exploratorios rapidos. Le paso un dataset y me da EDA completo con estadisticas y visualizaciones listas.",
-          "related": []
-        },
-        {
-          "id": "agent-data-pipeline",
-          "name": "data-pipeline-engineer",
-          "desc": "ETL/ELT, orchestration, ML workflows, FastAPI + data stores.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "data",
-            "pipeline"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para disenar y debuggear pipelines de datos. Entiende Prefect, FastAPI, y todo lo que conecta la ingesta con el modelo.",
-          "related": [
-            "data-science-analytics"
-          ]
-        },
-        {
-          "id": "agent-ceo-strategist",
-          "name": "ceo-product-strategist",
-          "desc": "Vision estrategica CEO, roadmap, impacto de producto.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "strategy"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para pensar en impacto de producto mas alla del codigo. Util para preparar pitches y decidir que features priorizar con logica de negocio.",
-          "related": []
-        },
-        {
-          "id": "agent-andrej-karpathy",
-          "name": "andrej-karpathy",
-          "desc": "Persona de Karpathy: implementaciones simples, first-principles, code review minimalista.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "ai",
-            "persona"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para cuando necesito una opinion brutal sobre complejidad innecesaria. Karpathy siempre elige lo mas simple que funcione.",
-          "related": [
-            "ai-ml-expert"
-          ]
-        },
-        {
-          "id": "agent-ops-impact",
-          "name": "ops-impact-analyst",
-          "desc": "ROI de features, metricas de negocio, reportes ejecutivos.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "business"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para conectar metricas tecnicas con impacto de negocio. Convierte 'mejoramos latencia 200ms' en 'ahorramos $X/mes'.",
-          "related": [
-            "ceo-product-strategist"
-          ]
-        },
-        {
-          "id": "agent-tw93",
-          "name": "tw93",
-          "desc": "Gatekeeper de Mole: minimalismo, safety-first, scope discipline.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "review"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Simula al maintainer upstream de Mole para evaluar si un PR seria aceptado. Filtra scope creep antes de escribir codigo.",
-          "related": []
-        },
-        {
-          "id": "agent-database-engineer",
-          "name": "database-engineer",
-          "desc": "Disenio de esquemas, optimizacion de queries, modelado relacional.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "database"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Para decisiones de disenio de base de datos: normalizacion, indices, relaciones. Mi experto en SQL y modelado.",
-          "related": [
-            "PostgreSQL 15"
-          ]
-        },
-        {
-          "id": "agent-coo",
-          "name": "coo",
-          "desc": "Perspectiva de scale-stage operator y customer-first product critique.",
-          "install": "Auto-dispatched by Claude Code",
-          "tags": [
-            "claude",
-            "agent",
-            "product",
-            "customer"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Evalua features desde la perspectiva del comprador: CCO, super-admin, owner. Si el cliente no lo pediria, no se construye.",
-          "related": [
-            "ceo-product-strategist",
-            "ops-impact-analyst"
-          ]
-        }
-      ],
-      "Commands": [
-        {
-          "id": "cmd-redesign-ui",
-          "name": "/redesign-ui",
-          "desc": "Analiza componentes UI y los redisena usando ui-designer y ux-designer en paralelo.",
-          "install": "Custom command",
-          "tags": [
-            "claude",
-            "command",
-            "ui"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Lo construi para iterar en UI rapido. Dos agentes de disenio en paralelo y me quedo con la mejor propuesta. Ahorra horas de iteracion manual.",
-          "related": []
-        },
-        {
-          "id": "cmd-lint",
-          "name": "/lint",
-          "desc": "Corre pre-commit suite completo: ruff, ty, isort, todos los hooks.",
-          "install": "Custom command",
-          "tags": [
-            "claude",
-            "command",
-            "lint",
-            "python"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Un comando para correr todo el linting de un saque. Sin excusas para mergear codigo con warnings.",
-          "related": [
-            "/test"
-          ]
-        },
-        {
-          "id": "cmd-test",
-          "name": "/test",
-          "desc": "Corre pytest con detalles de fallos y coverage opcional.",
-          "install": "Custom command",
-          "tags": [
-            "claude",
-            "command",
-            "testing",
-            "python"
-          ],
-          "badges": [
-            "Free"
-          ],
-          "featured": true,
-          "note": "Wrapper de pytest que formatea output para que Claude entienda los fallos y los arregle en el siguiente paso.",
-          "related": [
-            "/lint"
-          ]
+          "featured": false,
+          "related": [],
+          "id": "agent-yuyo",
+          "name": "yuyo",
+          "desc": "Reviewer tecnico de NLP, ML y sistemas LLM: prompts, evals, RAG, embeddings.",
+          "install": "Custom agent (~/.claude/agents)",
+          "note": "Mi reviewer de todo lo que toca LLMs: prompts, evals y decisiones de modelo."
         }
       ]
     }
@@ -2511,14 +2644,3 @@ export const DATA = {
     }
   }
 };
-
-export const CATEGORIES = Object.keys(DATA);
-
-export const ALL_TOOLS = [];
-for (const [cat, data] of Object.entries(DATA)) {
-  for (const [group, tools] of Object.entries(data.groups)) {
-    for (const tool of tools) {
-      ALL_TOOLS.push({ ...tool, category: cat, group });
-    }
-  }
-}
